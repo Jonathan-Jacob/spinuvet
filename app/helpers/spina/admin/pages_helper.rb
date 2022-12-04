@@ -1,6 +1,6 @@
 module Spina::Admin
   module PagesHelper
-    
+
     def asset_available?(path)
       if Rails.configuration.assets.compile
         Rails.application.precompiled_assets.include?(path)
@@ -16,6 +16,7 @@ module Spina::Admin
           partable.part(part_attributes)
         end
       end
+      raise
     end
 
     def parts_partial_namespace(part_type)

@@ -13,7 +13,6 @@ module Spina
         %w(name title hint options item_name).each do |attribute|
           part.public_send("#{attribute}=", attributes[attribute.to_sym]) if part.respond_to?(attribute)
         end
-        raise
 
         part
       end
