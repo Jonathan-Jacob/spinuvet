@@ -54,6 +54,7 @@ module Spina
       def update
         Mobility.locale = @locale
         raise
+
         if @page.update(page_params) && PageDraft.create(view_template: @page.view_template.dup, json_attributes: @page.json_attributes.dup, spina_page_id: @page.id)
           if @page.saved_change_to_draft? && @page.live?
             flash[:confetti] = t('spina.pages.published')
@@ -128,6 +129,7 @@ module Spina
         end
 
         def page_params
+          params.permit(:active_page_draft)
           params.require(:page).permit!
         end
 

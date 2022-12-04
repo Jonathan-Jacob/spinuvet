@@ -16,6 +16,9 @@ module Spina
     has_many :navigation_items, dependent: :destroy
     has_many :navigations, through: :navigation_items
 
+    # Pages have many drafts
+    has_many :page_drafts, dependent: :destroy
+
     # Pages can belong to a resource
     belongs_to :resource, optional: true, touch: true
 
