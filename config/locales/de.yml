@@ -294,6 +294,7 @@ de:
       show_in_menu: unsichtbar
       skip_to_first_child: Zur ersten Unterseite weiterleiten
       sorting_saved: Reihenfolge gespeichert
+      version: Version
     permanently_delete: Permanent Löschen
     photos:
       cannot_be_created: "Bild kann nicht verarbeitet werden:"
