@@ -53,6 +53,10 @@ module Spina
 
       def update
         Mobility.locale = @locale
+        deserialzed_page_params = page_params
+        if !page_params.json_attributes.nil? && page_params.json_attributes.class = "String"
+          deserialzed_page_params.json_attributes = JSON.parse(page_params.json_attributes)
+        end
         if @page.update(page_params) && PageDraft.create(view_template: @page.view_template.dup, json_attributes: @page.json_attributes.dup, spina_page_id: @page.id)
           if @page.saved_change_to_draft? && @page.live?
             flash[:confetti] = t('spina.pages.published')
