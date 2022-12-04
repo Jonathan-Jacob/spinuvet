@@ -248,6 +248,7 @@ de:
       cannot_be_deleted: Seite kann nicht gelöscht werden
       change_draft: Alte Seitenversion auswählen
       change_order: Reihenfolge ändern
+      change_version: Version ändern
       change_view_template: Seiten-Template ändern
       change_view_template_confirmation: Bist du sicher, dass du dein Seiten-Template ändern möchtest? Inhalte, die nicht zum neuen Template gehören, gehen verloren.
       concept: Entwurf
@@ -268,12 +269,15 @@ de:
       new: Neue Seite
       no_pages_yet: Noch keine Seiten
       no_parent_page: Keine Oberseite
+      old_version: Alte Version auswählen
       page_content: Inhalt
       page_part: Seiteninhalt
       page_seo: Suchmaschinen
       path: "Pfad:"
       photo_picker: Bild auswählen
       photos_picker: Bilder auswählen
+      pick_version: Version auswählen
+      pick_version_long: Wähle eine bestehende Version dieser Seite aus, die du aktivieren möchtest.
       preview: Vorschau
       publish: Veröffentlichen
       published: Seite veröffentlicht

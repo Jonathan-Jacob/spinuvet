@@ -4,11 +4,11 @@
       <div class="sm:flex sm:items-start">
         <div class="mt-3 text-center sm:mt-0 sm:text-left">
           <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-headline">
-            XXX
+            <%= t('spina.pages.pick_version') %>
           </h3>
           <div class="mt-2">
             <p class="text-sm leading-5 text-gray-500 mb-4">
-              YYY
+              <%= t('spina.pages.pick_version_long') %>
             </p>
 
             <select data-action="toggle_page_drafts#toggle">
@@ -26,7 +26,7 @@
     <div class="px-4 py-6 sm:px-6 sm:flex sm:flex-row-reverse">
       <span class="flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto">
         <button type="submit" class="btn btn-primary">
-          <%=t 'spina.pages.change_view_template' %>
+          <%=t 'spina.pages.change_version' %>
         </button>
       </span>
       <span class="mt-3 flex w-full rounded-md shadow-sm sm:mt-0 sm:w-auto">

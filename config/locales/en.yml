@@ -241,6 +241,7 @@ en:
       advanced: Advanced
       cannot_be_deleted: Page can't be deleted
       change_order: Change order
+      change_version: Change version
       change_view_template: Change view template
       change_view_template_confirmation: Are you sure you want to change your page template? Page content that does not belong in the new template will be lost.
       concept: draft
@@ -261,12 +262,15 @@ en:
       new: New page
       no_pages_yet: No pages yet
       no_parent_page: No parent page
+      old_version: Pick old version
       page_content: Content
       page_part: Page section
       page_seo: Search engines
       path: 'Path:'
       photo_picker: Choose image
       photos_picker: Choose images
+      pick_version: Pick version
+      pick_version_long: Choose an existing version of this site you want to activate.
       preview: Preview
       publish: Publish
       published: Page published
