@@ -62,7 +62,7 @@ module Spina
           redirect_to spina.edit_admin_page_url(@page, params: {locale: @locale})
         elsif @page.update(page_params)
           PageDraft.create(view_template: @page.view_template.dup, json_attributes: @page.json_attributes.dup, spina_page_id: @page.id)
-          raise
+          # raise
           if @page.saved_change_to_draft? && @page.live?
             flash[:confetti] = t('spina.pages.published')
           else
