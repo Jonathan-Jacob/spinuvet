@@ -56,25 +56,29 @@ module Spina
 
         if page_params[:active_page_draft].present?
           page_draft = PageDraft.find(page_params[:active_page_draft])
-          @page.update(view_template: page_draft.view_template, json_attributes: page_draft.json_attributes)
+          @page.update(view_template: page_draft.view_template, json_attributes: page_draft.json_attributes, version_id: PageDraft.find(id: page_params[:active_page_draft]).version_id)
           flash[:success] = t('spina.pages.saved')
 
           redirect_to spina.edit_admin_page_url(@page, params: {locale: @locale})
-        elsif @page.update(page_params)
-          PageDraft.create(view_template: @page.view_template.dup, json_attributes: JSON.parse(@page.json_attributes_before_type_cast.dup), version_id: PageDraft.where(spina_page_id: @page.id).length + 1, spina_page_id: @page.id)
-          if @page.saved_change_to_draft? && @page.live?
-            flash[:confetti] = t('spina.pages.published')
-          else
-            flash[:success] = t('spina.pages.saved')
-          end
-
-          redirect_to spina.edit_admin_page_url(@page, params: {locale: @locale})
         else
-          add_index_breadcrumb
-          Mobility.locale = I18n.locale
-          add_breadcrumb @page.title
-          flash.now[:error] = t('spina.pages.couldnt_be_saved')
-          render :edit, status: :unprocessable_entity
+          version_counter = @page.version_counter + 1
+          raise
+          if @page.update(page_params)
+            PageDraft.create(view_template: @page.view_template.dup, json_attributes: JSON.parse(@page.json_attributes_before_type_cast.dup), version_id: PageDraft.where(spina_page_id: @page.id).length + 1, spina_page_id: @page.id)
+            if @page.saved_change_to_draft? && @page.live?
+              flash[:confetti] = t('spina.pages.published')
+            else
+              flash[:success] = t('spina.pages.saved')
+            end
+
+            redirect_to spina.edit_admin_page_url(@page, params: {locale: @locale})
+          else
+            add_index_breadcrumb
+            Mobility.locale = I18n.locale
+            add_breadcrumb @page.title
+            flash.now[:error] = t('spina.pages.couldnt_be_saved')
+            render :edit, status: :unprocessable_entity
+          end
         end
       end
 
