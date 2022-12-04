@@ -16,7 +16,6 @@ module Spina::Admin
           partable.part(part_attributes)
         end
       end
-      raise
     end
 
     def parts_partial_namespace(part_type)
