@@ -5,6 +5,10 @@ export default class extends Controller {
     return ['viewTemplate', 'jsonAttributes']
   }
 
+  connect() {
+    console.log('connected');
+  }
+
   toggle(event) {
     console.log(event);
   }
