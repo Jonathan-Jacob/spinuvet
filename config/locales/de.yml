@@ -246,6 +246,7 @@ de:
       add_translation: Übersetzung für %{language} hinzufügen
       advanced: Erweitert
       cannot_be_deleted: Seite kann nicht gelöscht werden
+      change_draft: Alte Seitenversion auswählen
       change_order: Reihenfolge ändern
       change_view_template: Seiten-Template ändern
       change_view_template_confirmation: Bist du sicher, dass du dein Seiten-Template ändern möchtest? Inhalte, die nicht zum neuen Template gehören, gehen verloren.
