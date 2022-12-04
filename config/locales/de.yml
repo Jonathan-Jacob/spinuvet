@@ -267,6 +267,7 @@ de:
       move_page: Seite verschieben
       moved: Seite verschoben
       new: Neue Seite
+      no_old_version_available: Keine alte Version verfügbar
       no_pages_yet: Noch keine Seiten
       no_parent_page: Keine Oberseite
       old_version: Alte Version auswählen

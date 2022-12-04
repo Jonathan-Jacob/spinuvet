@@ -260,6 +260,7 @@ en:
       move_page: Move page
       moved: Page moved
       new: New page
+      no_old_version_available: No old version available
       no_pages_yet: No pages yet
       no_parent_page: No parent page
       old_version: Pick old version
