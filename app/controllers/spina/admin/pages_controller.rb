@@ -54,8 +54,8 @@ module Spina
       def update
         Mobility.locale = @locale
 
-        if page_params.active_page_draft.present?
-          page_draft = PageDraft.find(active_page_draft)
+        if page_params[:active_page_draft].present?
+          page_draft = PageDraft.find(page_params[:active_page_draft])
           @page.update(view_template: page_draft.view_template, json_attributes: page_draft.json_attributes)
           flash[:success] = t('spina.pages.saved')
 
