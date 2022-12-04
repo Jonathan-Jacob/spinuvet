@@ -2,7 +2,7 @@ module Spina
   module Admin
     class PagesController < AdminController
       before_action :set_locale
-      before_action :set_page, only: [:edit, :edit_content, :edit_template, :update, :destroy, :children, :sort_one]
+      before_action :set_page, only: [:edit, :edit_content, :edit_draft, :edit_template, :update, :destroy, :children, :sort_one]
       before_action :set_tabs
 
       def index
@@ -43,13 +43,17 @@ module Spina
         end&.dig(:parts) || []
       end
 
+      def edit_draft
+        render layout: false
+      end
+
       def edit_template
         render layout: false
       end
 
       def update
         Mobility.locale = @locale
-        if @page.update(page_params)
+        if @page.update(page_params) && PageDraft.create(view_template: @page.view_template.dup, json_attributes: @page.json_attributes.dup, spina_page_id: @page.id)
           if @page.saved_change_to_draft? && @page.live?
             flash[:confetti] = t('spina.pages.published')
           else
@@ -105,8 +109,7 @@ module Spina
       def destroy
         flash[:info] = t('spina.pages.deleted')
         @page.destroy
-
-        redirect_to spina.admin_pages_url(resource_id: @page.resource_id)
+        redirect_to spina.admin_pages_url
       end
 
       private
@@ -134,6 +137,7 @@ module Spina
         def set_tabs
           @tabs = %w[page_content search_engines advanced]
         end
+
     end
   end
 end

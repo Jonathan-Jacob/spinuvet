@@ -13,12 +13,12 @@
 
             <select data-action="toggle_page_drafts#toggle">
               <% Spina::PageDraft.all.each do |page_draft| %>
-                <option value=<%= "\"view_template\": \"#{page_draft.view_template}\", \”content\”: \”#{page_draft.json_attributes}\"" %>><%= page_draft.created_at %></option>
+                <option value=<%= "\"view_template\": \"#{page_draft.view_template}\", \”json_attributes\”: \”#{page_draft.json_attributes}\"" %>><%= page_draft.created_at %></option>
               <% end %>
             </select>
 
             <%= f.hidden_field :view_template, data: {toggle_page_drafts_target: "viewTemplate"} %>
-            <%= f.hidden_field :content, data: {toggle_page_drafts_target: "content"} %>
+            <%= f.hidden_field :json_attributes, data: {toggle_page_drafts_target: "content"} %>
           </div>
         </div>
       </div>
