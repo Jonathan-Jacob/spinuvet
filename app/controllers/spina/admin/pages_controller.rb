@@ -55,7 +55,13 @@ module Spina
         Mobility.locale = @locale
         raise
 
-        if @page.update(page_params) && PageDraft.create(view_template: @page.view_template.dup, json_attributes: @page.json_attributes.dup, spina_page_id: @page.id)
+        if page_params.active_page_draft.present?
+          page_draft = PageDraft.find(active_page_draft)
+          @page.update(view_template: page_draft.view_template, json_attributes: page_draft.json_attributes)
+          flash[:success] = t('spina.pages.saved')
+
+          redirect_to spina.edit_admin_page_url(@page, params: {locale: @locale})
+        elsif @page.update(page_params) && PageDraft.create(view_template: @page.view_template.dup, json_attributes: @page.json_attributes.dup, spina_page_id: @page.id)
           if @page.saved_change_to_draft? && @page.live?
             flash[:confetti] = t('spina.pages.published')
           else
