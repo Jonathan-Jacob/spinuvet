@@ -11,7 +11,7 @@
               <%= t('spina.pages.pick_version_long') %>
             </p>
 
-            <%= f.select :active_page_draft, Spina::PageDraft.order(id: :desc).map{ |draft| [draft.created_at.localtime.strftime("%d.%m.%Y, %H:%M:%S"), draft.id] }, {}, class: "mt-1 form-select w-full" %>
+            <%= f.select :active_page_draft, Spina::PageDraft.order(id: :desc).map{ |draft| ["#{draft.version_id}: #{draft.created_at.localtime.strftime("%d.%m.%Y, %H:%M:%S")}", draft.id] }, {}, class: "mt-1 form-select w-full" %>
           </div>
         </div>
       </div>
