@@ -53,7 +53,6 @@ module Spina
 
       def update
         Mobility.locale = @locale
-        raise
 
         if page_params.active_page_draft.present?
           page_draft = PageDraft.find(active_page_draft)
