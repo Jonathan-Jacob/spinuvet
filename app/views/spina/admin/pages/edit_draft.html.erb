@@ -11,14 +11,14 @@
               <%= t('spina.pages.pick_version_long') %>
             </p>
 
-            <select data-action="toggle_page_drafts#toggle">
+            <select data-action="toggle-page-drafts#toggle">
               <% Spina::PageDraft.all.each do |page_draft| %>
                 <option value=<%= [page_draft.view_template, page_draft.json_attributes] %>><%= page_draft.created_at %></option>
               <% end %>
             </select>
 
             <%= f.hidden_field :view_template, data: {toggle_page_drafts_target: "viewTemplate"} %>
-            <%= f.hidden_field :json_attributes, data: {toggle_page_drafts_target: "content"} %>
+            <%= f.hidden_field :json_attributes, data: {toggle_page_drafts_target: "jsonAttributes"} %>
           </div>
         </div>
       </div>
