@@ -56,6 +56,7 @@ module Spina
 
         if page_params[:active_page_draft].present?
           page_draft = PageDraft.find(page_params[:active_page_draft])
+          raise
           @page.update(view_template: page_draft.view_template, json_attributes: page_draft.json_attributes, version_id: page_draft.version_id)
           flash[:success] = t('spina.pages.saved')
 
