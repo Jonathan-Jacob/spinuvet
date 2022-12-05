@@ -10,7 +10,7 @@
             <p class="text-sm leading-5 text-gray-500 mb-4">
               <%= t('spina.pages.pick_version_long') %>
             </p>
-
+            <% raise %>
             <%= f.select :active_page_draft, Spina::PageDraft.where(spina_page_id: @page.id, locale: @locale).order(id: :desc).map{ |draft| ["#{t('spina.pages.version')} #{draft.version_id} – #{draft.created_at.localtime.strftime("%d.%m.%Y, %H:%M:%S")}", draft.id] }, {}, class: "mt-1 form-select w-full" %>
           </div>
         </div>
