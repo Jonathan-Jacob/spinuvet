@@ -155,7 +155,7 @@ module Spina
         end
 
         def page_params
-          params.permit(:active_page_draft)
+          params.permit(:active_page_draft, :locale)
           params.require(:page).permit!
         end
 
