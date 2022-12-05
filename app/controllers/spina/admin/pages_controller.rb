@@ -61,7 +61,7 @@ module Spina
 
           redirect_to spina.edit_admin_page_url(@page, params: {locale: @locale})
         else
-          version_counter = @page.version_counter.nil ? 1 : @page.version_counter + 1
+          version_counter = @page.version_counter.nil? ? 1 : @page.version_counter + 1
           if @page.update(page_params)
             PageDraft.create(view_template: @page.view_template.dup, json_attributes: JSON.parse(@page.json_attributes_before_type_cast.dup), version_counter: version_counter, version_id: version_counter, spina_page_id: @page.id)
             if @page.saved_change_to_draft? && @page.live?
