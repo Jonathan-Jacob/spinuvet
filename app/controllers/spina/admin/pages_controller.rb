@@ -88,7 +88,7 @@ module Spina
           versioned_params = page_params.merge(version_counter: version_counter, version_id: version_id)
           if @page.update(versioned_params)
             local_content = JSON.parse(@page.json_attributes_before_type_cast)["#{@locale}_content"]
-            title = @page.translations.where(spina_page_id: @page.id).where(locale: @locale).first
+            title = @page.translations.where(spina_page_id: @page.id).where(locale: @locale).first.title
             PageDraft.create(view_template: @page.view_template.dup, title: title, json_attributes: local_content, locale: @locale, version_id: version_id[@locale], spina_page_id: @page.id)
             if @page.saved_change_to_draft? && @page.live?
               flash[:confetti] = t('spina.pages.published')
