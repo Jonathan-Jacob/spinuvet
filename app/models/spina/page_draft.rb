@@ -1,10 +1,13 @@
 module Spina
   class PageDraft < ApplicationRecord
-    include Partable
+    # include Partable
 
-    include AttrJson::Record
-    include AttrJson::NestedAttributes
+    # include AttrJson::Record
+    # include AttrJson::NestedAttributes
 
     belongs_to :spina_page, class_name: "Spina::Page"
   end
 end
+
+
+# TODO: PageDrafts localized machen! 5 PDs Deutsch, 3 PDs Englisch usw.
