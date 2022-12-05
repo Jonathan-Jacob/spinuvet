@@ -270,7 +270,7 @@ de:
       no_old_version_available: Keine alte Version verfügbar
       no_pages_yet: Noch keine Seiten
       no_parent_page: Keine Oberseite
-      old_version: Alte Version auswählen
+      old_version: Andere Version auswählen
       page_content: Inhalt
       page_part: Seiteninhalt
       page_seo: Suchmaschinen
@@ -295,6 +295,10 @@ de:
       skip_to_first_child: Zur ersten Unterseite weiterleiten
       sorting_saved: Reihenfolge gespeichert
       version: Version
+    page_translations:
+      delete: Übersetzung löschen (%{translation})
+      delete_confirmation: Bist du sicher, dass du diese Übersetzung löschen willst <strong>(%{subject})</strong>?
+      deleted: Übersetzung gelöscht
     permanently_delete: Permanent Löschen
     photos:
       cannot_be_created: "Bild kann nicht verarbeitet werden:"
