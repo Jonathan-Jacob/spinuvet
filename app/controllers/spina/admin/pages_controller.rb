@@ -56,17 +56,31 @@ module Spina
 
         if page_params[:active_page_draft].present?
           page_draft = PageDraft.find(page_params[:active_page_draft])
-          raise
-          @page.update(view_template: page_draft.view_template, json_attributes: page_draft.json_attributes, version_id: page_draft.version_id)
+          updated_attributes = page_params.json_attributes.dup
+          updated_attributes["#{@locale}_content"] = page_draft.json_attributes.dup
+          updated_version_id = page_params.version_id.dup
+          updated_version_id[@locale] = page_draft.version_id
+          @page.update(view_template: page_draft.view_template, json_attributes: updated_attributes, version_id: updated_version_id)
           flash[:success] = t('spina.pages.saved')
 
           redirect_to spina.edit_admin_page_url(@page, params: {locale: @locale})
         else
-          version_counter = @page.version_counter.nil? ? 1 : @page.version_counter + 1
-          versioned_params = page_params.merge(version_counter: version_counter, version_id: version_counter)
+          version_counter = @page.version_counter.dup
+          version_id = @page.version_id.dup
+          if @page.version_counter.nil?
+            version_counter = {@locale: 1}
+            version_id = {@locale: 1}
+          elsif @page.version_counter[@locale].nil?
+            version_counter[@locale] = 1
+            version_id[@locale] = 1
+          else
+            version_counter[@locale] = @page.version_counter[@locale] + 1
+            version_id[@locale] = @page.version_counter[@locale] + 1
+          end
+          versioned_params = page_params.merge(version_counter: version_counter, version_id: version_id)
           if @page.update(versioned_params)
-            raise
-            PageDraft.create(view_template: @page.view_template.dup, json_attributes: JSON.parse(@page.json_attributes_before_type_cast.dup), version_id: version_counter, spina_page_id: @page.id)
+            local_content = JSON.parse(@page.json_attributes_before_type_cast)["#{@locale}_content"]
+            PageDraft.create(view_template: @page.view_template.dup, json_attributes: local_content, locale: @locale, version_id: version_id[@locale], spina_page_id: @page.id)
             if @page.saved_change_to_draft? && @page.live?
               flash[:confetti] = t('spina.pages.published')
             else
