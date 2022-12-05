@@ -64,12 +64,12 @@ module Spina
           flash[:success] = t('spina.pages.saved')
 
           redirect_to spina.edit_admin_page_url(@page, params: {locale: @locale})
-        elsif @page.present? && @locale.present?
+        else
           version_counter = @page.version_counter.dup
           version_id = @page.version_id.dup
           if @page.version_counter.nil?
-            version_counter = {@locale: 1}
-            version_id = {@locale: 1}
+            version_counter = {@locale => 1}
+            version_id = {@locale => 1}
           elsif @page.version_counter[@locale].nil?
             version_counter[@locale] = 1
             version_id[@locale] = 1
@@ -95,12 +95,6 @@ module Spina
             flash.now[:error] = t('spina.pages.couldnt_be_saved')
             render :edit, status: :unprocessable_entity
           end
-        else
-          add_index_breadcrumb
-          Mobility.locale = I18n.locale
-          add_breadcrumb @page.title
-          flash.now[:error] = t('spina.pages.couldnt_be_saved')
-          render :edit, status: :unprocessable_entity
         end
       end
 
