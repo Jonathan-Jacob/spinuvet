@@ -82,7 +82,6 @@ module Spina
             test_val = 3
           end
           versioned_params = page_params.merge(version_counter: version_counter, version_id: version_id)
-          raise
           if @page.update(versioned_params)
             local_content = JSON.parse(@page.json_attributes_before_type_cast)["#{@locale}_content"]
             PageDraft.create(view_template: @page.view_template.dup, json_attributes: local_content, locale: @locale, version_id: version_id[@locale], spina_page_id: @page.id)
