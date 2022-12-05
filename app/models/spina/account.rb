@@ -8,7 +8,7 @@ module Spina
     serialize :preferences
 
     after_save :bootstrap_website
-    
+
     validates :name, presence: true
 
     def to_s
@@ -25,8 +25,8 @@ module Spina
           if self.preferences.try(:[], method_name.to_sym).present?
             ActiveSupport::Deprecation.warn("#{method_name} is stored as a symbol. Please set and save it again using #{method_name}= on your Spina::Account model to store it as a string. You can do this from the UI by saving your account preferences.")
           end
-          
-          self.preferences.try(:[], method_name.to_s) || 
+
+          self.preferences.try(:[], method_name.to_s) ||
           self.preferences.try(:[], method_name.to_sym)
         end
 
@@ -73,7 +73,7 @@ module Spina
     def find_or_create_custom_pages(theme)
       theme.custom_pages.each do |page|
         Page.where(name: page[:name])
-            .first_or_create(title: page[:title])
+            .first_or_create(title: page[:title], version_counter: {I18n.default_locale => 1}, version_id: {I18n.default_locale => 1})
             .update(view_template: page[:view_template], deletable: page[:deletable])
       end
     end
