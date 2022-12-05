@@ -24,6 +24,7 @@ module Spina
       end
 
       def create
+        raise
         @page = Page.new(page_params.merge(draft: true))
         if @page.save
           redirect_to spina.edit_admin_page_url(@page)
