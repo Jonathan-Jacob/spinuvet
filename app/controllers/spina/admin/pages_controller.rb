@@ -56,9 +56,9 @@ module Spina
 
         if page_params[:active_page_draft].present?
           page_draft = PageDraft.find(page_params[:active_page_draft])
-          updated_attributes = page_params.json_attributes.dup
+          updated_attributes = @page.json_attributes.dup
           updated_attributes["#{@locale}_content"] = page_draft.json_attributes.dup
-          updated_version_id = page_params.version_id.dup
+          updated_version_id = @page.version_id.dup
           updated_version_id[@locale] = page_draft.version_id
           @page.update(view_template: page_draft.view_template, json_attributes: updated_attributes, version_id: updated_version_id)
           flash[:success] = t('spina.pages.saved')
