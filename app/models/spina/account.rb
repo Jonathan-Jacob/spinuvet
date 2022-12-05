@@ -74,7 +74,7 @@ module Spina
       theme.custom_pages.each do |page|
         Page.where(name: page[:name])
             .first_or_create(title: page[:title])
-            .update(view_template: page[:view_template], deletable: page[:deletable], version_counter: {I18n.default_locale => 1}, version_id: {I18n.default_locale => 1})
+            .update(view_template: page[:view_template], deletable: page[:deletable])
       end
     end
 
