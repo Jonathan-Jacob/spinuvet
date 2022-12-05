@@ -24,8 +24,7 @@ module Spina
       end
 
       def create
-        raise
-        @page = Page.new(page_params.merge(draft: true))
+        @page = Page.new(page_params.merge(draft: true, version_counter: {@locale => 1}, version_id: {@locale => 1}))
         if @page.save
           redirect_to spina.edit_admin_page_url(@page)
         else
