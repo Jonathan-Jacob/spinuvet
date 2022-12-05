@@ -26,6 +26,8 @@ module Spina
       def create
         @page = Page.new(page_params.merge(draft: true, version_counter: {@locale => 1}, version_id: {@locale => 1}))
         if @page.save
+          local_content = JSON.parse(@page.json_attributes_before_type_cast)["#{@locale}_content"]
+          PageDraft.create(view_template: @page.view_template.dup, json_attributes: local_content, locale: @locale, version_id: version_id[@locale], spina_page_id: @page.id)
           redirect_to spina.edit_admin_page_url(@page)
         else
           render turbo_stream: turbo_stream.update(view_context.dom_id(@page, :new_page_form), partial: "new_page_form")
