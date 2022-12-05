@@ -72,9 +72,10 @@ module Spina
 
     def find_or_create_custom_pages(theme)
       theme.custom_pages.each do |page|
-        Page.where(name: page[:name])
+        spina_page = Page.where(name: page[:name])
             .first_or_create(title: page[:title])
-            .update(view_template: page[:view_template], deletable: page[:deletable])
+            .update(view_template: page[:view_template], deletable: page[:deletable], version_counter: {I18n.default_locale => 1}, version_id: {I18n.default_locale => 1})
+        PageDraft.where(spina_page_id: spina_page.id).first_or_create(view_template: spina_page.view_template.dup, locale: I18n.default_locale, version_id: 1, spina_page_id: spina_page.id)
       end
     end
 
