@@ -6,7 +6,7 @@ class CreateSpinaPageDrafts < ActiveRecord::Migration[7.0]
       t.string :title, null: false
       t.string :locale, null: false
       t.integer :version_id, null: false
-      t.references :page, null: false, foreign_key: true
+      t.references :page, null: false, foreign_key: { to_table: :spina_pages }
       t.timestamps
     end
   end
