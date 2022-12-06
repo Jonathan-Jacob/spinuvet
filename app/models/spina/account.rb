@@ -76,7 +76,7 @@ module Spina
             .first_or_create(title: page[:title])
             .update(view_template: page[:view_template], deletable: page[:deletable], version_counter: {I18n.default_locale => 1}, version_id: {I18n.default_locale => 1})
         spina_page = Page.where(name: page[:name]).first
-        local_content = JSON.parse(spina_page.json_attributes_before_type_cast)["#{I18n.default_locale}_content"]
+        local_content = JSON.parse(spina_page.json_attributes_before_type_cast)["#{I18n.default_locale}_content"] || []
         PageDraft.where(page_id: spina_page.id).first_or_create(view_template: spina_page.view_template.dup, title: page[:title], json_attributes: local_content, locale: I18n.default_locale, version_id: 1)
       end
     end
