@@ -26,7 +26,7 @@ module Spina
       def create
         @page = Page.new(page_params.merge(draft: true, version_counter: {@locale => 1}, version_id: {@locale => 1}))
         if @page.save
-          title = @page.translations.where(locale: @locale).title
+          title = @page.translations.where(locale: @locale).first.title
           local_content = JSON.parse(@page.json_attributes_before_type_cast)["#{@locale}_content"]
           PageDraft.create(view_template: @page.view_template.dup, title: title, json_attributes: local_content, locale: @locale, version_id: version_id[@locale], spina_page_id: @page.id)
           redirect_to spina.edit_admin_page_url(@page, locale: @locale)
