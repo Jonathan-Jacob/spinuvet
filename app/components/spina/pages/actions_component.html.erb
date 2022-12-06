@@ -29,8 +29,9 @@
           <%= link_to t('spina.pages.move_page') + "...", helpers.spina.new_admin_page_move_path(@page), class: "block px-4 py-2 text-sm font-medium leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900", data: {turbo_frame: "modal", action: "reveal#hide"} %>
         <% end %>
 
+        <% locale = params[:locale] || @locale %>
         <% if !@page.custom_page? %>
-          <%= link_to t('spina.pages.change_view_template') + "...", helpers.spina.edit_template_admin_page_path(@page), class: "block px-4 py-2 text-sm font-medium leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900", data: {turbo_frame: "modal", action: "reveal#hide"} %>
+          <%= link_to t('spina.pages.change_view_template') + "...", helpers.spina.edit_template_admin_page_path(@page, locale: locale), class: "block px-4 py-2 text-sm font-medium leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900", data: {turbo_frame: "modal", action: "reveal#hide"} %>
         <% end %>
 
         <% if @locale.to_sym != I18n.locale.to_sym %>
@@ -45,7 +46,6 @@
           <span class="block px-4 py-2 text-sm leading-5 text-gray-400"><%=t 'spina.pages.cannot_be_deleted' %></span>
         <% end %>
 
-        <% locale = params[:locale] || @locale %>
         <% unless Spina::PageDraft.where(spina_page_id: @page.id).where(locale: locale).empty? %>
           <%= link_to t('spina.pages.old_version') + "...", helpers.spina.edit_draft_admin_page_path(@page, locale: locale), class: "block px-4 py-2 text-sm font-medium leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900", data: {turbo_frame: "modal", action: "reveal#hide"} %>
         <% else %>
