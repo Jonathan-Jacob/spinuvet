@@ -24,6 +24,8 @@ module Spina
       end
 
       def create
+        p page_params
+        raise
         @page = Page.new(page_params.merge(draft: true, version_counter: {@locale => 1}, version_id: {@locale => 1}))
         if @page.save
           title = @page.translations.where(locale: @locale).first.title
