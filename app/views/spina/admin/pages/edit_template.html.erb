@@ -15,7 +15,7 @@
               <%= Spina::Page.human_attribute_name :view_template %>
             </label>
 
-            <%= f.select :view_template, options_for_select(current_theme.new_page_templates(resource: @page.resource).map{ |template| [template.title, template.name] }, selected: @page.view_template.name), {}, class: "mt-1 form-select w-full" %>
+            <%= f.select :view_template, options_for_select(current_theme.new_page_templates(resource: @page.resource).map{ |template| [template.title, template.name] }, selected: @page.view_template), {}, class: "mt-1 form-select w-full" %>
           </div>
         </div>
       </div>

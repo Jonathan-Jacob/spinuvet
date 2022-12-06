@@ -7,16 +7,16 @@ require 'spina/version'
 Gem::Specification.new do |gem|
   gem.name        = 'spina'
   gem.version     = Spina::VERSION
-  
+
   gem.authors     = ['Bram Jetten']
   gem.email       = ['bram@denkgroot.com']
   gem.homepage    = 'https://www.spinacms.com'
   gem.summary     = 'Spina'
   gem.description = 'CMS'
   gem.license     = 'MIT'
-  
+
   gem.required_ruby_version     = ">= 2.7.0"
-  
+
   gem.metadata = {
     "homepage_uri" => "https://www.spinacms.com",
     "bug_tracker_uri" => "https://github.com/SpinaCMS/Spina/issues",
