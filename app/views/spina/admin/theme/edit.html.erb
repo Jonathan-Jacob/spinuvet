@@ -11,8 +11,6 @@
     <% end %>
   <% end %>
 
-  <p><%= "#{t('spina.pages.version')}" %></p>
-  <% raise %>
   <div class="p-4 md:p-8 max-w-screen-2xl">
 
     <%= render Spina::Forms::GroupComponent.new(label: Spina::Account.human_attribute_name(:theme), description: t('spina.theme.theme_description')) do %>
