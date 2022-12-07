@@ -85,8 +85,11 @@
     @apply bg-emerald-500;
   }
 
-  .stay-on-top {
-
+  @media (min-width: 768px) {
+    .stay-on-top {
+      max-width: calc(100vw - 360px);
+      transform: translate(160px);
+    }
   }
 
   /* Forms */
