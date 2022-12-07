@@ -7,9 +7,9 @@ module Spina
     included do
       # Store each locale's content in [locale]_content as an array of parts
       Spina.locales.each do |locale|
-        attr_json "#{locale}x_content".to_sym, AttrJson::Type::SpinaPartsModel.new, array: true, default: -> { [] }
-        attr_json_setter_monkeypatch "#{locale}x_content".to_sym
-        attr_json_accepts_nested_attributes_for "#{locale}x_content".to_sym
+        attr_json "#{locale}_content".to_sym, AttrJson::Type::SpinaPartsModel.new, array: true, default: -> { [] }
+        attr_json_setter_monkeypatch "#{locale}_content".to_sym
+        attr_json_accepts_nested_attributes_for "#{locale}_content".to_sym
       end
     end
 

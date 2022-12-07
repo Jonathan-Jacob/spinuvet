@@ -87,7 +87,7 @@ module Spina
             version_id[@locale] = @page.version_counter[@locale] + 1
             test_val = 3
           end
-          versioned_params = page_params.merge(version_counter: version_counter, version_id: version_id)
+          versioned_params = page_params.merge(version_counter: version_counter, version_id: version_id, locale: @locae)
           if @page.update(versioned_params)
             local_content = JSON.parse(@page.json_attributes_before_type_cast)["#{@locale}_content"]
             title = @page.translations.where(spina_page_id: @page.id).where(locale: @locale).first.title
