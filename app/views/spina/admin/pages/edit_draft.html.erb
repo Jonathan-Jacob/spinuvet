@@ -10,7 +10,7 @@
             <p class="text-sm leading-5 text-gray-500 mb-4">
               <%= t('spina.pages.pick_version_long') %>
             </p>
-            <%= f.select :active_page_draft, options_for_select(Spina::PageDraft.where(page_id: @page.id).where(locale: params[:locale]).order(id: :desc).map{ |draft| ["#{t('spina.pages.version')} #{draft.version_id} – #{draft.created_at.localtime.strftime("%d.%m.%Y, %H:%M:%S")}", draft.id] }, selected: Spina::PageDraft.where(page_id: @page.id).where(locale: params[:locale]).where(version_id: @page.version_id[params[:locale]]).first.id), {}, class: "mt-1 form-select w-full" %>
+            <%= f.select :active_page_draft, options_for_select(Spina::PageDraft.where(page_id: @page.id).where(locale: params[:locale]).order(id: :desc).map{ |draft| ["#{t('spina.pages.version')} #{draft.version_id} – #{draft.title}: #{draft.created_at.localtime.strftime("%d.%m.%Y, %H:%M:%S")}", draft.id] }, selected: Spina::PageDraft.where(page_id: @page.id).where(locale: params[:locale]).where(version_id: @page.version_id[params[:locale]]).first.id), {}, class: "mt-1 form-select w-full" %>
           </div>
         </div>
       </div>
