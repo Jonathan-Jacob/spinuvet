@@ -24,8 +24,6 @@ module Spina
       end
 
       def create
-        p page_params
-        raise
         @page = Page.new(page_params.merge(draft: true, version_counter: {@locale => 1}, version_id: {@locale => 1}))
         if @page.save
           title = @page.translations.where(locale: @locale).first.title
@@ -87,7 +85,6 @@ module Spina
             version_id[@locale] = @page.version_counter[@locale] + 1
             test_val = 3
           end
-          json_attributes = @page.json_attributes
           versioned_params = page_params.merge(version_counter: version_counter, version_id: version_id)
           if @page.update(versioned_params)
             local_content = JSON.parse(@page.json_attributes_before_type_cast)["#{@locale}_content"]
