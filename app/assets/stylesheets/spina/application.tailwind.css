@@ -89,6 +89,7 @@
     .stay-right {
       max-width: max(408px, calc(100vw - 680px)) !important;
       margin-left: calc(360px - max(0px, calc(100vw - 768px)));
+      margin-right: 0;
     }
   }
 
