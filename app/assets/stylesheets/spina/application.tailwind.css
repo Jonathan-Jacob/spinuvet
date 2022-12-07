@@ -88,7 +88,7 @@
   @media (min-width: 768px) {
     .stay-right {
       max-width: max(408px, calc(100vw - 680px)) !important;
-      transform: translate(calc(160px - max(0px, calc(50vw - 384px))));
+      margin-left: calc(360px - max(0px, calc(100vw - 768px)));
     }
   }
 
