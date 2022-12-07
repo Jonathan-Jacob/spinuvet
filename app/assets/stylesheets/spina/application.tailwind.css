@@ -87,8 +87,8 @@
 
   @media (min-width: 768px) {
     .stay-on-top {
-      max-width: calc(100vw - 360px);
-      transform: translate(160px);
+      max-width: 408px !important;
+      transform: translate(calc(160px - max(0px, calc(calc(50vw - 384px)))));
     }
   }
 
