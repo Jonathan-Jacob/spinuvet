@@ -85,10 +85,6 @@
     @apply bg-emerald-500;
   }
 
-  .stay-right {
-
-  }
-
   /* Forms */
   .form-input, .form-select {
     /* @apply py-3 px-4; */

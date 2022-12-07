@@ -5,17 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
     <meta name="turbo-cache-control" content="no-preview" />
     <%= csrf_meta_tags %>
-    
+
     <link rel="icon" href="<%= image_url('spina/favicon.png') %>" />
-    
+
     <title>Spina CMS</title>
 
     <!-- Stylesheets -->
     <%= stylesheet_link_tag "spina/tailwind", "spina/fonts", "spina/animate", "data-turbo-track": "reload" %>
-    
+
     <!-- Spina's importmap -->
     <%= spina_importmap_tags %>
-    
+
     <!-- Plugins & Hooks -->
     <%= yield(:head) %>
     <%= render Spina::Hooks::HookComponent.new(partial: "head") %>
