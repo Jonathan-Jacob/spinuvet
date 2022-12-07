@@ -40,7 +40,7 @@ Spina::Engine.routes.draw do
     get "logout" => "sessions#destroy"
 
     # Passwords
-    resources :password_resets
+    # resources :password_resets
 
     resources :pages do
       member do
