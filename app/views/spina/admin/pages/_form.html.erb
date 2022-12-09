@@ -21,7 +21,7 @@
       </nav>
     <% end %>
   <% end %>
-  <p class="px-4 md:px-8"><small><%= "#{t('spina.pages.version')} #{@page.version_id[@locale.to_s]}" %></small></p>
+  <p class="px-4 md:px-8 md:-mt-14"><small><%= "#{t('spina.pages.version')} #{@page.version_id[@locale.to_s]}" %></small></p>
   <div class="p-4 md:p-8">
     <%= form_with model: @page, url: spina.admin_page_path(@page), id: dom_id(@page) do |f| %>
       <%= hidden_field_tag :locale, @locale %>
