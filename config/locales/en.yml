@@ -152,6 +152,7 @@ en:
       unknown_user: This user does not exist
     images:
       all_images: All images
+      alt_text: Image title
       back: Back
       cannot_be_created: Cannot be created
       choose_image: Choose image

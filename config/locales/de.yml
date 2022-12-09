@@ -158,6 +158,7 @@ de:
       unknown_user: Dieser Nutzer existiert nicht
     images:
       all_images: Alle Bilder
+      alt_text: Titel des Bilds
       back: Zurück
       cannot_be_created: Konnte nicht erstellt werden
       choose_image: Bild auswählen
