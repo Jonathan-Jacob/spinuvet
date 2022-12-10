@@ -58,20 +58,21 @@
 
 <!-- Translations -->
 <%= render Spina::Pages::TranslationsComponent.new(@page, label: @locale.upcase) %>
-
-<button type="submit" form="<%= dom_id(@page) %>" class="btn btn-primary w-1/2 md:w-auto" data-controller="button hotkeys" data-hotkeys="command+s, ctrl+s" data-hotkeys-target="button" data-action="button#loading" data-loading-message="Saving...">
-  <%= helpers.heroicon('check', style: :mini, class: 'w-5 h-5 -ml-1 mr-1') %>
-  <% if @page.draft? %>
-    <%=t 'spina.pages.save_draft' %>
-  <% else %>
-    <%=t 'spina.pages.save_changes' %>
-  <% end %>
-</button>
-
-<!-- Saving -->
-<% if @page.persisted? && @page.draft? %>
-  <button type="submit" form="<%= dom_id(@page) %>" name="page[draft]" value="false" class="btn bg-emerald-500 hover:bg-emerald-600 border-emerald-600 text-white flex items-center" data-controller="hotkeys" data-hotkeys="control+command+s" data-hotkeys-target="button">
-    <%= helpers.heroicon('cursor-arrow-rays', style: :solid, class: "w-5 h-5 -ml-1 mr-1") %>
-    <%=t 'spina.pages.publish' %>
+<div>
+  <button type="submit" form="<%= dom_id(@page) %>" class="btn btn-primary w-1/2 md:w-auto" data-controller="button hotkeys" data-hotkeys="command+s, ctrl+s" data-hotkeys-target="button" data-action="button#loading" data-loading-message="Saving...">
+    <%= helpers.heroicon('check', style: :mini, class: 'w-5 h-5 -ml-1 mr-1') %>
+    <% if @page.draft? %>
+      <%=t 'spina.pages.save_draft' %>
+    <% else %>
+      <%=t 'spina.pages.save_changes' %>
+    <% end %>
   </button>
-<% end %>
+
+  <!-- Saving -->
+  <% if @page.persisted? && @page.draft? %>
+    <button type="submit" form="<%= dom_id(@page) %>" name="page[draft]" value="false" class="btn bg-emerald-500 hover:bg-emerald-600 border-emerald-600 text-white flex items-center" data-controller="hotkeys" data-hotkeys="control+command+s" data-hotkeys-target="button">
+      <%= helpers.heroicon('cursor-arrow-rays', style: :solid, class: "w-5 h-5 -ml-1 mr-1") %>
+      <%=t 'spina.pages.publish' %>
+    </button>
+  <% end %>
+</div>
