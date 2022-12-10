@@ -105,6 +105,12 @@
     }
   }
 
+  @media (min-width: 768px) {
+    .shrink-button {
+      max-width: calc(100vw - 488px);
+    }
+  }
+
   /* Forms */
   .form-input, .form-select {
     /* @apply py-3 px-4; */
