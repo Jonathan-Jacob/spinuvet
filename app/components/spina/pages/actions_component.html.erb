@@ -13,52 +13,52 @@
   </div>
 <% end %>
 
+<div class="flex space-x-3">
 <!-- Advanced actions -->
-<div class="relative w-1/2 md:w-auto" data-controller="reveal" data-reveal-away-value>
-  <button type="button" class="btn btn-default px-3 w-full" data-action="reveal#toggle">
-    <svg class="w-5 h-5 text-gray-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-      <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-    </svg>
-  </button>
+  <div class="relative w-1/2 md:w-auto" data-controller="reveal" data-reveal-away-value>
+    <button type="button" class="btn btn-default px-3 w-full" data-action="reveal#toggle">
+      <svg class="w-5 h-5 text-gray-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+        <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
+      </svg>
+    </button>
 
-  <div hidden data-reveal data-transition class="origin-top-left lg:origin-top-right absolute lg:right-0 mt-2 w-56 rounded-md shadow-lg border border-gray-200">
-    <div class="rounded-md bg-white shadow-xs">
-      <div class="py-1">
+    <div hidden data-reveal data-transition class="origin-top-left lg:origin-top-right absolute lg:right-0 mt-2 w-56 rounded-md shadow-lg border border-gray-200">
+      <div class="rounded-md bg-white shadow-xs">
+        <div class="py-1">
 
-        <% unless @page.homepage? %>
-          <%= link_to t('spina.pages.move_page') + "...", helpers.spina.new_admin_page_move_path(@page), class: "block px-4 py-2 text-sm font-medium leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900", data: {turbo_frame: "modal", action: "reveal#hide"} %>
-        <% end %>
-
-        <% locale = params[:locale] || @locale %>
-        <% if !@page.custom_page? %>
-          <%= link_to t('spina.pages.change_view_template') + "...", helpers.spina.edit_template_admin_page_path(@page, locale: locale), class: "block px-4 py-2 text-sm font-medium leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900", data: {turbo_frame: "modal", action: "reveal#hide"} %>
-        <% end %>
-
-        <% if @locale.to_sym != I18n.locale.to_sym %>
-          <% @page.translations.where(locale: @locale).each do |translation| %>
-            <%= button_to t("spina.page_translations.delete", translation: @locale.upcase), helpers.spina.admin_page_translation_path(translation), method: :delete, class: "block w-full text-left px-4 py-2 text-sm leading-5 font-medium text-red-500 cursor-pointer bg-white hover:bg-red-100 hover:bg-opacity-50 hover:text-red-500 focus:outline-none focus:bg-gray-100 focus:text-gray-900", form: {data: {controller: "confirm", confirm_message: t('spina.page_translations.delete_confirmation', subject: @locale.upcase)}} %>
+          <% unless @page.homepage? %>
+            <%= link_to t('spina.pages.move_page') + "...", helpers.spina.new_admin_page_move_path(@page), class: "block px-4 py-2 text-sm font-medium leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900", data: {turbo_frame: "modal", action: "reveal#hide"} %>
           <% end %>
-        <% end %>
 
-        <% if @page.deletable? %>
-          <%= button_to t('spina.pages.delete'), helpers.spina.admin_page_path(@page), method: :delete, class: "block w-full text-left px-4 py-2 text-sm leading-5 font-medium text-red-500 cursor-pointer bg-white hover:bg-red-100 hover:bg-opacity-50 hover:text-red-500 focus:outline-none focus:bg-gray-100 focus:text-gray-900", form: {data: {controller: "confirm", confirm_message: t('spina.pages.delete_confirmation', subject: @page.title)}} %>
-        <% else %>
-          <span class="block px-4 py-2 text-sm leading-5 text-gray-400"><%=t 'spina.pages.cannot_be_deleted' %></span>
-        <% end %>
+          <% locale = params[:locale] || @locale %>
+          <% if !@page.custom_page? %>
+            <%= link_to t('spina.pages.change_view_template') + "...", helpers.spina.edit_template_admin_page_path(@page, locale: locale), class: "block px-4 py-2 text-sm font-medium leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900", data: {turbo_frame: "modal", action: "reveal#hide"} %>
+          <% end %>
 
-        <% unless Spina::PageDraft.where(page_id: @page.id).where(locale: locale).empty? %>
-          <%= link_to t('spina.pages.old_version') + "...", helpers.spina.edit_draft_admin_page_path(@page, locale: locale), class: "block px-4 py-2 text-sm font-medium leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900", data: {turbo_frame: "modal", action: "reveal#hide"} %>
-        <% else %>
-          <span class="block px-4 py-2 text-sm leading-5 text-gray-400"><%= t('spina.pages.no_old_version_available') %></span>
-        <% end %>
+          <% if @locale.to_sym != I18n.locale.to_sym %>
+            <% @page.translations.where(locale: @locale).each do |translation| %>
+              <%= button_to t("spina.page_translations.delete", translation: @locale.upcase), helpers.spina.admin_page_translation_path(translation), method: :delete, class: "block w-full text-left px-4 py-2 text-sm leading-5 font-medium text-red-500 cursor-pointer bg-white hover:bg-red-100 hover:bg-opacity-50 hover:text-red-500 focus:outline-none focus:bg-gray-100 focus:text-gray-900", form: {data: {controller: "confirm", confirm_message: t('spina.page_translations.delete_confirmation', subject: @locale.upcase)}} %>
+            <% end %>
+          <% end %>
+
+          <% if @page.deletable? %>
+            <%= button_to t('spina.pages.delete'), helpers.spina.admin_page_path(@page), method: :delete, class: "block w-full text-left px-4 py-2 text-sm leading-5 font-medium text-red-500 cursor-pointer bg-white hover:bg-red-100 hover:bg-opacity-50 hover:text-red-500 focus:outline-none focus:bg-gray-100 focus:text-gray-900", form: {data: {controller: "confirm", confirm_message: t('spina.pages.delete_confirmation', subject: @page.title)}} %>
+          <% else %>
+            <span class="block px-4 py-2 text-sm leading-5 text-gray-400"><%=t 'spina.pages.cannot_be_deleted' %></span>
+          <% end %>
+
+          <% unless Spina::PageDraft.where(page_id: @page.id).where(locale: locale).empty? %>
+            <%= link_to t('spina.pages.old_version') + "...", helpers.spina.edit_draft_admin_page_path(@page, locale: locale), class: "block px-4 py-2 text-sm font-medium leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900", data: {turbo_frame: "modal", action: "reveal#hide"} %>
+          <% else %>
+            <span class="block px-4 py-2 text-sm leading-5 text-gray-400"><%= t('spina.pages.no_old_version_available') %></span>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<!-- Translations -->
-<%= render Spina::Pages::TranslationsComponent.new(@page, label: @locale.upcase) %>
-<div>
+  <!-- Translations -->
+  <%= render Spina::Pages::TranslationsComponent.new(@page, label: @locale.upcase) %>
   <button type="submit" form="<%= dom_id(@page) %>" class="btn btn-primary w-1/2 md:w-auto" data-controller="button hotkeys" data-hotkeys="command+s, ctrl+s" data-hotkeys-target="button" data-action="button#loading" data-loading-message="Saving...">
     <%= helpers.heroicon('check', style: :mini, class: 'w-5 h-5 -ml-1 mr-1') %>
     <% if @page.draft? %>
@@ -67,12 +67,12 @@
       <%=t 'spina.pages.save_changes' %>
     <% end %>
   </button>
-
-  <!-- Saving -->
-  <% if @page.persisted? && @page.draft? %>
-    <button type="submit" form="<%= dom_id(@page) %>" name="page[draft]" value="false" class="btn bg-emerald-500 hover:bg-emerald-600 border-emerald-600 text-white flex items-center" data-controller="hotkeys" data-hotkeys="control+command+s" data-hotkeys-target="button">
-      <%= helpers.heroicon('cursor-arrow-rays', style: :solid, class: "w-5 h-5 -ml-1 mr-1") %>
-      <%=t 'spina.pages.publish' %>
-    </button>
-  <% end %>
 </div>
+
+<!-- Saving -->
+<% if @page.persisted? && @page.draft? %>
+  <button type="submit" form="<%= dom_id(@page) %>" name="page[draft]" value="false" class="btn bg-emerald-500 hover:bg-emerald-600 border-emerald-600 text-white flex items-center" data-controller="hotkeys" data-hotkeys="control+command+s" data-hotkeys-target="button">
+    <%= helpers.heroicon('cursor-arrow-rays', style: :solid, class: "w-5 h-5 -ml-1 mr-1") %>
+    <%=t 'spina.pages.publish' %>
+  </button>
+<% end %>
