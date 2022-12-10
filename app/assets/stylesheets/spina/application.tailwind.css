@@ -93,6 +93,13 @@
     }
   }
 
+   @media (min-width: 768px) {
+    .shrink-button-bar {
+      height: 5.25rem;
+      max-width: calc(100vw - 400px);
+    }
+   }
+
   /* Forms */
   .form-input, .form-select {
     /* @apply py-3 px-4; */
