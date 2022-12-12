@@ -1,10 +1,10 @@
 module.exports = {
   content: [
-    '/Users/jonathan/code/Jonathan-Jacob/spinuvet/app/views/**/*.*',
-'/Users/jonathan/code/Jonathan-Jacob/spinuvet/app/components/**/*.*',
-'/Users/jonathan/code/Jonathan-Jacob/spinuvet/app/helpers/**/*.*',
-'/Users/jonathan/code/Jonathan-Jacob/spinuvet/app/assets/javascripts/**/*.js',
-'/Users/jonathan/code/Jonathan-Jacob/spinuvet/app/**/application.tailwind.css'
+    '/Users/jonathan/code/Jonathan-Jacob/SpinaJJ/app/views/**/*.*',
+'/Users/jonathan/code/Jonathan-Jacob/SpinaJJ/app/components/**/*.*',
+'/Users/jonathan/code/Jonathan-Jacob/SpinaJJ/app/helpers/**/*.*',
+'/Users/jonathan/code/Jonathan-Jacob/SpinaJJ/app/assets/javascripts/**/*.js',
+'/Users/jonathan/code/Jonathan-Jacob/SpinaJJ/app/**/application.tailwind.css'
   ],
   theme: {
     fontFamily: {
@@ -14,9 +14,9 @@ module.exports = {
     extend: {
       colors: {
         spina: {
-          light: '#58990f',
-          DEFAULT: '#78b41b',
-          dark: '#306e01'
+          light: '#123142',
+          DEFAULT: '#a73f44',
+          dark: '#9b2d32'
         }
       }
     }
