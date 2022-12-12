@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 16) do
+ActiveRecord::Schema[7.0].define(version: 17) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -121,6 +121,18 @@ ActiveRecord::Schema[7.0].define(version: 16) do
     t.datetime "updated_at", precision: nil, null: false
   end
 
+  create_table "spina_page_drafts", force: :cascade do |t|
+    t.string "view_template", null: false
+    t.jsonb "json_attributes", null: false
+    t.string "title", null: false
+    t.string "locale", null: false
+    t.integer "version_id", null: false
+    t.bigint "page_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["page_id"], name: "index_spina_page_drafts_on_page_id"
+  end
+
   create_table "spina_page_parts", id: :serial, force: :cascade do |t|
     t.string "title"
     t.string "name"
@@ -129,7 +141,6 @@ ActiveRecord::Schema[7.0].define(version: 16) do
     t.integer "page_id"
     t.integer "page_partable_id"
     t.string "page_partable_type"
-    t.string "item_name"
   end
 
   create_table "spina_page_translations", id: :serial, force: :cascade do |t|
@@ -164,6 +175,8 @@ ActiveRecord::Schema[7.0].define(version: 16) do
     t.boolean "active", default: true
     t.integer "resource_id"
     t.jsonb "json_attributes"
+    t.jsonb "version_id"
+    t.jsonb "version_counter"
     t.index ["resource_id"], name: "index_spina_pages_on_resource_id"
   end
 
@@ -244,4 +257,5 @@ ActiveRecord::Schema[7.0].define(version: 16) do
     t.datetime "password_reset_sent_at", precision: nil
   end
 
+  add_foreign_key "spina_page_drafts", "spina_pages", column: "page_id"
 end
