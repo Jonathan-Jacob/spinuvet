@@ -7,7 +7,6 @@ module Spina::Admin
     admin_section :content
 
     def edit
-      raise
     end
 
     def update
