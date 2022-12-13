@@ -19,7 +19,7 @@
           <%= render Spina::MainNavigation::LinkComponent.new t('spina.navigations.navigations'), spina.admin_navigations_path, active: controller_name == "navigations" %>
 
           <% current_theme.layout_parts.each do |part| %>
-            <%= render Spina::MainNavigation::LinkComponent.new t('spina.layout.layout'), (spina.edit_admin_layout_path, params.merge(@part: part)), active: controller_name == "layout" %>
+            <%= render Spina::MainNavigation::LinkComponent.new t('spina.layout.layout'), spina.edit_admin_layout_path, @part: part, active: controller_name == "layout" %>
           <% end %>
 
           <%= render Spina::MainNavigation::LinkComponent.new t('spina.website.media_library'), spina.admin_images_path, active: controller_name.in?(%w(images media_folders attachments)) %>
