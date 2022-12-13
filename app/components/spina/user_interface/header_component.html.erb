@@ -4,8 +4,11 @@
   <div class="bg-white border-b border-gray-200 p-4 md:p-6 md:pl-8 sticky top-0 z-20">
     <div class="flex flex-col md:flex-row justify-between md:items-center">
       <div class="text-2xl font-normal text-gray-700 flex items-center ">
-        <%= helpers.render_breadcrumbs == "Layout" ? Spina::Current.theme.parts.find{|p| p[:name] == params[:part]}.nil? ? t('spina.layout.layout') : Spina::Current.theme.parts.find{|p| p[:name] == params[:part]}[:title] : helpers.render_breadcrumbs separator: helpers.heroicon('chevron-right', style: :solid, class: "w-5 h-5 mx-2 text-gray-300") %>
-
+        <% if helpers.render_breadcrumbs == "Layout" %>
+          <%= Spina::Current.theme.parts.find{|p| p[:name] == params[:part]}.nil? ? t('spina.layout.layout') : Spina::Current.theme.parts.find{|p| p[:name] == params[:part]}[:title] %>
+        <% else %>
+          <%= helpers.render_breadcrumbs separator: helpers.heroicon('chevron-right', style: :solid, class: "w-5 h-5 mx-2 text-gray-300") %>
+        <% end %>
         <!-- Optional content after breadcrumbs -->
         <%= after_breadcrumbs %>
 
