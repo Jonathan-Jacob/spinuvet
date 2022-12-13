@@ -1,4 +1,4 @@
-<%= render Spina::UserInterface::HeaderComponent.new({current_theme: current_theme}) do |header| %>
+<%= render Spina::UserInterface::HeaderComponent.new do |header| %>
   <% header.actions do %>
     <%= render Spina::UserInterface::TranslationsComponent.new(@account, label: @locale.upcase) %>
 
