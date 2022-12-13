@@ -69,15 +69,17 @@
         <%= content_type(image) %>
       </div>
     </div>
-    <div class="text-gray-500 text-xs w-32 text-right whitespace-nowrap"><%=l image.created_at, format: :short %></div>
-    <div class="flex items-center ml-2">
-      <%= link_to original_url(image), class: "block py-3 px-2 text-gray-500 hover:text-gray-900", download: image.file.filename do %>
-        <%= heroicon('download', class: 'w-5 h-5') %>
-      <% end %>
+    <div class="flex">
+      <div class="text-gray-500 text-xs w-32 text-right whitespace-nowrap"><%=l image.created_at, format: :short %></div>
+      <div class="flex items-center ml-2">
+        <%= link_to original_url(image), class: "block py-3 px-2 text-gray-500 hover:text-gray-900", download: image.file.filename do %>
+          <%= heroicon('download', class: 'w-5 h-5') %>
+        <% end %>
 
-      <%= button_to spina.admin_image_path(image), method: :delete, class: "block py-3 px-2 text-gray-500 hover:text-gray-900", form: {data: {controller: "confirm", confirm_message: t('spina.images.delete_confirmation_html')}} do %>
-        <%= heroicon('trash', class: "w-5 h-5") %>
-      <% end %>
+        <%= button_to spina.admin_image_path(image), method: :delete, class: "block py-3 px-2 text-gray-500 hover:text-gray-900", form: {data: {controller: "confirm", confirm_message: t('spina.images.delete_confirmation_html')}} do %>
+          <%= heroicon('trash', class: "w-5 h-5") %>
+        <% end %>
+      </div>
     </div>
   </div>
 <% end %>
