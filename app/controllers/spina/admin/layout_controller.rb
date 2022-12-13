@@ -3,10 +3,11 @@ module Spina::Admin
     before_action :set_account
     before_action :set_locale
     before_action :set_breadcrumb
-    
+
     admin_section :content
 
     def edit
+      raise
     end
 
     def update
@@ -19,12 +20,12 @@ module Spina::Admin
     end
 
     private
-    
+
       # Permit all attributes when editing your layout
       def layout_params
         params.require(:account).permit!
       end
-      
+
       def set_breadcrumb
         add_breadcrumb t('spina.layout.layout')
       end
