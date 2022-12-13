@@ -5,7 +5,7 @@
     <div class="flex flex-col md:flex-row justify-between md:items-center">
       <div class="text-2xl font-normal text-gray-700 flex items-center ">
 
-        <%= Spina::Current.theme.parts.find{|p| p[:name] == params[:part]}.nil? ? t('spina.layout.layout') : Spina::Current.theme.parts.find{|p| p[:name] == params[:part]}[:title] %>%
+        <%= Spina::Current.theme.parts.find{|p| p[:name] == params[:part]}.nil? ? t('spina.layout.layout') : Spina::Current.theme.parts.find{|p| p[:name] == params[:part]}[:title] %>
         <%#= helpers.render_breadcrumbs separator: helpers.heroicon('chevron-right', style: :solid, class: "w-5 h-5 mx-2 text-gray-300") %>
 
         <!-- Optional content after breadcrumbs -->
