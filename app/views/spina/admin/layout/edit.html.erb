@@ -22,10 +22,9 @@
           <%= ff.hidden_field :type, value: ff.object.class %>
           <%= ff.hidden_field :name %>
           <%= ff.hidden_field :title %>
-          <%= raise %>
-          <div class="hidden">
-            <%= render "spina/admin/parts/#{parts_partial_namespace(ff.object.class.to_s)}/form", f: ff %>
-          </div>
+
+          <% raise %>
+          <%= render "spina/admin/parts/#{parts_partial_namespace(ff.object.class.to_s)}/form", f: ff %>
         <% end %>
       </div>
     <% else %>

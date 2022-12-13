@@ -7,6 +7,7 @@ module Spina::Admin
     admin_section :content
 
     def edit
+      @part = params[:part]
     end
 
     def update
