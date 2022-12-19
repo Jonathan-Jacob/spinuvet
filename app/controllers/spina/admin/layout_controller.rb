@@ -24,7 +24,7 @@ module Spina::Admin
 
       # Permit all attributes when editing your layout
       def layout_params
-        params.permit(:part, :locale).require(:account).permit!
+        params.permit(:part, :locale).merge(params.require(:account).permit!)
       end
 
       def set_breadcrumb
