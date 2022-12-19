@@ -1,6 +1,7 @@
 module Spina::Admin
   class IngredientsController < ApplicationController
     before_action :set_locale
+    before_action :set_breadcrumb
 
     def index
       @ingredients = Spina::Ingredient.all
@@ -31,6 +32,10 @@ module Spina::Admin
     # Permit all attributes when editing your layout
     def ingredient_params
       params.require(:ingredient).permit(:json_attributes)
+    end
+
+    def set_breadcrumb
+      add_breadcrumb t("spina.layout.layout")
     end
 
     def set_locale
