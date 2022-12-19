@@ -1,4 +1,4 @@
-module Spina
+module Spina::Admin
   class IngredientsController < ApplicationController
     before_action :set_locale
 
