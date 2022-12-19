@@ -11,7 +11,7 @@
   <% end %>
 <% end %>
 
-<%= form_with model: @account, url: spina.admin_layout_path, id: dom_id(@account) do |f| %>
+<%= form_with model: @account, url: spina.admin_layout_path(part: @part), id: dom_id(@account) do |f| %>
   <%= hidden_field_tag :locale, @locale %>
 
   <div class="py-4 p-8">
