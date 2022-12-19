@@ -11,7 +11,6 @@ module Spina::Admin
     end
 
     def update
-      raise
       if @account.update(layout_params)
         redirect_to spina.edit_admin_layout_path(locale: @locale), flash: {success: t('spina.layout.saved')}
       else
