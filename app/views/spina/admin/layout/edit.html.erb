@@ -2,23 +2,23 @@
   <% header.actions do %>
     <%= render Spina::UserInterface::TranslationsComponent.new(@account, label: @locale.upcase) %>
 
-    <% if Spina::Current.theme.layout_parts.include?(@part) %>
+    <% if Spina::Current.theme.layout_parts.any? %>
       <%= button_tag type: :submit, form: dom_id(@account), class: 'btn btn-primary', data: {controller: "button hotkeys", hotkeys: "command+s, ctrl+s", hotkeys_target: "button", action: "button#loading", loading_message: t('spina.ui.saving')} do %>
         <%= heroicon('check', style: :mini, class: 'w-5 h-5 -ml-1 mr-1') %>
-        <%=t 'spina.save' %>
+        <%=t 'spina.layout.save' %>
       <% end %>
     <% end %>
   <% end %>
 <% end %>
 
-<%= form_with model: @account, url: spina.admin_layout_path(part: @part), id: dom_id(@account) do |f| %>
+<%= form_with model: @account, url: spina.admin_layout_path, id: dom_id(@account) do |f| %>
   <%= hidden_field_tag :locale, @locale %>
 
   <div class="py-4 p-8">
-    <% if Spina::Current.theme.layout_parts.include?(@part) %>
+    <% if Spina::Current.theme.layout_parts.any? %>
 
       <div class="max-w-5xl">
-        <%= f.fields_for "#{@locale}_content".to_sym, build_parts(f.object, [@part]) do |ff| %>
+        <%= f.fields_for "#{@locale}_content".to_sym, build_parts(f.object, Spina::Current.theme.layout_parts) do |ff| %>
           <%= ff.hidden_field :type, value: ff.object.class %>
           <%= ff.hidden_field :name %>
           <%= ff.hidden_field :title %>
