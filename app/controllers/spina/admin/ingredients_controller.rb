@@ -3,11 +3,11 @@ module Spina::Admin
     before_action :set_locale
 
     def index
-      @ingredients = Ingredient.all
+      @ingredients = Spina::Ingredient.all
     end
 
     def create
-      @ingredient = Ingredient.new(ingredient_params)
+      @ingredient = Spina::Ingredient.new(ingredient_params)
       if @ingredient.save
         redirect_to admin_ingredients_path(locale: @locale), flash: {success: t("spina.layout.saved")}
       else
@@ -17,7 +17,7 @@ module Spina::Admin
     end
 
     def update
-      @ingredient = Ingredient.find(params[:id])
+      @ingredient = Spina::Ingredient.find(params[:id])
       if @ingredient.save
         redirect_to admin_ingredients_path(locale: @locale), flash: {success: t("spina.layout.saved")}
       else

@@ -1,6 +1,6 @@
 module Spina
   class Ingredient < ApplicationRecord
-    include AttrJson::Model
+    include AttrJson::Record
 
     attr_json_config(unknown_key: :strip)
 
