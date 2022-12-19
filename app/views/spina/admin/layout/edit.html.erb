@@ -3,7 +3,7 @@
     <%= render Spina::UserInterface::TranslationsComponent.new(@account, label: @locale.upcase) %>
 
     <% if Spina::Current.theme.layout_parts.include?(@part) %>
-      <%= button_tag type: :submit, form: dom_id(@account), class: 'btn btn-primary', part: @part, data: {controller: "button hotkeys", hotkeys: "command+s, ctrl+s", hotkeys_target: "button", action: "button#loading", loading_message: t('spina.ui.saving')} do %>
+      <%= button_tag type: :submit, form: dom_id(@account), class: 'btn btn-primary', params: {part: @part}, data: {controller: "button hotkeys", hotkeys: "command+s, ctrl+s", hotkeys_target: "button", action: "button#loading", loading_message: t('spina.ui.saving')} do %>
         <%= heroicon('check', style: :mini, class: 'w-5 h-5 -ml-1 mr-1') %>
         <%=t 'spina.save' %>
       <% end %>
