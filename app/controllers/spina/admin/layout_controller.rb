@@ -11,6 +11,7 @@ module Spina::Admin
     end
 
     def update
+      raise
       if @account.update(layout_params)
         redirect_to spina.edit_admin_layout_path(locale: @locale), flash: {success: t('spina.layout.saved')}
       else
@@ -23,7 +24,7 @@ module Spina::Admin
 
       # Permit all attributes when editing your layout
       def layout_params
-        params.permit(:part)
+        params.permit(:part, :locale)
         params.require(:account).permit!
       end
 
