@@ -23,6 +23,7 @@ module Spina::Admin
 
       # Permit all attributes when editing your layout
       def layout_params
+        params.permit(:part)
         params.require(:account).permit!
       end
 
