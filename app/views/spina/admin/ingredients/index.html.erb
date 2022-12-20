@@ -34,15 +34,13 @@
   <div class="text-gray-400 text-sm"><%= @ingredient.name %></div>
   <%= form_with model: @ingredient, url: spina.admin_ingredients_path, id: @ingredient.object_id do |f| %>
     <div class="mt-6">
-      <label class="block text-sm leading-5 font-medium text-gray-700"><%= f.object.title %></label>
-      <div class="text-gray-400 text-sm"><%= f.object.hint %></div>
+      <label class="block text-sm leading-5 font-medium text-gray-700">NAME</label>
       <div class="mt-1">
         <%= f.text_field :name, class: "form-input ll max-w-5xl sm:text-sm sm:leading-5" %>
       </div>
     </div>
     <div class="mt-6" data-controller="unique-id" data-unique-id="<%= f.object.object_id %>">
-      <label class="block text-sm leading-5 font-medium text-gray-700"><%= f.object.title %></label>
-      <div class="text-gray-400 text-sm"><%= f.object.hint %></div>
+      <label class="block text-sm leading-5 font-medium text-gray-700">DESCRIPTION</label>
       <div class="mt-1 relative">
         <%= f.hidden_field :description, id: "#{f.object.object_id}_input" %>
 
