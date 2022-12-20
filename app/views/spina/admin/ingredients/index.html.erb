@@ -34,6 +34,10 @@
 <% end %>
 <div class="py-4 p-8">
   <%= form_with model: @ingredient, url: spina.admin_ingredients_path, id: @ingredient.object_id do |f| %>
+    <%= button_tag type: :submit, class: 'btn btn-primary', data: {controller: "button", action: "button#loading", loading_message: t('spina.ui.saving')} do %>
+      <%= heroicon('check', style: :mini, class: 'w-5 h-5 -ml-1 mr-1') %>
+      <%=t 'spina.ingredients.save' %>
+    <% end %>
     <div class="mt-6">
       <label class="block text-sm leading-5 font-medium text-gray-700"><%= t('spina.ingredients.name') %></label>
       <div class="mt-1">
