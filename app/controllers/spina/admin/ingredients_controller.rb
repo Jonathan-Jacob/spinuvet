@@ -5,7 +5,7 @@ module Spina::Admin
     before_action :set_breadcrumb
 
     def index
-      @ingredients = Spina::Ingredient.all
+      @ingredients = Spina::Ingredient.order(:id)
       @ingredient = Spina::Ingredient.new
     end
 
