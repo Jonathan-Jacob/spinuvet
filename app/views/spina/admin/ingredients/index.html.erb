@@ -11,7 +11,6 @@
           <label class="block text-sm leading-5 font-medium text-gray-700"><%= t('spina.ingredients.name') %></label>
           <div class="mt-1">
             <%= f.text_field :name, class: "form-input ll max-w-5xl sm:text-sm sm:leading-5", value: ingredient.json_attributes["#{@locale}_content"].present? ? ingredient.json_attributes["#{@locale}_content"]["name"] : "" %>
-            <% raise %>
           </div>
         </div>
         <%= button_tag type: :submit, class: 'btn btn-primary self-end', data: {controller: "button", action: "button#loading", loading_message: t('spina.ui.saving')} do %>
