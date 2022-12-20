@@ -1,5 +1,5 @@
 module Spina::Admin
-  class IngredientsController < ApplicationController
+  class IngredientsController < AdminController
     before_action :set_locale
     before_action :set_breadcrumb
 

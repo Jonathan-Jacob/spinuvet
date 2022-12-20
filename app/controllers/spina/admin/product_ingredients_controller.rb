@@ -1,4 +1,4 @@
 module Spina::Admin
-  class ProductIngredientsController < ApplicationController
+  class ProductIngredientsController < AdminController
   end
 end
