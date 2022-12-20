@@ -20,7 +20,6 @@ module Spina::Admin
     end
 
     def update
-      raise
       @ingredient = Spina::Ingredient.find(params[:id])
       @ingredient.json_attributes["#{@locale}_content".to_sym] = {name: ingredient_params[:name], description: ingredient_params[:description]}
       if @ingredient.save
@@ -47,7 +46,7 @@ module Spina::Admin
     end
 
     def set_locale
-      @locale = params[:locale] || I18n.default_locale
+      @locale = params.require(:ingredient).permit(:locale)[:locale] || I18n.default_locale
     end
   end
 end
