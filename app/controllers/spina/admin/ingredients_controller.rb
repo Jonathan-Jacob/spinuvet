@@ -37,7 +37,7 @@ module Spina::Admin
     end
 
     def set_breadcrumb
-      add_breadcrumb t("spina.layout.layout")
+      add_breadcrumb t("spina.ingredients")
     end
 
     def set_account

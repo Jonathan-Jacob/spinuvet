@@ -178,6 +178,12 @@ de:
       remove_image: Bild löschen
       upload: Bilder hochladen
       upload_image: Bild hochladen
+    ingredients:
+      description: Beschreibung
+      ingredient: Inhaltsstoff
+      ingredients: Inhaltsstoffe
+      name: Name
+      save: Inhaltsstoff speichern
     languages:
       bg: Bulgarisch
       de: Deutsch

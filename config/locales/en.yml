@@ -172,6 +172,12 @@ en:
       remove_image: Remove image
       upload: Upload images
       upload_image: Upload image
+    ingredients:
+      description: Description
+      ingredient: Ingredient
+      ingredients: Ingredients
+      name: Name
+      save: Save ingredient
     languages:
       bg: Bulgarian
       de: German
