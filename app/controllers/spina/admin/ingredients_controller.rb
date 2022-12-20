@@ -1,5 +1,6 @@
 module Spina::Admin
   class IngredientsController < AdminController
+    before_action :set_account
     before_action :set_locale
     before_action :set_breadcrumb
 
@@ -37,6 +38,10 @@ module Spina::Admin
 
     def set_breadcrumb
       add_breadcrumb t("spina.layout.layout")
+    end
+
+    def set_account
+      @account = current_spina_account
     end
 
     def set_locale
