@@ -1,8 +1,5 @@
 module Spina
   class Ingredient < ApplicationRecord
-    include AttrJson::Record
-
-    attr_json :name, :string
-    attr_json :description, :text
+    has_many :spina_product_ingredients
   end
 end
