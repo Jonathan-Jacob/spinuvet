@@ -10,7 +10,8 @@ module Spina::Admin
     end
 
     def create
-      @ingredient = Spina::Ingredient.new(ingredient_params)
+      json_attributes = JSON.generate({"#{@locale}_content" => {name: ingredient_params[:name], description: ingredient_params[:description]}})
+      @ingredient = Spina::Ingredient.new(json_attributes)
       if @ingredient.save
         redirect_to admin_ingredients_path(locale: @locale), flash: {success: t("spina.layout.saved")}
       else
@@ -21,8 +22,9 @@ module Spina::Admin
 
     def update
       @ingredient = Spina::Ingredient.find(params[:id])
-      @ingredient.name = ingredient_params[:name]
-      @ingredient.description = ingredient_params[:description]
+      attributes = JSON.parse(@ingredient.json_attributes)
+      attributes["#{@locale}_content"] = {name: ingredient_params[:name], description: ingredient_params[:description]}
+      @ingredient.json_attributes = JSON.generate(attributes)
       if @ingredient.save
         redirect_to admin_ingredients_path(locale: @locale), flash: {success: t("spina.layout.saved")}
       else
