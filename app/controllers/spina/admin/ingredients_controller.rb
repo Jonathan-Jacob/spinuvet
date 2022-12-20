@@ -5,6 +5,7 @@ module Spina::Admin
 
     def index
       @ingredients = Spina::Ingredient.all
+      @ingredient = Spina::Ingredient.new
     end
 
     def create
