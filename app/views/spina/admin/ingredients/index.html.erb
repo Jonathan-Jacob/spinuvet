@@ -6,7 +6,7 @@
 <% @ingredients.each do |ingredient| %>
   <div class="py-4 p-8">
     <%= form_with model: ingredient, url: spina.admin_ingredient_path(ingredient), id: ingredient.object_id do |f| %>
-      <div class="mt-6 flex flex-wrap-reverse justify-between items-center gap-2">
+      <div class="mt-6 flex flex-wrap-reverse justify-between items-end gap-2">
         <div>
           <label class="block text-sm leading-5 font-medium text-gray-700"><%= t('spina.ingredients.name') %></label>
           <div class="mt-1">
@@ -30,14 +30,14 @@
           </div>
         </div>
       </div>
-
     <% end %>
   </div>
   <hr>
 <% end %>
 <div class="py-4 p-8">
+  <h2 class="block text-sm leading-5 font-medium text-gray-700"><%= t('spina.ingredients.new_ingredient') %></h2>
   <%= form_with model: @ingredient, url: spina.admin_ingredients_path, id: @ingredient.object_id do |f| %>
-    <div class="mt-6 flex flex-wrap-reverse justify-between items-center gap-2">
+    <div class="mt-6 flex flex-wrap-reverse justify-between items-end gap-2">
       <div>
         <label class="block text-sm leading-5 font-medium text-gray-700"><%= t('spina.ingredients.name') %></label>
         <div class="mt-1">

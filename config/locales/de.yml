@@ -183,6 +183,7 @@ de:
       ingredient: Inhaltsstoff
       ingredients: Inhaltsstoffe
       name: Name
+      new_ingredient: Neuer Inhaltsstoff
       save: Inhaltsstoff speichern
     languages:
       bg: Bulgarisch
