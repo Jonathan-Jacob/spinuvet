@@ -11,7 +11,6 @@ module Spina::Admin
 
     def create
       @ingredient = Spina::Ingredient.new(ingredient_params)
-      raise
       if @ingredient.save
         redirect_to admin_ingredients_path(locale: @locale), flash: {success: t("spina.layout.saved")}
       else
