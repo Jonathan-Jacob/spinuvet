@@ -5,16 +5,11 @@
 <% end %>
 <% @ingredients.each do |ingredient| %>
   <div class="py-4 p-8">
-    <div class="text-gray-400 text-sm"><%= t('spina.ingredients.name')%></div>
     <%= form_with model: ingredient, url: spina.admin_ingredient_path(ingredient), id: ingredient.object_id do |f| %>
-      <%= button_tag type: :submit, class: 'btn btn-primary', data: {controller: "button", action: "button#loading", loading_message: t('spina.ui.saving')} do %>
-        <%= heroicon('check', style: :mini, class: 'w-5 h-5 -ml-1 mr-1') %>
-        <%=t 'spina.ingredients.save' %>
-      <% end %>
       <div class="mt-6">
         <label class="block text-sm leading-5 font-medium text-gray-700"><%= t('spina.ingredients.name') %></label>
         <div class="mt-1">
-          <%= f.text_field :name, class: "form-input ll max-w-5xl sm:text-sm sm:leading-5" %>
+          <%= f.text_field :name, class: "form-input ll max-w-5xl sm:text-sm sm:leading-5", value: f.name %>
         </div>
       </div>
       <div class="mt-6" data-controller="unique-id" data-unique-id="<%= f.object.object_id %>">
@@ -29,8 +24,13 @@
           </div>
         </div>
       </div>
+      <%= button_tag type: :submit, class: 'btn btn-primary', data: {controller: "button", action: "button#loading", loading_message: t('spina.ui.saving')} do %>
+        <%= heroicon('check', style: :mini, class: 'w-5 h-5 -ml-1 mr-1') %>
+        <%=t 'spina.ingredients.save' %>
+      <% end %>
     <% end %>
   </div>
+  <hr>
 <% end %>
 <div class="py-4 p-8">
   <%= form_with model: @ingredient, url: spina.admin_ingredients_path, id: @ingredient.object_id do |f| %>
