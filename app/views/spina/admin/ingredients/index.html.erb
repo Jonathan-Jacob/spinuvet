@@ -4,7 +4,10 @@
   <% end %>
 <% end %>
 <% @ingredients.each do |ingredient| %>
-  <div class="py-4 p-8">
+  <div data-controller="accordion">
+
+  </div>
+  <div data-target="open" class="py-4 p-8">
     <%= form_with model: ingredient, url: spina.admin_ingredient_path(ingredient), id: ingredient.object_id do |f| %>
       <%= f.hidden_field :locale, value: @locale %>
       <div class="first:mt-6 flex flex-wrap-reverse justify-between gap-2">
@@ -39,6 +42,9 @@
         </div>
       </div>
     <% end %>
+  </div>
+  <div data-target="closed" class="flex justify-between gap-2 p-2">
+    <div><%= raise %></div>
   </div>
   <hr>
 <% end %>
