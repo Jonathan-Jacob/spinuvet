@@ -7,7 +7,7 @@
   <div class="py-4 p-8">
     <%= form_with model: ingredient, url: spina.admin_ingredient_path(ingredient), id: ingredient.object_id do |f| %>
       <%= f.hidden_field :locale, value: @locale %>
-      <div class="mt-6 flex flex-wrap-reverse justify-between gap-2">
+      <div class="first:mt-6 flex flex-wrap-reverse justify-between gap-2">
         <div>
           <label class="block text-sm leading-5 font-medium text-gray-700"><%= t('spina.ingredients.name') %></label>
           <div class="mt-1">
@@ -18,6 +18,9 @@
           <%= heroicon('check', style: :mini, class: 'w-5 h-5 -ml-1 mr-1') %>
         <%=t 'spina.ingredients.save' %>
       <% end %>
+      </div>
+      <div class="mt-6 flex flex-wrap justify-start gap-2">
+        <% raise %>
       </div>
       <div class="mt-6" data-controller="unique-id" data-unique-id="<%= f.object.object_id %>">
         <label class="block text-sm leading-5 font-medium text-gray-700"><%= t('spina.ingredients.description') %></label>
