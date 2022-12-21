@@ -48,7 +48,7 @@
         <% end %>
       </div>
       <div data-action="click->accordion#toggle" data-accordion-target="element" class="flex justify-between gap-2 px-8 py-2 cursor-pointer">
-        <% ingredient_name = t('spina.ingredients.ingredient') %>
+        <% ingredient_name = "#{t('spina.ingredients.ingredient')} #{ingredient.id}" %>
         <% ingredient_name = ingredient.json_attributes.values.first["name"] if ingredient.json_attributes.values.first.present? && ingredient.json_attributes.values.first["name"].present? %>
         <% ingredient_name = ingredient.json_attributes["#{@locale}_content"]["name"] if ingredient.json_attributes["#{@locale}_content"].present? && ingredient.json_attributes["#{@locale}_content"]["name"].present? %>
         <div><%= ingredient_name %></div>
