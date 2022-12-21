@@ -20,7 +20,11 @@
       <% end %>
       </div>
       <div class="mt-6 flex flex-wrap justify-start gap-2">
-        <% raise %>
+        <% Spina.locales.each do |locale| %>
+          <% if locale != @locale && ingredient.json_attributes["#{locale}_content"].present? %>
+            <div><%= "#{locale.upcase}: #{ingredient.json_attributes["#{locale}_content"]}" %></div>
+          <% end %>
+        <% end %>
       </div>
       <div class="mt-6" data-controller="unique-id" data-unique-id="<%= f.object.object_id %>">
         <label class="block text-sm leading-5 font-medium text-gray-700"><%= t('spina.ingredients.description') %></label>
