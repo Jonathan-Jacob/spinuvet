@@ -44,7 +44,7 @@
     <% end %>
   </div>
   <div data-target="closed" class="flex justify-between gap-2 p-2">
-    <div><%= raise %></div>
+    <div><%= ingredient.json_attributes["#{@locale}_content"].present? ? ingredient.json_attributes["#{@locale}_content"]["name"] : ingredient.json_attributes.values.first.present? ? ingredient.json_attributes.values.first["name"] : "#{t('spina.ingredients.ingredient')} #{ingredient.id}" %></div>
   </div>
   <hr>
 <% end %>
