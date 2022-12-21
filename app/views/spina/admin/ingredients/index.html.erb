@@ -70,7 +70,7 @@
           <%= f.text_field :name, class: "form-input ll max-w-5xl sm:text-sm sm:leading-5" %>
         </div>
       </div>
-      <%= button_tag type: :submit, class: 'btn btn-primary self-end', data: {controller: "button", action: "button#loading", loading_message: t('spina.ui.saving')} do %>
+      <%= button_tag type: :submit, class: 'btn btn-primary self-start', data: {controller: "button", action: "button#loading", loading_message: t('spina.ui.saving')} do %>
         <%= heroicon('check', style: :mini, class: 'w-5 h-5 -ml-1 mr-1') %>
         <%=t 'spina.ingredients.save' %>
       <% end %>
