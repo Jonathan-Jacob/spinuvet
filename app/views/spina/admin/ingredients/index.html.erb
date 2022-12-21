@@ -3,9 +3,9 @@
     <%= render Spina::UserInterface::TranslationsComponent.new(@account, label: @locale.upcase) %>
   <% end %>
 <% end %>
-<div class="px-8 rounded-md border-2 border-solid">
+<div class="mt-6 mx-8 rounded-md border-2 border-solid border-gray-400">
   <% @ingredients.each do |ingredient| %>
-    <div class="first:mt-6" data-controller="accordion">
+    <div data-controller="accordion">
       <div data-accordion-target="element" class="relative hidden py-4 p-8">
         <div class="absolute top-2 right-8 cursor-pointer" data-action="click->accordion#toggle">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -51,7 +51,9 @@
         <div><%= ingredient.json_attributes["#{@locale}_content"].present? ? ingredient.json_attributes["#{@locale}_content"]["name"] : ingredient.json_attributes.values.first.present? ? ingredient.json_attributes.values.first["name"] : "#{t('spina.ingredients.ingredient')} #{ingredient.id}" %></div>
       </div>
     </div>
-    <hr>
+    <div class="last:hidden">
+      <hr>
+    </div>
   <% end %>
 </div>
 <div class="py-4 p-8">
