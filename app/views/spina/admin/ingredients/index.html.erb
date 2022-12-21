@@ -6,7 +6,7 @@
 <% @ingredients.each do |ingredient| %>
   <div data-controller="accordion">
     <div data-accordion-target="element" class="relative hidden py-4 p-8">
-      <div class="absolute top-2 right-8" data-action="click->accordion#toggle">
+      <div class="absolute top-2 right-8 cursor-pointer" data-action="click->accordion#toggle">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
           <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
         </svg>
@@ -46,7 +46,7 @@
         </div>
       <% end %>
     </div>
-    <div data-action="click->accordion#toggle" data-accordion-target="element" class="flex justify-between gap-2 px-8 py-2">
+    <div data-action="click->accordion#toggle" data-accordion-target="element" class="flex justify-between gap-2 px-8 py-2 cursor-pointer">
       <div><%= ingredient.json_attributes["#{@locale}_content"].present? ? ingredient.json_attributes["#{@locale}_content"]["name"] : ingredient.json_attributes.values.first.present? ? ingredient.json_attributes.values.first["name"] : "#{t('spina.ingredients.ingredient')} #{ingredient.id}" %></div>
     </div>
   </div>
