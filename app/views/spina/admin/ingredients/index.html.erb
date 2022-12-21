@@ -3,7 +3,10 @@
     <%= render Spina::UserInterface::TranslationsComponent.new(@account, label: @locale.upcase) %>
   <% end %>
 <% end %>
-<div class="mt-6 mx-8 rounded-md border-2 border-solid border-gray-400">
+<div class="pt-6 pb-4 px-8">
+  <h2 class="block leading-5 font-medium text-gray-700"><%= t('spina.ingredients.old_ingredients') %></h2>
+</div>
+<div class="mx-8 rounded-md border-2 border-solid border-gray-400">
   <% @ingredients.each do |ingredient| %>
     <div data-controller="accordion">
       <div data-accordion-target="element" class="relative hidden py-4 p-8">

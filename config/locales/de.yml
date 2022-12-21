@@ -184,6 +184,7 @@ de:
       ingredients: Inhaltsstoffe
       name: Name
       new_ingredient: Neuer Inhaltsstoff
+      old_ingredients: Bestehende Inhaltsstoffe
       save: Inhaltsstoff speichern
     languages:
       bg: Bulgarisch

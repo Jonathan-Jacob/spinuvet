@@ -178,6 +178,7 @@ en:
       ingredients: Ingredients
       name: Name
       new_ingredient: New ingredient
+      old_ingredients: Existing ingredients
       save: Save ingredient
     languages:
       bg: Bulgarian
