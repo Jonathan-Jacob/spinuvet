@@ -22,7 +22,7 @@
       <div class="mt-6 flex flex-wrap justify-start gap-2">
         <% Spina.locales.each do |locale| %>
           <% if locale.to_s != @locale && ingredient.json_attributes["#{locale}_content"].present? %>
-            <div><%= "#{locale.upcase}: #{ingredient.json_attributes["#{locale}_content"]["name"]}" %></div>
+            <div class="p-2 border-md bg-gray-400"><%= "#{locale.upcase}: #{ingredient.json_attributes["#{locale}_content"]["name"]}" %></div>
           <% end %>
         <% end %>
       </div>
