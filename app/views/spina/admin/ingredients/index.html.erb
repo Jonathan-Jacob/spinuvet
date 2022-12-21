@@ -3,55 +3,57 @@
     <%= render Spina::UserInterface::TranslationsComponent.new(@account, label: @locale.upcase) %>
   <% end %>
 <% end %>
-<% @ingredients.each do |ingredient| %>
-  <div class="first:mt-6" data-controller="accordion">
-    <div data-accordion-target="element" class="relative hidden py-4 p-8">
-      <div class="absolute top-2 right-8 cursor-pointer" data-action="click->accordion#toggle">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-        </svg>
-      </div>
-      <%= form_with model: ingredient, url: spina.admin_ingredient_path(ingredient), id: ingredient.object_id do |f| %>
-        <%= f.hidden_field :locale, value: @locale %>
-        <div class="flex flex-wrap-reverse justify-between gap-2">
-          <div>
-            <label class="block text-sm leading-5 font-medium text-gray-700"><%= t('spina.ingredients.name') %></label>
-            <div class="mt-1">
-              <%= f.text_field :name, class: "form-input ll max-w-5xl sm:text-sm sm:leading-5", value: ingredient.json_attributes["#{@locale}_content"].present? ? ingredient.json_attributes["#{@locale}_content"]["name"] : "" %>
-            </div>
-          </div>
-          <%= button_tag type: :submit, class: 'btn btn-primary self-start', data: {controller: "button", action: "button#loading", loading_message: t('spina.ui.saving')} do %>
-            <%= heroicon('check', style: :mini, class: 'w-5 h-5 -ml-1 mr-1') %>
-          <%=t 'spina.ingredients.save' %>
-        <% end %>
+<div class="px-8 rounded-md border-2 border-solid">
+  <% @ingredients.each do |ingredient| %>
+    <div class="first:mt-6" data-controller="accordion">
+      <div data-accordion-target="element" class="relative hidden py-4 p-8">
+        <div class="absolute top-2 right-8 cursor-pointer" data-action="click->accordion#toggle">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
         </div>
-        <div class="mt-1 flex flex-wrap justify-start gap-1">
-          <% Spina.locales.each do |locale| %>
-            <% if locale.to_s != @locale && ingredient.json_attributes["#{locale}_content"].present? %>
-              <div class="px-2 py-1 text-xs rounded-md bg-gray-300"><%= "#{locale.upcase}: #{ingredient.json_attributes["#{locale}_content"]["name"]}" %></div>
-            <% end %>
+        <%= form_with model: ingredient, url: spina.admin_ingredient_path(ingredient), id: ingredient.object_id do |f| %>
+          <%= f.hidden_field :locale, value: @locale %>
+          <div class="flex flex-wrap-reverse justify-between gap-2">
+            <div>
+              <label class="block text-sm leading-5 font-medium text-gray-700"><%= t('spina.ingredients.name') %></label>
+              <div class="mt-1">
+                <%= f.text_field :name, class: "form-input ll max-w-5xl sm:text-sm sm:leading-5", value: ingredient.json_attributes["#{@locale}_content"].present? ? ingredient.json_attributes["#{@locale}_content"]["name"] : "" %>
+              </div>
+            </div>
+            <%= button_tag type: :submit, class: 'btn btn-primary self-start', data: {controller: "button", action: "button#loading", loading_message: t('spina.ui.saving')} do %>
+              <%= heroicon('check', style: :mini, class: 'w-5 h-5 -ml-1 mr-1') %>
+            <%=t 'spina.ingredients.save' %>
           <% end %>
-        </div>
-        <div class="mt-6" data-controller="unique-id" data-unique-id="<%= f.object.object_id %>">
-          <label class="block text-sm leading-5 font-medium text-gray-700"><%= t('spina.ingredients.description') %></label>
-          <div class="mt-1 relative">
-            <%= f.hidden_field :description, value: ingredient.json_attributes["#{@locale}_content"].present? ? ingredient.json_attributes["#{@locale}_content"]["description"] : "", id: "#{f.object.object_id}_input" %>
+          </div>
+          <div class="mt-1 flex flex-wrap justify-start gap-1">
+            <% Spina.locales.each do |locale| %>
+              <% if locale.to_s != @locale && ingredient.json_attributes["#{locale}_content"].present? %>
+                <div class="px-2 py-1 text-xs rounded-md bg-gray-300"><%= "#{locale.upcase}: #{ingredient.json_attributes["#{locale}_content"]["name"]}" %></div>
+              <% end %>
+            <% end %>
+          </div>
+          <div class="mt-6" data-controller="unique-id" data-unique-id="<%= f.object.object_id %>">
+            <label class="block text-sm leading-5 font-medium text-gray-700"><%= t('spina.ingredients.description') %></label>
+            <div class="mt-1 relative">
+              <%= f.hidden_field :description, value: ingredient.json_attributes["#{@locale}_content"].present? ? ingredient.json_attributes["#{@locale}_content"]["description"] : "", id: "#{f.object.object_id}_input" %>
 
-            <div class="relative form-textarea p-4 pt-0 shadow-sm max-w-5xl" data-controller="trix" id="<%= "insert_#{f.object.object_id}_trix-toolbar" %>" data-action="media-picker:done->trix#insertAttachment">
-              <%= render Spina::Forms::TrixToolbarComponent.new("#{f.object.object_id}_trix-toolbar") %>
+              <div class="relative form-textarea p-4 pt-0 shadow-sm max-w-5xl" data-controller="trix" id="<%= "insert_#{f.object.object_id}_trix-toolbar" %>" data-action="media-picker:done->trix#insertAttachment">
+                <%= render Spina::Forms::TrixToolbarComponent.new("#{f.object.object_id}_trix-toolbar") %>
 
-              <trix-editor class="prose prose-sm focus:outline-none max-w-3xl xl:border-r border-dashed border-gray-200 pr-3" toolbar="<%= f.object.object_id %>_trix-toolbar" input="<%= f.object.object_id %>_input" data-trix-target="editor" data-action="trix-file-accept->trix#preventDefault"></trix-editor>
+                <trix-editor class="prose prose-sm focus:outline-none max-w-3xl xl:border-r border-dashed border-gray-200 pr-3" toolbar="<%= f.object.object_id %>_trix-toolbar" input="<%= f.object.object_id %>_input" data-trix-target="editor" data-action="trix-file-accept->trix#preventDefault"></trix-editor>
+              </div>
             </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
+      <div data-action="click->accordion#toggle" data-accordion-target="element" class="flex justify-between gap-2 px-8 py-2 cursor-pointer">
+        <div><%= ingredient.json_attributes["#{@locale}_content"].present? ? ingredient.json_attributes["#{@locale}_content"]["name"] : ingredient.json_attributes.values.first.present? ? ingredient.json_attributes.values.first["name"] : "#{t('spina.ingredients.ingredient')} #{ingredient.id}" %></div>
+      </div>
     </div>
-    <div data-action="click->accordion#toggle" data-accordion-target="element" class="flex justify-between gap-2 px-8 py-2 cursor-pointer">
-      <div><%= ingredient.json_attributes["#{@locale}_content"].present? ? ingredient.json_attributes["#{@locale}_content"]["name"] : ingredient.json_attributes.values.first.present? ? ingredient.json_attributes.values.first["name"] : "#{t('spina.ingredients.ingredient')} #{ingredient.id}" %></div>
-    </div>
-  </div>
-  <hr>
-<% end %>
+    <hr>
+  <% end %>
+</div>
 <div class="py-4 p-8">
   <h2 class="block leading-5 font-medium text-gray-700"><%= t('spina.ingredients.new_ingredient') %></h2>
   <%= form_with model: @ingredient, url: spina.admin_ingredients_path, id: @ingredient.object_id do |f| %>
