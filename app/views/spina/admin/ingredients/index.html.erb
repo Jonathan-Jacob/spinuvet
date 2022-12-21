@@ -4,13 +4,13 @@
   <% end %>
 <% end %>
 <% @ingredients.each do |ingredient| %>
-  <div class="relative" data-controller="accordion">
-    <div class="absolute top-6 right-10" data-action="click->accordion#toggle">
+  <div class="relative hidden" data-controller="accordion">
+    <div class="absolute top-2 right-8" data-action="click->accordion#toggle">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
       </svg>
     </div>
-    <div data-accordion-target="open" class="py-4 p-8">
+    <div data-accordion-target="element" class="py-4 p-8">
       <%= form_with model: ingredient, url: spina.admin_ingredient_path(ingredient), id: ingredient.object_id do |f| %>
         <%= f.hidden_field :locale, value: @locale %>
         <div class="first:mt-6 flex flex-wrap-reverse justify-between gap-2">
@@ -46,7 +46,7 @@
         </div>
       <% end %>
     </div>
-    <div data-action="click->accordion#toggle" data-accordion-target="closed" class="flex justify-between gap-2 px-8 py-2">
+    <div data-action="click->accordion#toggle" data-accordion-target="element" class="flex justify-between gap-2 px-8 py-2">
       <div><%= ingredient.json_attributes["#{@locale}_content"].present? ? ingredient.json_attributes["#{@locale}_content"]["name"] : ingredient.json_attributes.values.first.present? ? ingredient.json_attributes.values.first["name"] : "#{t('spina.ingredients.ingredient')} #{ingredient.id}" %></div>
     </div>
   </div>
