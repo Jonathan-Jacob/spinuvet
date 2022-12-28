@@ -1,23 +1,23 @@
 <%= render Spina::UserInterface::HeaderComponent.new %>
 <div class="px-8">
-  <div class="pt-6 pb-4">
-    <h2 class="block leading-5 font-medium text-gray-700"><%= t('spina.ingredients.edit_ingredient') %></h2>
-  </div>
-  <hr>
   <%= form_with model: @ingredient, url: spina.admin_ingredients_path, id: @ingredient.object_id do |f| %>
-    <% Spina.locales.each do |locale| %>
-      <h2 class="pt-6 pb-4 block leading-5 font-medium text-gray-700"><%= t("spina.languages.#{locale}") %></h2>
-      <div class="flex flex-wrap-reverse justify-between gap-2">
-        <div>
-          <label class="block text-sm leading-5 font-medium text-gray-700"><%= t('spina.ingredients.name') %></label>
-          <div class="mt-1">
-            <%= f.text_field "#{locale}_name".to_sym, class: "form-input ll max-w-5xl sm:text-sm sm:leading-5", value: @ingredient.json_attributes["#{locale}_content"].present? ? @ingredient.json_attributes["#{locale}_content"]["name"] : "" %>
-          </div>
-        </div>
-        <%= button_tag type: :submit, class: 'btn btn-primary self-start', data: {controller: "button", action: "button#loading", loading_message: t('spina.ui.saving')} do %>
-          <%= heroicon('check', style: :mini, class: 'w-5 h-5 -ml-1 mr-1') %>
+    <div class="flex flex-wrap-reverse justify-between gap-2">
+      <div class="pt-6 pb-4">
+        <h2 class="block leading-5 font-medium text-gray-700"><%= t('spina.ingredients.edit_ingredient') %></h2>
+      </div>
+      <%= button_tag type: :submit, class: 'btn btn-primary self-start', data: {controller: "button", action: "button#loading", loading_message: t('spina.ui.saving')} do %>
+        <%= heroicon('check', style: :mini, class: 'w-5 h-5 -ml-1 mr-1') %>
         <%=t 'spina.ingredients.save' %>
       <% end %>
+    </div>
+    <hr>
+    <% Spina.locales.each do |locale| %>
+      <h2 class="pt-6 pb-4 block leading-5 font-medium text-gray-700"><%= t("spina.languages.#{locale}") %></h2>
+      <div>
+        <label class="block text-sm leading-5 font-medium text-gray-700"><%= t('spina.ingredients.name') %></label>
+        <div class="mt-1">
+          <%= f.text_field "#{locale}_name".to_sym, class: "form-input ll max-w-5xl sm:text-sm sm:leading-5", value: @ingredient.json_attributes["#{locale}_content"].present? ? @ingredient.json_attributes["#{locale}_content"]["name"] : "" %>
+        </div>
       </div>
       <div class="my-6" data-controller="unique-id" data-unique-id="<%= f.object.object_id %>">
         <label class="block text-sm leading-5 font-medium text-gray-700"><%= t('spina.ingredients.description') %></label>
