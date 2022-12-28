@@ -8,7 +8,7 @@
 </div>
 <% @ingredients.each do |ingredient| %>
   <div class="py-4 p-8 text-gray-700">
-    <%= link_to ingredient.ingredient_name, edit_admin_ingredient_path(ingredient) %>
+    <%= link_to ingredient.ingredient_name(@locale), edit_admin_ingredient_path(ingredient) %>
   </div>
 <% end %>
 <div class="py-4 p-8 font-medium text-gray-700">
