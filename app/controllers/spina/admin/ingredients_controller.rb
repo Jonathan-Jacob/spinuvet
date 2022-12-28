@@ -21,6 +21,7 @@ module Spina::Admin
         json_attributes.merge!("#{locale}_content".to_sym => {name: ingredient_params[:locale_name], description: ingredient_params[:locale_description]})
       end
       @ingredient = Spina::Ingredient.new(json_attributes: json_attributes)
+      raise
       if @ingredient.save
         redirect_to admin_ingredients_path(locale: @locale), flash: {success: t("spina.layout.saved")}
       else
@@ -40,6 +41,7 @@ module Spina::Admin
       end
       @ingredient = Spina::Ingredient.find(params[:id])
       @ingredient.json_attributes = json_attributes
+      raise
       if @ingredient.save
         redirect_to admin_ingredients_path(locale: @locale), flash: {success: t("spina.layout.saved")}
       else

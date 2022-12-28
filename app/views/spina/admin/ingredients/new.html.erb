@@ -1,10 +1,7 @@
 <%= render Spina::UserInterface::HeaderComponent.new %>
 <div class="px-8">
   <%= form_with model: @ingredient, url: spina.admin_ingredients_path, id: @ingredient.object_id do |f| %>
-    <div class="flex flex-wrap-reverse justify-between gap-2">
-      <div class="pt-6 pb-4">
-        <h2 class="block leading-5 font-medium text-gray-700"><%= t('spina.ingredients.edit_ingredient') %></h2>
-      </div>
+    <div class="justify-end -mb-4">
       <%= button_tag type: :submit, class: 'btn btn-primary self-start', data: {controller: "button", action: "button#loading", loading_message: t('spina.ui.saving')} do %>
         <%= heroicon('check', style: :mini, class: 'w-5 h-5 -ml-1 mr-1') %>
         <%=t 'spina.ingredients.save' %>
