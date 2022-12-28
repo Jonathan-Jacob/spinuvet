@@ -6,11 +6,22 @@
 <div class="pt-6 pb-4 px-8">
   <h2 class="block leading-5 font-medium text-gray-700"><%= t('spina.ingredients.old_ingredients') %></h2>
 </div>
-<% @ingredients.each do |ingredient| %>
-  <div class="py-4 p-8 text-gray-700">
-    <%= link_to ingredient.ingredient_name(@locale), edit_admin_ingredient_path(ingredient) %>
-  </div>
-<% end %>
+<div class="mt-6 mx-8 rounded-md border-2 border-solid border-gray-400">
+  <% @ingredients.each do |ingredient| %>
+    <%= link_to edit_admin_ingredient_path(ingredient) do %>
+      <div class="py-4 p-8 text-gray-700 odd:bg-gray-200 flex flex-wrap gap-2">
+        <div><%= ingredient.ingredient_name(@locale) %></div>
+        <div>
+          <% Spina.locales.each do |locale| %>
+            <% if ingredient.json_attributes["#{locale}_content"].present? %>
+              <div class="px-2 py-1 text-xs rounded-md bg-gray-300"><%= "#{locale.upcase}: #{ingredient.json_attributes["#{locale}_content"]["name"]}" %></div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
 <div class="py-4 p-8 font-medium text-gray-700">
   <%= link_to t('spina.ingredients.new_ingredient'), new_admin_ingredient_path %>
 </div>

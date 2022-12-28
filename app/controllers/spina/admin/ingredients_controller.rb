@@ -18,7 +18,7 @@ module Spina::Admin
     def create
       json_attributes = {}
       Spina.locales.each do |locale|
-        json_attributes.merge!("#{locale}_content".to_sym => {name: ingredient_params["#{locale}_name".to_sym], description: ingredient_params["#{locale}_description".to_sym]})
+        json_attributes.merge!("#{locale}_content" => {name: ingredient_params["#{locale}_name"], description: ingredient_params["#{locale}_description"]})
       end
       @ingredient = Spina::Ingredient.new(json_attributes: json_attributes)
       if @ingredient.save
@@ -36,7 +36,7 @@ module Spina::Admin
     def update
       json_attributes = {}
       Spina.locales.each do |locale|
-        json_attributes.merge!("#{locale}_content".to_sym => {name: ingredient_params["#{locale}_name".to_sym], description: ingredient_params["#{locale}_description".to_sym]})
+        json_attributes.merge!("#{locale}_content" => {name: ingredient_params["#{locale}_name"], description: ingredient_params["#{locale}_description"]})
       end
       @ingredient = Spina::Ingredient.find(params[:id])
       @ingredient.json_attributes = json_attributes
