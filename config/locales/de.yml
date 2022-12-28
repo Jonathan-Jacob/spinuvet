@@ -180,6 +180,7 @@ de:
       upload_image: Bild hochladen
     ingredients:
       description: Beschreibung
+      edit_ingredient: Inhaltsstoff bearbeiten
       ingredient: Inhaltsstoff
       ingredients: Inhaltsstoffe
       name: Name

@@ -1,0 +1,31 @@
+<div class="pt-6 pb-4 px-8">
+  <h2 class="block leading-5 font-medium text-gray-700"><%= t('spina.ingredients.edit_ingredient') %></h2>
+</div>
+<%= form_with model: @ingredient, url: spina.admin_ingredient_path(@ingredient), id: @ingredient.object_id do |f| %>
+  <% Spina.locales.each do |locale| %>
+    <div class="flex flex-wrap-reverse justify-between gap-2">
+      <div>
+        <label class="block text-sm leading-5 font-medium text-gray-700"><%= t('spina.ingredients.name') %></label>
+        <div class="mt-1">
+          <%= f.text_field "#{locale}_name".to_sym, class: "form-input ll max-w-5xl sm:text-sm sm:leading-5", value: @ingredient.json_attributes["#{locale}_content"].present? ? @ingredient.json_attributes["#{locale}_content"]["name"] : "" %>
+        </div>
+      </div>
+      <%= button_tag type: :submit, class: 'btn btn-primary self-start', data: {controller: "button", action: "button#loading", loading_message: t('spina.ui.saving')} do %>
+        <%= heroicon('check', style: :mini, class: 'w-5 h-5 -ml-1 mr-1') %>
+      <%=t 'spina.ingredients.save' %>
+    <% end %>
+    </div>
+    <div class="mt-6" data-controller="unique-id" data-unique-id="<%= f.object.object_id %>">
+      <label class="block text-sm leading-5 font-medium text-gray-700"><%= t('spina.ingredients.description') %></label>
+      <div class="mt-1 relative">
+        <%= f.hidden_field "#{locale}_description".to_sym, value: @ingredient.json_attributes["#{locale}_content"].present? ? @ingredient.json_attributes["#{locale}_content"]["description"] : "", id: "#{f.object.object_id}_input" %>
+
+        <div class="relative form-textarea p-4 pt-0 shadow-sm max-w-5xl" data-controller="trix" id="<%= "insert_#{f.object.object_id}_trix-toolbar" %>" data-action="media-picker:done->trix#insertAttachment">
+          <%= render Spina::Forms::TrixToolbarComponent.new("#{f.object.object_id}_trix-toolbar") %>
+
+          <trix-editor class="prose prose-sm focus:outline-none max-w-3xl xl:border-r border-dashed border-gray-200 pr-3" toolbar="<%= f.object.object_id %>_trix-toolbar" input="<%= f.object.object_id %>_input" data-trix-target="editor" data-action="trix-file-accept->trix#preventDefault"></trix-editor>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>

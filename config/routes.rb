@@ -81,7 +81,7 @@ Spina::Engine.routes.draw do
 
     resources :embeds, only: [:new, :create]
 
-    resources :ingredients, only: [:index, :create, :update]
+    resources :ingredients
   end
 
   # Sitemap

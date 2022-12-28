@@ -9,8 +9,16 @@ module Spina::Admin
       @ingredient = Spina::Ingredient.new
     end
 
+    def new
+      @ingredient = Spina::Ingredient.new
+    end
+
     def create
-      @ingredient = Spina::Ingredient.new(json_attributes: {"#{@locale}_content".to_sym => {name: ingredient_params[:name], description: ingredient_params[:description]}})
+      json_attributes = {}
+      Spina.locales.each do |locale|
+        json_attributes.merge("#{locale}_content".to_sym => {name: ingredient_params[:locale_name], description: ingredient_params[:locale_description]})
+      end
+      @ingredient = Spina::Ingredient.new(json_attributes: json_attributes)
       if @ingredient.save
         redirect_to admin_ingredients_path(locale: @locale), flash: {success: t("spina.layout.saved")}
       else
@@ -19,9 +27,17 @@ module Spina::Admin
       end
     end
 
-    def update
+    def edit
       @ingredient = Spina::Ingredient.find(params[:id])
-      @ingredient.json_attributes["#{@locale}_content".to_sym] = {name: ingredient_params[:name], description: ingredient_params[:description]}
+    end
+
+    def update
+      json_attributes = {}
+      Spina.locales.each do |locale|
+        json_attributes.merge("#{locale}_content".to_sym => {name: ingredient_params[:locale_name], description: ingredient_params[:locale_description]})
+      end
+      @ingredient = Spina::Ingredient.find(params[:id])
+      @ingredient.json_attributes = json_attributes
       if @ingredient.save
         redirect_to admin_ingredients_path(locale: @locale), flash: {success: t("spina.layout.saved")}
       else
@@ -34,7 +50,7 @@ module Spina::Admin
 
     # Permit all attributes when editing your layout
     def ingredient_params
-      params.require(:ingredient).permit(:name, :description)
+      params.require(:ingredient).permit!
     end
 
     def set_breadcrumb
@@ -46,7 +62,7 @@ module Spina::Admin
     end
 
     def set_locale
-      @locale = params[:locale] || params.include?(:ingredient) ? require(:ingredient).permit(:locale)[:locale] : I18n.default_locale || I18n.default_locale
+      @locale = params[:locale] || params.include?(:ingredient) ? params.require(:ingredient).permit(:locale)[:locale] : I18n.default_locale || I18n.default_locale
     end
   end
 end
