@@ -46,7 +46,7 @@ module Spina::Admin
     end
 
     def set_locale
-      @locale = params[:locale] || params.require(:ingredient).permit(:locale)[:locale] || I18n.default_locale
+      @locale = params[:locale] || params.include?(:ingredient) ? require(:ingredient).permit(:locale)[:locale] : I18n.default_locale || I18n.default_locale
     end
   end
 end
