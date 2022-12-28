@@ -5,7 +5,7 @@
   <hr>
   <%= form_with model: @ingredient, url: spina.admin_ingredients_path, id: @ingredient.object_id do |f| %>
     <% Spina.locales.each do |locale| %>
-      <h2 class="block leading-5 font-medium text-gray-700"><%= t("spina.languages.#{locale}") %></h2>
+      <h2 class="pt-6 pb-4 block leading-5 font-medium text-gray-700"><%= t("spina.languages.#{locale}") %></h2>
       <div class="flex flex-wrap-reverse justify-between gap-2">
         <div>
           <label class="block text-sm leading-5 font-medium text-gray-700"><%= t('spina.ingredients.name') %></label>
