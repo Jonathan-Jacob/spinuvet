@@ -9,7 +9,7 @@
 <div class="mt-6 mx-8 rounded-md border border-solid border-gray-400">
   <% @ingredients.each do |ingredient| %>
     <%= link_to edit_admin_ingredient_path(ingredient), class: "odd:bg-gray-200" do %>
-      <div class="py-4 p-8 text-gray-700 flex flex-wrap gap-2">
+      <div class="py-4 p-8 text-gray-700 flex flex-wrap gap-2 bg-inherit">
         <div><%= ingredient.ingredient_name(@locale) %></div>
         <% Spina.locales.each do |locale| %>
           <% if ingredient.json_attributes["#{locale}_content"].present? %>
