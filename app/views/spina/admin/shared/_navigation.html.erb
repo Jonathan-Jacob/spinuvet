@@ -22,6 +22,8 @@
 
           <%= render Spina::MainNavigation::LinkComponent.new t('spina.website.media_library'), spina.admin_images_path, active: controller_name.in?(%w(images media_folders attachments)) %>
 
+          <%= render Spina::MainNavigation::LinkComponent.new t('spina.ingredients.ingredients'), spina.admin_ingredients_path, active: controller_name == "ingredients" %>
+
           <%= render Spina::Hooks::HookComponent.new(partial: "website_secondary_navigation") %>
         <% end %>
       <% end %>
