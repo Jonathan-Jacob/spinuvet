@@ -13,13 +13,13 @@
       <div>
         <label class="block text-sm leading-5 font-medium text-gray-700"><%= t('spina.ingredients.name') %></label>
         <div class="mt-1">
-          <%= f.text_field "#{locale}_name".to_sym, class: "form-input ll max-w-5xl sm:text-sm sm:leading-5", value: @ingredient.json_attributes["#{locale}_content"].present? ? @ingredient.json_attributes["#{locale}_content"]["name"] : "" %>
+          <%= f.text_field "#{locale}_name".to_sym, class: "form-input ll max-w-5xl sm:text-sm sm:leading-5" %>
         </div>
       </div>
       <div class="my-6" data-controller="unique-id" data-unique-id="<%= f.object.object_id %>">
         <label class="block text-sm leading-5 font-medium text-gray-700"><%= t('spina.ingredients.description') %></label>
         <div class="mt-1 relative">
-          <%= f.hidden_field "#{locale}_description".to_sym, value: @ingredient.json_attributes["#{locale}_content"].present? ? @ingredient.json_attributes["#{locale}_content"]["description"] : "", id: "#{f.object.object_id}_input" %>
+          <%= f.hidden_field "#{locale}_description".to_sym, id: "#{f.object.object_id}_input" %>
 
           <div class="relative form-textarea p-4 pt-0 shadow-sm max-w-5xl" data-controller="trix" id="<%= "insert_#{f.object.object_id}_trix-toolbar" %>" data-action="media-picker:done->trix#insertAttachment">
             <%= render Spina::Forms::TrixToolbarComponent.new("#{f.object.object_id}_trix-toolbar") %>
