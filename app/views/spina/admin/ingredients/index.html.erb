@@ -8,16 +8,14 @@
 </div>
 <div class="mt-6 mx-8 rounded-md border-2 border-solid border-gray-400">
   <% @ingredients.each do |ingredient| %>
-    <%= link_to edit_admin_ingredient_path(ingredient) do %>
-      <div class="py-4 p-8 text-gray-700 odd:bg-gray-200 flex flex-wrap gap-2">
+    <%= link_to edit_admin_ingredient_path(ingredient), class: "odd:bg-gray-200" do %>
+      <div class="py-4 p-8 text-gray-700flex flex-wrap gap-2">
         <div><%= ingredient.ingredient_name(@locale) %></div>
-        <div>
-          <% Spina.locales.each do |locale| %>
-            <% if ingredient.json_attributes["#{locale}_content"].present? %>
-              <div class="px-2 py-1 text-xs rounded-md bg-gray-300"><%= "#{locale.upcase}: #{ingredient.json_attributes["#{locale}_content"]["name"]}" %></div>
-            <% end %>
+        <% Spina.locales.each do |locale| %>
+          <% if ingredient.json_attributes["#{locale}_content"].present? %>
+            <div class="px-2 py-1 text-xs rounded-md bg-gray-300"><%= "#{locale.upcase}: #{ingredient.json_attributes["#{locale}_content"]["name"]}" %></div>
           <% end %>
-        </div>
+        <% end %>
       </div>
     <% end %>
   <% end %>
