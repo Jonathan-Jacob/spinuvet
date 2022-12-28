@@ -2,7 +2,9 @@ module Spina::Admin
   class IngredientsController < AdminController
     before_action :set_account
     before_action :set_locale
-    before_action :set_breadcrumb
+    before_action :set_index_breadcrumb, only: :index
+    before_action :set_new_breadcrumb, only: :new
+    before_action :set_edit_breadcrumb, only: :edit
 
     def index
       @ingredients = Spina::Ingredient.order(:id)
@@ -16,7 +18,7 @@ module Spina::Admin
     def create
       json_attributes = {}
       Spina.locales.each do |locale|
-        json_attributes.merge("#{locale}_content".to_sym => {name: ingredient_params[:locale_name], description: ingredient_params[:locale_description]})
+        json_attributes.merge!("#{locale}_content".to_sym => {name: ingredient_params[:locale_name], description: ingredient_params[:locale_description]})
       end
       raise
       @ingredient = Spina::Ingredient.new(json_attributes: json_attributes)
@@ -35,7 +37,7 @@ module Spina::Admin
     def update
       json_attributes = {}
       Spina.locales.each do |locale|
-        json_attributes.merge("#{locale}_content".to_sym => {name: ingredient_params[:locale_name], description: ingredient_params[:locale_description]})
+        json_attributes.merge!("#{locale}_content".to_sym => {name: ingredient_params[:locale_name], description: ingredient_params[:locale_description]})
       end
       @ingredient = Spina::Ingredient.find(params[:id])
       raise
@@ -55,8 +57,16 @@ module Spina::Admin
       params.require(:ingredient).permit!
     end
 
-    def set_breadcrumb
+    def set_index_breadcrumb
       add_breadcrumb t("spina.ingredients.ingredients")
+    end
+
+    def set_new_breadcrumb
+      add_breadcrumb t("spina.ingredients.new_ingredient")
+    end
+
+    def set_edit_breadcrumb
+      add_breadcrumb t("spina.ingredients.edit_ingredient")
     end
 
     def set_account
