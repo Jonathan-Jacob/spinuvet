@@ -13,7 +13,13 @@
         <div><%= ingredient.ingredient_name(@locale) %></div>
         <% Spina.locales.each do |locale| %>
           <% if ingredient.json_attributes["#{locale}_content"].present? %>
-            <div class="px-2 py-1 text-xs rounded-md bg-gray-300"><%= "#{locale.upcase}" %></div>
+            <% if ingredient.json_attributes["#{locale}_content"]["name"].present? && ingredient.json_attributes["#{locale}_content"]["description"].present? %>
+              <div class="px-2 py-1 text-xs rounded-md bg-emerald-500"><%= "#{locale.upcase}" %></div>
+            <% else %>
+              <div class="px-2 py-1 text-xs rounded-md bg-amber-500"><%= "#{locale.upcase}" %></div>
+            <% end %>
+          <% else %>
+            <div class="px-2 py-1 text-xs rounded-md bg-red-500"><%= "#{locale.upcase}" %></div>
           <% end %>
         <% end %>
       </div>
