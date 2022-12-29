@@ -166,7 +166,7 @@ module Spina
         end
 
         def set_page
-          @page = Page.find(params[:id])
+          @page = Page.where(deleted: false).find(params[:id])
         end
 
         def set_tabs
