@@ -173,6 +173,7 @@ en:
       upload: Upload images
       upload_image: Upload image
     ingredients:
+      back: Back
       description: Description
       edit_ingredient: Edit ingredient
       ingredient: Ingredient

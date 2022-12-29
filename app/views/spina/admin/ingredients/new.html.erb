@@ -1,8 +1,12 @@
-<%= render Spina::UserInterface::HeaderComponent.new %>
+<%= render Spina::UserInterface::HeaderComponent.new do |header| %>
+  <% header.actions do %>
+    <%= link_to t('spina.ingredients.back'), spina.admin_ingredients_path, class: 'btn btn-gray' %>
+  <% end %>
+<% end %>
 <div class="px-8">
   <%= form_with model: @ingredient, url: spina.admin_ingredients_path, id: @ingredient.object_id do |f| %>
     <div class="w-full max-w-5xl flex justify-end mt-4 -mb-12">
-      <%= button_tag type: :submit, class: 'btn btn-primary self-start', data: {controller: "button", action: "button#loading", loading_message: t('spina.ui.saving')} do %>
+      <%= button_tag type: :submit, class: 'btn btn-primary self-start z-10', data: {controller: "button", action: "button#loading", loading_message: t('spina.ui.saving')} do %>
         <%= heroicon('check', style: :mini, class: 'w-5 h-5 -ml-1 mr-1') %>
         <%=t 'spina.ingredients.save' %>
       <% end %>
