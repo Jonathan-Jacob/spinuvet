@@ -8,7 +8,7 @@
 </div>
 <div class="mt-4 mb-6 mx-8 rounded-md border border-solid border-gray-400">
   <% @ingredients.each do |ingredient| %>
-    <%= link_to edit_admin_ingredient_path(ingredient), class: "odd:bg-gray-200 first:rounded-t-md last:rounded-b-md" do %>
+    <%= link_to edit_admin_ingredient_path(ingredient, locale: @locale), class: "odd:bg-gray-200 first:rounded-t-md last:rounded-b-md" do %>
       <div class="py-4 p-8 text-gray-700 flex justify-between flex-wrap gap-2 bg-inherit rounded-inherit">
         <div><%= ingredient.ingredient_name(@locale) %></div>
         <div class="flex gap-2">
@@ -29,6 +29,5 @@
   <% end %>
 </div>
 <div class="py-4 p-8 font-medium text-gray-700">
-  <%= link_to t('spina.ingredients.new_ingredient'), new_admin_ingredient_path, class: "btn btn-primary w-fit" %>
+  <%= link_to t('spina.ingredients.new_ingredient'), new_admin_ingredient_path(locale: @locale), class: "btn btn-primary w-fit" %>
 </div>
-<% raise %>
