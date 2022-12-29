@@ -11,9 +11,9 @@ module Spina
         if params[:resource_id]
           @resource = Resource.find(params[:resource_id])
           @page_templates = Spina::Current.theme.new_page_templates(resource: @resource)
-          @pages = @resource.pages.active.roots.includes(:translations).page(params[:page]).per(Spina.config.resource_pages_limit_value)
+          @pages = @resource.pages.active.roots.includes(:translations).page(params[:page]).per(Spina.config.resource_pages_limit_value).where(deleted: false)
         else
-          @pages = Page.active.sorted.roots.main.includes(:translations)
+          @pages = Page.active.sorted.roots.main.includes(:translations).where(deleted: false)
           @page_templates = Spina::Current.theme.new_page_templates
         end
       end
@@ -140,8 +140,9 @@ module Spina
       end
 
       def destroy
+        @page.update(deleted: true)
+        @page.navigation_items.destroy_all
         flash[:info] = t('spina.pages.deleted')
-        @page.destroy
         redirect_to spina.admin_pages_url
       end
 

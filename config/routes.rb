@@ -1,3 +1,10 @@
+# TODO
+# Ingredients: Back buttons, delete buttons (actually inactivates!)
+# Ingredient Drafts
+# Products
+# Product Drafts
+# Make page delete actually inactivate page
+
 Rails.application.routes.draw do
   if ActiveStorage.respond_to?(:resolve_model_to_route)
     resolve("Spina::Parts::Image") { |image, options| route_for(ActiveStorage.resolve_model_to_route, image, options) }
