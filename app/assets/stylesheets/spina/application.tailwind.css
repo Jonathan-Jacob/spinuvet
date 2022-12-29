@@ -85,36 +85,6 @@
     @apply bg-emerald-500;
   }
 
-  @media (min-width: 768px) {
-    .stay-right {
-      max-width: max(408px, calc(100vw - 720px)) !important;
-      margin-left: max(0px,calc(360px - max(0px, calc(100vw - 768px))));
-      margin-right: 0;
-    }
-  }
-
-  .shrink-button-bar {
-    height: 5.25rem;
-    max-width: 100%;
-  }
-
-  @media (min-width: 768px) {
-    .shrink-button-bar {
-      height: 5.25rem;
-      max-width: calc(100vw - 400px);
-    }
-  }
-
-  .shrink-button {
-    max-width: calc(100vw - 168px);
-  }
-
-  @media (min-width: 768px) {
-    .shrink-button {
-      max-width: calc(100vw - 588px);
-    }
-  }
-
   /* Forms */
   .form-input, .form-select {
     /* @apply py-3 px-4; */
@@ -227,4 +197,40 @@
   trix-editor [data-trix-mutable]::selection,
   trix-editor [data-trix-cursor-target]::selection, trix-editor [data-trix-mutable] ::selection {
     background: none; }
+
+  /* Custom stuff */
+
+  @media (min-width: 768px) {
+    .stay-right {
+      max-width: max(408px, calc(100vw - 720px)) !important;
+      margin-left: max(0px,calc(360px - max(0px, calc(100vw - 768px))));
+      margin-right: 0;
+    }
+  }
+
+  .shrink-button-bar {
+    height: 5.25rem;
+    max-width: 100%;
+  }
+
+  @media (min-width: 768px) {
+    .shrink-button-bar {
+      height: 5.25rem;
+      max-width: calc(100vw - 400px);
+    }
+  }
+
+  .shrink-button {
+    max-width: calc(100vw - 168px);
+  }
+
+  @media (min-width: 768px) {
+    .shrink-button {
+      max-width: calc(100vw - 588px);
+    }
+  }
+
+  .rounded-inherit {
+    border-radius: inherit;
+  }
 }
