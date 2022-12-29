@@ -233,4 +233,14 @@
   .rounded-inherit {
     border-radius: inherit;
   }
+
+  .small-modal {
+    @apply -left-32;
+  }
+
+  @media (min-width: 420px) and (max-width: 767.98px), (min-width: 1024px) {
+    .small-modal {
+      @apply left-0;
+    }
+  }
 }
