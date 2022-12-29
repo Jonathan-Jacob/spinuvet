@@ -203,7 +203,7 @@
   @media (min-width: 768px) {
     .stay-right {
       max-width: max(408px, calc(100vw - 720px)) !important;
-      margin-left: max(0px,calc(360px - max(0px, calc(100vw - 768px))));
+      margin-left: max(0px, calc(360px - max(0px, calc(100vw - 768px))));
       margin-right: 0;
     }
   }
