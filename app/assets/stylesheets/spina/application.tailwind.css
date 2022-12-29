@@ -214,7 +214,7 @@
   }
 
   @media (min-width: 768px) {
-    .shrink-button-bar {
+    .shrink-button-bar.page-bar {
       height: 5.25rem;
       max-width: calc(100vw - 400px);
     }
