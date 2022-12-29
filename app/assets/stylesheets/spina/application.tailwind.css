@@ -221,7 +221,7 @@
   }
 
   .shrink-button {
-    max-width: calc(100vw - 168px);
+    max-width: calc(100vw - 144px);
   }
 
   @media (min-width: 768px) {

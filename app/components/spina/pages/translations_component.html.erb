@@ -1,14 +1,13 @@
 <div class="relative" data-controller="reveal" data-reveal-away-value>
   <button type="button" class="btn btn-default px-3" data-action="reveal#toggle">
-    <%= helpers.heroicon("chat-alt", style: :solid, class: 'w-4 h-4 text-gray-300') %>
     <% if missing_locales.any? %>
-      <div class="bg-orange-600 rounded text-white leading-4 ml-2 w-4 font-medium text-center text-xs">
-        <%= missing_locales.size %>
-      </div>
+      <%= helpers.heroicon("chat-alt", style: :solid, class: 'w-4 h-4 text-orange-600') %>
+    <% else %>
+      <%= helpers.heroicon("chat-alt", style: :solid, class: 'w-4 h-4 text-gray-300') %>
     <% end %>
   </button>
 
-  <div hidden data-reveal data-transition class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg border border-gray-200 z-20">
+  <div hidden data-reveal data-transition class="origin-top-left lg:origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg border border-gray-200 z-20">
     <div class="rounded-md bg-white shadow-xs">
       <div class="py-1">
         <% if missing_locales.any? %>
