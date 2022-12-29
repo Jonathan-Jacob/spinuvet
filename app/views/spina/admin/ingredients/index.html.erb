@@ -17,7 +17,7 @@
               <% if ingredient.json_attributes["#{locale}_content"]["name"].present? && ingredient.json_attributes["#{locale}_content"]["description"].present? %>
                 <div class="px-2 py-1 text-xs rounded-md bg-emerald-600 text-white"><%= "#{locale.upcase}" %></div>
               <% else %>
-                <div class="px-2 py-1 text-xs rounded-md bg-amber-600 text-white"><%= "#{locale.upcase}" %></div>
+                <div class="px-2 py-1 text-xs rounded-md bg-amber-400"><%= "#{locale.upcase}" %></div>
               <% end %>
             <% else %>
               <div class="px-2 py-1 text-xs rounded-md bg-red-600 text-white"><%= "#{locale.upcase}" %></div>
