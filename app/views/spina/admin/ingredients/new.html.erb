@@ -7,7 +7,8 @@
         <%=t 'spina.ingredients.save' %>
       <% end %>
     </div>
-    <% ([@locale] + Spina.locales.reject{|l| l.to_s.downcase == @locale.to_s.downcase}).each do |locale| %>
+    <% locales = ([@locale] + Spina.locales.reject{|l| l.to_s.downcase == @locale.to_s.downcase}) %>
+    <% locales.each do |locale| %>
       <h2 class="pt-6 pb-4 block leading-5 font-medium text-gray-700"><%= t("spina.languages.#{locale}") %></h2>
       <div>
         <label class="block text-sm leading-5 font-medium text-gray-700"><%= t('spina.ingredients.name') %></label>
@@ -27,7 +28,9 @@
           </div>
         </div>
       </div>
-      <hr>
+      <% unless locales.last == locale %>
+        <hr>
+      <% end %>
     <% end %>
   <% end %>
 </div>
