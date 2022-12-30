@@ -3,33 +3,39 @@
     <%= render Spina::UserInterface::TranslationsComponent.new(@account, label: @locale.upcase) %>
   <% end %>
 <% end %>
-<div class="pt-6 pb-4 px-8">
-  <h2 class="block leading-5 font-medium text-gray-700"><%= t('spina.ingredients.old_ingredients') %></h2>
-</div>
-<div class="mt-4 mb-6 mx-8 rounded-md border border-solid border-gray-200 shadow-sm">
-  <% @ingredients.each do |ingredient| %>
-    <%= link_to edit_admin_ingredient_path(ingredient, locale: @locale), class: "border-t border-gray-200 first:border-t-0 first:rounded-t-md last:rounded-b-md" do %>
-      <div class="py-3 p-8 text-gray-700 flex justify-between flex-wrap gap-2 bg-inherit rounded-inherit border-inherit-all hover:bg-gray-200">
-        <div><%= ingredient.ingredient_name(@locale) %></div>
-        <div class="flex gap-2">
-          <% Spina.locales.each do |locale| %>
-            <% if ingredient.json_attributes["#{locale}_content"].present? %>
-              <% if ingredient.json_attributes["#{locale}_content"]["name"].present? && ingredient.json_attributes["#{locale}_content"]["description"].present? %>
-                <div class="px-2 py-1 text-xs rounded-md bg-spina text-white"><%= "#{locale.upcase}" %></div>
-              <% elsif ingredient.json_attributes["#{locale}_content"]["name"].present? || ingredient.json_attributes["#{locale}_content"]["description"].present? %>
-                <div class="px-2 py-1 text-xs rounded-md bg-amber-400"><%= "#{locale.upcase}" %></div>
+<% if @ingredients.empty? %>
+  <div class="pt-6 pb-4 px-8">
+    <h2 class="block leading-5 font-medium text-gray-700"><%= t('spina.ingredients.no_ingredients') %></h2>
+  </div>
+<% else %>
+  <div class="pt-6 pb-4 px-8">
+    <h2 class="block leading-5 font-medium text-gray-700"><%= t('spina.ingredients.old_ingredients') %></h2>
+  </div>
+  <div class="mt-4 mb-6 mx-8 rounded-md border border-solid border-gray-200 shadow-sm">
+    <% @ingredients.each do |ingredient| %>
+      <%= link_to edit_admin_ingredient_path(ingredient, locale: @locale), class: "border-t border-gray-200 first:border-t-0 first:rounded-t-md last:rounded-b-md" do %>
+        <div class="py-3 p-8 text-gray-700 flex justify-between flex-wrap gap-2 bg-inherit rounded-inherit border-inherit-all hover:bg-gray-200">
+          <div><%= ingredient.ingredient_name(@locale) %></div>
+          <div class="flex gap-2">
+            <% Spina.locales.each do |locale| %>
+              <% if ingredient.json_attributes["#{locale}_content"].present? %>
+                <% if ingredient.json_attributes["#{locale}_content"]["name"].present? && ingredient.json_attributes["#{locale}_content"]["description"].present? %>
+                  <div class="px-2 py-1 text-xs rounded-md bg-spina text-white"><%= "#{locale.upcase}" %></div>
+                <% elsif ingredient.json_attributes["#{locale}_content"]["name"].present? || ingredient.json_attributes["#{locale}_content"]["description"].present? %>
+                  <div class="px-2 py-1 text-xs rounded-md bg-amber-400"><%= "#{locale.upcase}" %></div>
+                <% else %>
+                  <div class="px-2 py-1 text-xs rounded-md bg-red-600 text-white"><%= "#{locale.upcase}" %></div>
+                <% end %>
               <% else %>
                 <div class="px-2 py-1 text-xs rounded-md bg-red-600 text-white"><%= "#{locale.upcase}" %></div>
               <% end %>
-            <% else %>
-              <div class="px-2 py-1 text-xs rounded-md bg-red-600 text-white"><%= "#{locale.upcase}" %></div>
             <% end %>
-          <% end %>
+          </div>
         </div>
-      </div>
+      <% end %>
     <% end %>
-  <% end %>
-</div>
-<div class="py-4 p-8 font-medium text-gray-700">
-  <%= link_to t('spina.ingredients.new_ingredient'), new_admin_ingredient_path(locale: @locale), class: "btn btn-primary w-fit" %>
-</div>
+  </div>
+  <div class="py-4 p-8 font-medium text-gray-700">
+    <%= link_to t('spina.ingredients.new_ingredient'), new_admin_ingredient_path(locale: @locale), class: "btn btn-primary w-fit" %>
+  </div>
+<% end %>

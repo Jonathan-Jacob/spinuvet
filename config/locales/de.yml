@@ -189,6 +189,7 @@ de:
       ingredients: Inhaltsstoffe
       name: Name
       new_ingredient: Neuer Inhaltsstoff
+      no_ingredients: Keine Inhaltsstoffe vorhanden
       old_ingredients: Bestehende Inhaltsstoffe
       save: Inhaltsstoff speichern
     languages:

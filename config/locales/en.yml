@@ -183,6 +183,7 @@ en:
       ingredients: Ingredients
       name: Name
       new_ingredient: New ingredient
+      no_ingredients: No ingredients present
       old_ingredients: Existing ingredients
       save: Save ingredient
     languages:

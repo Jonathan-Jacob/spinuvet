@@ -1,7 +1,7 @@
 <%= render Spina::UserInterface::HeaderComponent.new do |header| %>
   <% header.actions do %>
     <div class="flex gap-3 flex-wrap">
-      <%= button_tag type: :submit, class: 'btn btn-primary self-start z-10', data: {controller: "button", action: "button#loading", loading_message: t('spina.ui.saving')} do %>
+      <%= button_tag type: :submit, form: @ingredient.object_id, class: 'btn btn-primary self-start z-10', data: {controller: "button", action: "button#loading", loading_message: t('spina.ui.saving')} do %>
         <%= heroicon('check', style: :mini, class: 'w-5 h-5 -ml-1 mr-1') %>
         <%=t 'spina.ingredients.save' %>
       <% end %>
