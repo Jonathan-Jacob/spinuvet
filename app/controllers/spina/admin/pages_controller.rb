@@ -140,10 +140,15 @@ module Spina
       end
 
       def destroy
-        @page.update(deleted: true)
-        @page.navigation_items.destroy_all
-        flash[:info] = t('spina.pages.deleted')
-        redirect_to spina.admin_pages_url
+        @page.deleted = true
+        if @page.save
+          @page.navigation_items.destroy_all
+          flash[:info] = t('spina.pages.deleted')
+          redirect_to spina.admin_pages_url
+        else
+          flash.now[:error] = t("spina.pages.couldnt_be_deleted")
+          render partial: "error", status: :unprocessable_entity
+        end
       end
 
       private

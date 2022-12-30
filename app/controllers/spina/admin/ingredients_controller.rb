@@ -41,17 +41,23 @@ module Spina::Admin
       @ingredient = Spina::Ingredient.where(deleted: false).find(params[:id])
       @ingredient.json_attributes = json_attributes
       if @ingredient.save
-        redirect_to admin_ingredients_path(locale: @locale), flash: {success: t("spina.layout.saved")}
+        redirect_to admin_ingredients_path(locale: @locale), flash: {success: t("spina.ingredient.saved")}
       else
-        flash.now[:error] = t("spina.layout.couldnt_be_saved")
+        flash.now[:error] = t("spina.ingredient.couldnt_be_saved")
         render partial: "error", status: :unprocessable_entity
       end
     end
 
     def destroy
-      @ingredient.update(deleted: true)
-      flash[:info] = t('spina.ingredients.deleted')
-      redirect_to spina.admin_ingredients_url
+      @ingredient = Spina::Ingredient.where(deleted: false).find(params[:id])
+      @ingredient.deleted = true
+      if @ingredient.save
+        flash[:info] = t('spina.ingredients.deleted')
+        redirect_to spina.admin_ingredients_url
+      else
+        flash.now[:error] = t("spina.ingredient.couldnt_be_deleted")
+        render partial: "error", status: :unprocessable_entity
+      end
     end
 
     private

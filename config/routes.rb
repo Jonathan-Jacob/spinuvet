@@ -3,7 +3,6 @@
 # Ingredient Drafts
 # Products
 # Product Drafts
-# Make page delete actually inactivate page
 
 Rails.application.routes.draw do
   if ActiveStorage.respond_to?(:resolve_model_to_route)

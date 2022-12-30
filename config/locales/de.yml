@@ -180,6 +180,8 @@ de:
       upload_image: Bild hochladen
     ingredients:
       back: Zurück
+      couldnt_be_deleted: Inhaltsstoff konnte nicht gelöscht werden
+      couldnt_be_saved: Ingredient konnte nicht gespeichert werden
       delete: Inhaltsstoff löschen
       delete_confirmation: Bist du sicher, dass du den Inhaltsstoff <strong>%{subject}</strong> löschen möchtest?
       deleted: Inhaltsstoff gelöscht
@@ -192,6 +194,7 @@ de:
       no_ingredients: Keine Inhaltsstoffe vorhanden
       old_ingredients: Bestehende Inhaltsstoffe
       save: Inhaltsstoff speichern
+      saved: Inhaltsstoff gespeichert
     languages:
       bg: Bulgarisch
       de: Deutsch
@@ -267,6 +270,7 @@ de:
       change_view_template: Seiten-Template ändern
       change_view_template_confirmation: Bist du sicher, dass du dein Seiten-Template ändern möchtest? Inhalte, die nicht zum neuen Template gehören, gehen verloren.
       concept: Entwurf
+      couldnt_be_deleted: Seite konnte nicht gelöscht werden
       create: Seite erstellen
       create_page: Neue(s) %{template}
       delete: Seite löschen
