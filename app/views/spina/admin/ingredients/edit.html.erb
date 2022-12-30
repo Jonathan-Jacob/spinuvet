@@ -1,6 +1,6 @@
 <%= render Spina::UserInterface::HeaderComponent.new do |header| %>
   <% header.actions do %>
-    <div class="flex gap-2">
+    <div class="flex gap-3">
       <%= button_to t('spina.ingredients.delete'), spina.admin_ingredient_path(@ingredient), method: :delete, class: "btn btn-red", form: {data: {controller: "confirm", confirm_message: t('spina.ingredients.delete_confirmation', subject: @ingredient.ingredient_name(@locale))}} %>
       <%= link_to t('spina.ingredients.back'), spina.admin_ingredients_path, class: "btn btn-gray" %>
     </div>
