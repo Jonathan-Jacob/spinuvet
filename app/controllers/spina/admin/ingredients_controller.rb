@@ -7,7 +7,7 @@ module Spina::Admin
     before_action :set_edit_breadcrumb, only: :edit
 
     def index
-      @ingredients = Spina::Ingredient.order(:id)
+      @ingredients = Spina::Ingredient.where(deleted: false).order(:id)
       @ingredient = Spina::Ingredient.new
     end
 
@@ -30,7 +30,7 @@ module Spina::Admin
     end
 
     def edit
-      @ingredient = Spina::Ingredient.find(params[:id])
+      @ingredient = Spina::Ingredient.where(deleted: false).find(params[:id])
     end
 
     def update
@@ -38,7 +38,7 @@ module Spina::Admin
       Spina.locales.each do |locale|
         json_attributes.merge!("#{locale}_content" => {name: ingredient_params["#{locale}_name"], description: ingredient_params["#{locale}_description"]})
       end
-      @ingredient = Spina::Ingredient.find(params[:id])
+      @ingredient = Spina::Ingredient.where(deleted: false).find(params[:id])
       @ingredient.json_attributes = json_attributes
       if @ingredient.save
         redirect_to admin_ingredients_path(locale: @locale), flash: {success: t("spina.layout.saved")}
@@ -49,6 +49,9 @@ module Spina::Admin
     end
 
     def destroy
+      @ingredient.update(deleted: true)
+      flash[:info] = t('spina.ingredients.deleted')
+      redirect_to spina.admin_ingredients_url
     end
 
     private
