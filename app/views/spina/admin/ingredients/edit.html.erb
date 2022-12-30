@@ -17,7 +17,7 @@
   <%= form_with model: @ingredient, url: spina.admin_ingredient_path(@ingredient), id: @ingredient.object_id do |f| %>
     <% locales = ([@locale] + Spina.locales.reject{|l| l.to_s.downcase == @locale.to_s.downcase}) %>
     <% locales.each do |locale| %>
-      <h2 class="<%= locales.first == locale ? "-lg:pt-12" : "pt-6" %> pb-4 block leading-5 font-medium text-gray-700"><%= t("spina.languages.#{locale}") %></h2>
+      <h2 class="<%= locales.first == locale ? "lg:-pt-12" : "pt-6" %> pb-4 block leading-5 font-medium text-gray-700"><%= t("spina.languages.#{locale}") %></h2>
       <div>
         <label class="block text-sm leading-5 font-medium text-gray-700"><%= t('spina.ingredients.name') %></label>
         <div class="mt-1">
