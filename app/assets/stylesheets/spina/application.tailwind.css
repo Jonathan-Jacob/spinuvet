@@ -243,4 +243,8 @@
       @apply left-0;
     }
   }
+
+  .border-l-1 {
+    @apply border-l;
+  }
 }
