@@ -247,4 +247,8 @@
   .border-l-1 {
     @apply border-l;
   }
+
+  .border-inherit-all {
+    border: inherit;
+  }
 }
