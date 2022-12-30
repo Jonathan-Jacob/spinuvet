@@ -180,6 +180,9 @@ de:
       upload_image: Bild hochladen
     ingredients:
       back: Zurück
+      delete: Inhaltsstoff löschen
+      delete_confirmation: Bist du sicher, dass du den Inhaltsstoff <strong>%{subject}</strong> löschen möchtest?
+      deleted: Inhaltsstoff gelöscht
       description: Beschreibung
       edit_ingredient: Inhaltsstoff bearbeiten
       ingredient: Inhaltsstoff

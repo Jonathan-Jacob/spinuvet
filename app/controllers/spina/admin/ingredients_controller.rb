@@ -48,6 +48,9 @@ module Spina::Admin
       end
     end
 
+    def destroy
+    end
+
     private
 
     # Permit all attributes when editing your layout
