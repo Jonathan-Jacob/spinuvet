@@ -11,6 +11,6 @@ export default class extends Controller {
       this.inputTarget.setAttribute('action', this.frameTarget.src);
     }
     console.log(this.inputTarget, this.frameTarget);
-    setTimeout(this.inputTarget.submit(), 3000);
+    setTimeout(() => { this.inputTarget.submit() }, 3000);
   }
 }
