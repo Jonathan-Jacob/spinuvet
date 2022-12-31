@@ -5,7 +5,8 @@ export default class extends Controller {
     return ["frame", "input"];
   }
 
-  addParams() {
+  addParams(event) {
+    event.preventDefault();
     if (this.frameTarget.src) {
       this.inputTarget.setAttribute('action', this.frameTarget.src);
     }
