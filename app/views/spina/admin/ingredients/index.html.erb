@@ -4,7 +4,7 @@
   <% end %>
 <% end %>
 <div data-controller="search">
-  <turbo-frame id="ingredient_list" data-target="frame">
+  <turbo-frame id="ingredient_list" data-search-target="frame">
     <% if @ingredients.empty? %>
       <div class="pt-6 pb-4 px-8">
         <h2 class="block leading-5 font-medium text-gray-700"><%= t('spina.ingredients.no_ingredients') %></h2>
@@ -13,7 +13,7 @@
       <div class="pt-6 pb-4 px-8 flex justify-between items-center">
         <h2 class="block leading-5 font-medium text-gray-700"><%= t('spina.ingredients.old_ingredients') %></h2>
         <div class="relative w-fit" data-controller="reveal" data-reveal-away-value>
-          <%= form_with url: spina.admin_ingredients_path, method: :get, data: {action: "search#addParams", target: "input"} do |f| %>
+          <%= form_with url: spina.admin_ingredients_path, method: :get, data: {action: "search#addParams", search_target: "input"} do |f| %>
             <%= f.text_field :query %>
             <%= f.submit "Search" %>
           <% end %>
