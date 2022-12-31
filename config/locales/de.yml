@@ -195,6 +195,11 @@ de:
       old_ingredients: Bestehende Inhaltsstoffe
       save: Inhaltsstoff speichern
       saved: Inhaltsstoff gespeichert
+      sort: Sortieren
+      sort_19: Von alt bis neu sortieren
+      sort_91: Von neu bis alt sortieren
+      sort_az: Von A bis Z sortieren
+      sort_za: Von Z bis A sortieren
     languages:
       bg: Bulgarisch
       de: Deutsch

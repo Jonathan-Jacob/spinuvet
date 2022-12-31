@@ -8,6 +8,16 @@ module Spina::Admin
 
     def index
       @ingredients = Spina::Ingredient.where(deleted: false).order(:id)
+      if (params[:sort].present?)
+        case :sort_az
+          @ingredients.sort_by!{|i| i.ingredient_name.downcase}
+        case :sort_za
+          @ingredients.sort_by!{|i| i.ingredient_name.downcase}.reverse!
+        case :sort_az
+          @ingredients.sort_by!{|i| i.updated_at}
+        case :sort_az
+          @ingredients.sort_by!{|i| i.updated_at}.reverse!
+      end
       @ingredient = Spina::Ingredient.new
     end
 

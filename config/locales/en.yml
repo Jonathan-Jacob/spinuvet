@@ -189,6 +189,11 @@ en:
       old_ingredients: Existing ingredients
       save: Save ingredient
       saved: Ingredient saved
+      sort: Sort
+      sort_19: Sort from old to new
+      sort_91: Sort from new to old
+      sort_az: Sort from A to Z
+      sort_za: Sort from Z to A
     languages:
       bg: Bulgarian
       de: German
