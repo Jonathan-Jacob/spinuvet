@@ -10,6 +10,7 @@ module Spina::Admin
       @ingredients = Spina::Ingredient.where(deleted: false).order(updated_at: :desc)
       if params[:sort].present?
         if params[:sort] == :sort_az
+          raise
           @ingredients.sort_by!{|i| i.ingredient_name.downcase}
         elsif params[:sort] == :sort_za
           @ingredients.sort_by!{|i| i.ingredient_name.downcase}.reverse!
