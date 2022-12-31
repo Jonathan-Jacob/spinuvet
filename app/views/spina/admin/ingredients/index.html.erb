@@ -14,8 +14,8 @@
         <h2 class="block leading-5 font-medium text-gray-700"><%= t('spina.ingredients.old_ingredients') %></h2>
         <div class="relative w-fit" data-controller="reveal" data-reveal-away-value>
           <%= form_with url: spina.admin_ingredients_path, method: :get, data: {action: "search#addParams", target: "input"} do |f| %>
-            <%= form.text_field :query %>
-            <%= form.submit "Search" %>
+            <%= f.text_field :query %>
+            <%= f.submit "Search" %>
           <% end %>
           <button type="button" class="btn btn-default px-3 w-full" data-action="reveal#toggle">
             <%= heroicon('arrows-up-down', style: :mini, class: 'w-5 h-5 -ml-1 mr-1') %>
