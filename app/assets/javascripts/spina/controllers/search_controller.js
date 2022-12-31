@@ -6,6 +6,9 @@ export default class extends Controller {
   }
 
   addParams() {
+    if (this.frameTarget.src) {
+      this.inputTarget.setAttribute(action, this.frameTarget.src);
+    }
     console.log(this.frameTarget);
   }
 }
