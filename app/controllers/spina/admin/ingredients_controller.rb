@@ -11,14 +11,13 @@ module Spina::Admin
       if params[:sort].present?
         if params[:sort] == :sort_az
           raise
-          @ingredients.sort_by!{|i| i.ingredient_name.downcase}
+          @ingredients = @ingredients.sort_by{|i| i.ingredient_name(@locale).downcase}
         elsif params[:sort] == :sort_za
-          @ingredients.sort_by!{|i| i.ingredient_name.downcase}.reverse!
+          @ingredients = @ingredients.sort_by{|i| i.ingredient_name(@locale).downcase}.reverse!
         elsif params[:sort] == :sort_19
-          @ingredients.sort_by!{|i| i.updated_at}
+          @ingredients = @ingredients.sort_by{|i| i.updated_at}
         end
       end
-      raise
     end
 
     def new
