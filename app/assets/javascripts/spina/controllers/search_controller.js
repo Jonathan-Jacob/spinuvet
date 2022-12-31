@@ -10,7 +10,6 @@ export default class extends Controller {
     if (this.frameTarget.src) {
       this.inputTarget.setAttribute('action', this.frameTarget.src);
     }
-    console.log(this.frameTarget);
-    console.log(this.inputTarget);
+    this.inputTarget.submit();
   }
 }
