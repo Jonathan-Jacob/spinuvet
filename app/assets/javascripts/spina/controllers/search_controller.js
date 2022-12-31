@@ -10,6 +10,6 @@ export default class extends Controller {
     if (this.frameTarget.src) {
       this.inputTarget.setAttribute('action', this.frameTarget.src);
     }
-    this.inputTarget.submit();
+    setTimeout(this.inputTarget.submit(), 3000);
   }
 }
