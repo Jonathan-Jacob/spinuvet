@@ -8,9 +8,8 @@ export default class extends Controller {
   addParams(event) {
     event.preventDefault();
     if (this.frameTarget.src) {
-      this.inputTarget.setAttribute('action', this.frameTarget.src);
+      this.inputTarget.value = this.frameTarget.src;
     }
-    console.log(this.inputTarget, this.frameTarget);
-    setTimeout(() => { this.inputTarget.submit() }, 3000);
+    this.inputTarget.submit();
   }
 }
