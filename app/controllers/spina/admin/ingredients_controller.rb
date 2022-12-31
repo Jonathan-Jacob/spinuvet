@@ -7,7 +7,6 @@ module Spina::Admin
     before_action :set_edit_breadcrumb, only: :edit
 
     def index
-      raise
       @ingredients = Spina::Ingredient.where(deleted: false).order(updated_at: :desc)
       if params[:sort].present?
         if params[:sort] == :sort_az
@@ -19,6 +18,7 @@ module Spina::Admin
           @ingredients.sort_by!{|i| i.updated_at}
         end
       end
+      raise
     end
 
     def new
