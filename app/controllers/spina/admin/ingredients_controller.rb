@@ -17,6 +17,7 @@ module Spina::Admin
           @ingredients = @ingredients.sort_by{|i| i.updated_at}
         end
       end
+      raise if params[:search].present?
     end
 
     def new
