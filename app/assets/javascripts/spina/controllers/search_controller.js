@@ -10,5 +10,6 @@ export default class extends Controller {
       this.inputTarget.setAttribute('action', this.frameTarget.src);
     }
     console.log(this.frameTarget);
+    console.log(this.inputTarget);
   }
 }
