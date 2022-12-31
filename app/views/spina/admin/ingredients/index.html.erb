@@ -13,7 +13,7 @@
       <div class="pt-6 pb-4 px-8 flex justify-between items-center">
         <h2 class="block leading-5 font-medium text-gray-700"><%= t('spina.ingredients.old_ingredients') %></h2>
         <div class="relative w-fit" data-controller="reveal" data-reveal-away-value>
-          <%= form_with url: spina.admin_ingredients_path, method: :get, data: {action: "search#addParams"} do |f| %>
+          <%= form_with url: spina.admin_ingredients_path, method: :get, data: {action: "search#addParams", search_target: "submit"} do |f| %>
             <%= f.text_field :query %>
             <%= f.hidden_field :sort, data: {search_target: "input"} %>
             <%= f.submit "Search" %>

@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
   static get targets() {
-    return ["frame", "input"];
+    return ["frame", "submit", "input"];
   }
 
   addParams(event) {
@@ -10,6 +10,6 @@ export default class extends Controller {
     if (this.frameTarget.src) {
       this.inputTarget.value = this.frameTarget.src;
     }
-    this.inputTarget.submit();
+    this.submitTarget.submit();
   }
 }
