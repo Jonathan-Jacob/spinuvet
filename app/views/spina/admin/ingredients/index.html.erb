@@ -25,6 +25,7 @@
   </div>
   <turbo-frame id="ingredient_list">
     <div class="mt-4 mb-6 mx-8 rounded-md border border-solid border-gray-200 shadow-sm">
+      <% raise if params[:sort] == :sort_az %>
       <% @ingredients.each do |ingredient| %>
         <%= link_to edit_admin_ingredient_path(ingredient, locale: @locale), class: "border-t border-gray-200 first:border-t-0 first:rounded-t-md last:rounded-b-md" do %>
           <div class="py-3 p-8 text-gray-700 flex justify-between flex-wrap gap-2 bg-inherit rounded-inherit border-inherit-all hover:bg-gray-200">
