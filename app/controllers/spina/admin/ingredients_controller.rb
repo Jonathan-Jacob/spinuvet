@@ -9,15 +9,14 @@ module Spina::Admin
     def index
       @ingredients = Spina::Ingredient.where(deleted: false).order(updated_at: :desc)
       if params[:sort].present?
-        if params[:sort] == :sort_az
+        if params[:sort].to_s == "sort_az"
           @ingredients = @ingredients.sort_by{|i| i.ingredient_name(@locale).downcase}
-        elsif params[:sort] == :sort_za
+        elsif params[:sort].to_s == "sort_za"
           @ingredients = @ingredients.sort_by{|i| i.ingredient_name(@locale).downcase}.reverse!
-        elsif params[:sort] == :sort_19
+        elsif params[:sort].to_s == "sort_19"
           @ingredients = @ingredients.sort_by{|i| i.updated_at}
         end
       end
-      raise
     end
 
     def new
