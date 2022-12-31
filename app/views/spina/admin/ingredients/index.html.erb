@@ -3,27 +3,27 @@
     <%= render Spina::UserInterface::TranslationsComponent.new(@account, label: @locale.upcase) %>
   <% end %>
 <% end %>
-<% if @ingredients.empty? %>
-  <div class="pt-6 pb-4 px-8">
-    <h2 class="block leading-5 font-medium text-gray-700"><%= t('spina.ingredients.no_ingredients') %></h2>
-  </div>
-<% else %>
-  <div class="pt-6 pb-4 px-8">
-    <h2 class="block leading-5 font-medium text-gray-700"><%= t('spina.ingredients.old_ingredients') %></h2>
-    <div class="relative w-auto" data-controller="reveal" data-reveal-away-value>
-      <button type="button" class="btn btn-default px-3 w-full" data-action="reveal#toggle">
-        <%= heroicon('arrows-up-down', style: :mini, class: 'w-5 h-5 -ml-1 mr-1') %>
-        <%= t('spina.ingredients.sort') %>
-      </button>
-      <div hidden data-reveal data-transition class="origin-top-left lg:origin-top-right absolute lg:right-0 mt-2 w-56 rounded-md shadow-lg border border-gray-200">
-        <%= link_to t('spina.ingredients.sort_az'), spina.admin_ingredients_path(sort: :sort_az), class: "block px-4 py-2 text-sm font-medium leading-5 text-gray-700 bg-white hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900", data: {turbo_frame: "ingredient_list"} %>
-        <%= link_to t('spina.ingredients.sort_za'), spina.admin_ingredients_path(sort: :sort_za), class: "block px-4 py-2 text-sm font-medium leading-5 text-gray-700 bg-white hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900", data: {turbo_frame: "ingredient_list"} %>
-        <%= link_to t('spina.ingredients.sort_19'), spina.admin_ingredients_path(sort: :sort_19), class: "block px-4 py-2 text-sm font-medium leading-5 text-gray-700 bg-white hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900", data: {turbo_frame: "ingredient_list"} %>
-        <%= link_to t('spina.ingredients.sort_91'), spina.admin_ingredients_path, class: "block px-4 py-2 text-sm font-medium leading-5 text-gray-700 bg-white hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900", data: {turbo_frame: "ingredient_list"} %>
+<turbo-frame id="ingredient_list">
+  <% if @ingredients.empty? %>
+    <div class="pt-6 pb-4 px-8">
+      <h2 class="block leading-5 font-medium text-gray-700"><%= t('spina.ingredients.no_ingredients') %></h2>
+    </div>
+  <% else %>
+    <div class="pt-6 pb-4 px-8">
+      <h2 class="block leading-5 font-medium text-gray-700"><%= t('spina.ingredients.old_ingredients') %></h2>
+      <div class="relative w-auto" data-controller="reveal" data-reveal-away-value>
+        <button type="button" class="btn btn-default px-3 w-full" data-action="reveal#toggle">
+          <%= heroicon('arrows-up-down', style: :mini, class: 'w-5 h-5 -ml-1 mr-1') %>
+          <%= t('spina.ingredients.sort') %>
+        </button>
+        <div hidden data-reveal data-transition class="origin-top-left lg:origin-top-right absolute lg:right-0 mt-2 w-56 rounded-md shadow-lg border border-gray-200">
+          <%= link_to t('spina.ingredients.sort_az'), spina.admin_ingredients_path(sort: :sort_az), class: "block px-4 py-2 text-sm font-medium leading-5 text-gray-700 bg-white hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900" %>
+          <%= link_to t('spina.ingredients.sort_za'), spina.admin_ingredients_path(sort: :sort_za), class: "block px-4 py-2 text-sm font-medium leading-5 text-gray-700 bg-white hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900" %>
+          <%= link_to t('spina.ingredients.sort_19'), spina.admin_ingredients_path(sort: :sort_19), class: "block px-4 py-2 text-sm font-medium leading-5 text-gray-700 bg-white hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900" %>
+          <%= link_to t('spina.ingredients.sort_91'), spina.admin_ingredients_path, class: "block px-4 py-2 text-sm font-medium leading-5 text-gray-700 bg-white hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900" %>
+        </div>
       </div>
     </div>
-  </div>
-  <turbo-frame id="ingredient_list">
     <div class="mt-4 mb-6 mx-8 rounded-md border border-solid border-gray-200 shadow-sm">
       <% raise if params[:sort] == :sort_az %>
       <% @ingredients.each do |ingredient| %>
@@ -49,8 +49,8 @@
         <% end %>
       <% end %>
     </div>
-  </turbo-frame>
-<% end %>
+  <% end %>
+</turbo-frame>
 <div class="py-4 p-8 font-medium text-gray-700">
   <%= link_to t('spina.ingredients.new_ingredient'), new_admin_ingredient_path(locale: @locale), class: "btn btn-primary w-fit" %>
 </div>
