@@ -8,7 +8,6 @@ module Spina::Admin
 
     def index
       @ingredients = Spina::Ingredient.where(deleted: false).order(updated_at: :desc)
-      @ingredients = @ingredients.where('name ILIKE ?', "%#{params[:query]}%") if params[:query].present?
       if params[:sort].present?
         if params[:sort].to_s == "sort_az"
           @ingredients = @ingredients.sort_by{|i| i.ingredient_name(@locale).downcase}
@@ -18,6 +17,7 @@ module Spina::Admin
           @ingredients = @ingredients.sort_by{|i| i.updated_at}
         end
       end
+      @ingredients = @ingredients.select{|i| i.json_attributes["#{@locale}_content"]["name"]}
     end
 
     def new
