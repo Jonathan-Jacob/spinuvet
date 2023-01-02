@@ -13,7 +13,7 @@
   <%= form_with model: @product, url: spina.admin_product_path(@product), id: @product.object_id do |f| %>
     <% locales = ([@locale] + Spina.locales.reject{|l| l.to_s.downcase == @locale.to_s.downcase}) %>
     <% locales.each do |locale| %>
-      <h2 class="<%= locales.first == locale ? "lg:-pt-12" : "pt-6" %> pb-4 block leading-5 font-medium text-gray-700"><%= "#{t("spina.languages.#{locale}")}#{": #{@product.json_attributes["#{locale}_content"]["name"]}" if @product.json_attributes["#{locale}_content"].present?}" %></h2>
+      <h2 class="pt-6 pb-4 block leading-5 font-medium text-gray-700"><%= "#{t("spina.languages.#{locale}")}#{": #{@product.json_attributes["#{locale}_content"]["name"]}" if @product.json_attributes["#{locale}_content"].present?}" %></h2>
       <div class="my-6" data-controller="unique-id" data-unique-id="<%= f.object.object_id %>">
         <label class="block text-sm leading-5 font-medium text-gray-700"><%= t('spina.products.description') %></label>
         <div class="mt-1 relative">
