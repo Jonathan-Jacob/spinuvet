@@ -17,7 +17,7 @@ module Spina::Admin
           @ingredients = @ingredients.sort_by{|i| i.updated_at}
         end
       end
-      raise if params[:query].present?
+      @ingredients = @ingredients.where('name ILIKE ?', "%#{params[:query]}%") if params[:query].present?
     end
 
     def new
