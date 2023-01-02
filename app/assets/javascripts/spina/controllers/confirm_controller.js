@@ -3,7 +3,8 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
 
   connect() {
-    this.element.addEventListener('submit', this.confirm.bind(this))
+    this.element.addEventListener('submit', this.confirm.bind(this));
+    console.log(this);
   }
 
   confirm(event) {
@@ -19,12 +20,12 @@ export default class extends Controller {
         <div class="text-center">
           ${this.message}
         </div>
-        
-        <div class="flex flex-row-reverse mt-3">
-        
+
+        <div class="flex justify-center flex-row-reverse mt-3">
+
           ${this.formHTML}
-          
-          <button class="btn btn-gray mt-2 md:mt-0 md:w-1/2" data-action="modal#close">Cancel</button>
+
+          <button class="btn btn-gray mt-2 mt-0 w-1/2" data-action="modal#close">Cancel</button>
         </div>
       </div>
     </div>`
@@ -33,28 +34,28 @@ export default class extends Controller {
   get message() {
     return this.element.dataset.confirmMessage
   }
-  
+
   get formHTML() {
     let element = document.createRange().createContextualFragment(this.element.outerHTML)
     let form = element.querySelector('form')
     let button = element.querySelector('input[type="submit"], button[type="submit"]')
-    
+
     form.removeAttribute('data-controller')
     form.dataset.turboFrame = "_top"
     form.dataset.action = "turbo:submit-end->modal#close"
-    form.className = "mt-6 md:mt-0 md:w-1/2 md:ml-3"
+    form.className = "mt-2 mt-0 w-1/2 ml-3"
     button.className = "btn btn-red w-full"
     button.dataset.shortcutsTarget = "confirm"
     button.innerText = "Delete"
     button.value = "Delete"
-    
+
     // Store in temp div
     let div = document.createElement('div')
     div.appendChild(form)
 
     return div.innerHTML
   }
-  
+
   get turboFrame() {
     return document.querySelector('turbo-frame[id="modal"]')
   }
