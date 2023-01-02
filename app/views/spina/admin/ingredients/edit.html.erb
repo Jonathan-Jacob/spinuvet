@@ -6,7 +6,7 @@
         <%= heroicon('check', style: :mini, class: 'w-5 h-5 -ml-1 mr-1') %>
         <%=t 'spina.ingredients.save' %>
       <% end %>
-      <%= button_to spina.admin_ingredient_path(@ingredient), method: :delete, class: "btn btn-red", form: {data: {controller: "confirm", back_button: "X", cancel_button: "Y", confirm_message: t('spina.ingredients.delete_confirmation', subject: @ingredient.ingredient_name(@locale))}} do %>
+      <%= button_to spina.admin_ingredient_path(@ingredient), method: :delete, class: "btn btn-red", form: {data: {controller: "confirm", delete_button: "X", cancel_button: "Y", confirm_message: t('spina.ingredients.delete_confirmation', subject: @ingredient.ingredient_name(@locale))}} do %>
         <%= heroicon('trash', style: :mini, class: 'w-5 h-5 -ml-1 mr-1') %>
         <%= t('spina.ingredients.delete') %>
       <% end %>

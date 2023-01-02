@@ -2,6 +2,11 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
 
+  initialize() {
+    this.deleteButton = this.element.dataset.deleteButton;
+    this.cancelButton = this.element.dataset.cancelButton;
+  }
+
   connect() {
     this.element.addEventListener('submit', this.confirm.bind(this));
     console.log(this);
@@ -25,7 +30,7 @@ export default class extends Controller {
 
           ${this.formHTML}
 
-          <button class="btn btn-gray mt-2 mt-0 w-1/2" data-action="modal#close">Cancel</button>
+          <button class="btn btn-gray mt-2 mt-0 w-1/2" data-action="modal#close">${this.cancelButton}</button>
         </div>
       </div>
     </div>`
@@ -46,7 +51,7 @@ export default class extends Controller {
     form.className = "mt-2 mt-0 w-1/2 ml-3"
     button.className = "btn btn-red w-full"
     button.dataset.shortcutsTarget = "confirm"
-    button.innerText = "Delete"
+    button.innerText = this.deleteButton
     button.value = "Delete"
 
     // Store in temp div
