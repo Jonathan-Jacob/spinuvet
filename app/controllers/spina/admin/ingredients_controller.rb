@@ -17,7 +17,7 @@ module Spina::Admin
           @ingredients = @ingredients.sort_by{|i| i.updated_at}
         end
       end
-      @ingredients = @ingredients.select{|i| i.json_attributes["#{@locale}_content"]["name"].downcase.match(params[:query]).downcase} if params[:query].present?
+      @ingredients = @ingredients.select{|i| i.json_attributes["#{@locale}_content"]["name"].downcase.match(params[:query].downcase) if i.json_attributes["#{@locale}_content"].present? && i.json_attributes["#{@locale}_content"]["name"].present?} if params[:query].present?
     end
 
     def new
