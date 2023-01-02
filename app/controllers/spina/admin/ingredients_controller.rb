@@ -20,6 +20,10 @@ module Spina::Admin
       @ingredients = @ingredients.select{|i| i.json_attributes["#{@locale}_content"]["name"].downcase.match(params[:query].downcase) if i.json_attributes["#{@locale}_content"].present? && i.json_attributes["#{@locale}_content"]["name"].present?} if params[:query].present?
     end
 
+    def show
+      redirect_to spina.edit_admin_ingredient_path(params[:id])
+    end
+
     def new
       @ingredient = Spina::Ingredient.new
     end
