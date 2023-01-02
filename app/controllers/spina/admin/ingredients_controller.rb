@@ -11,11 +11,11 @@ module Spina::Admin
       @ingredients = @ingredients.where('name ILIKE ?', "%#{params[:query]}%") if params[:query].present?
       if params[:sort].present?
         if params[:sort].to_s == "sort_az"
-          @ingredients = @ingredients.sort_by(&.ingredient_name(@locale).downcase)
+          @ingredients = @ingredients.sort_by(&:ingredient_name(@locale).downcase)
         elsif params[:sort].to_s == "sort_za"
-          @ingredients = @ingredients.sort_by(&.ingredient_name(@locale).downcase).reverse!
+          @ingredients = @ingredients.sort_by(&:ingredient_name(@locale).downcase).reverse!
         elsif params[:sort].to_s == "sort_19"
-          @ingredients = @ingredients.sort_by(&.updated_at)
+          @ingredients = @ingredients.sort_by(&:updated_at)
         end
       end
     end
