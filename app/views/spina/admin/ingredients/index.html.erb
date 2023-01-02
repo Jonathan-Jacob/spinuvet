@@ -10,8 +10,10 @@
       <%= form_with url: spina.admin_ingredients_path, id: "search-ingredient", class: "relative", data: {controller: "clear"}, method: :get do |f| %>
         <%= f.text_field :query, class: "form-input #{params[:query].present? ? 'pr-16' : 'pr-8'}", data: {clear_target: "input"}, value: params[:query] %>
         <%= f.hidden_field :sort, value: params[:sort] %>
-        <%= button_tag type: :submit, class: 'absolute inset-y-0 right-0 p-6 z-10 cursor-pointer', data: {action: "clear#clear"} do %>
-          <%= heroicon('x-mark', style: :mini, class: 'w-5 h-5') %>
+        <% if params[:query].present? %>
+          <%= button_tag type: :submit, class: 'absolute inset-y-0 right-6 p-2 z-10 cursor-pointer hover:bg-gray-100', data: {action: "clear#clear"} do %>
+            <%= heroicon('x-mark', style: :mini, class: 'w-5 h-5') %>
+          <% end %>
         <% end %>
         <%= button_tag type: :submit, class: 'absolute inset-y-0 right-0 p-2 z-10 cursor-pointer' do %>
           <%= heroicon('magnifying-glass', style: :mini, class: 'w-5 h-5') %>
