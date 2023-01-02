@@ -47,11 +47,11 @@
   }
 
   .btn-primary {
-    @apply bg-spina border-spina-dark text-white;
+    @apply bg-spina border-spina text-white;
   }
 
   .btn-primary:hover {
-    @apply bg-spina-dark;
+    @apply bg-spina-dark border-spina-dark;
   }
 
   .btn-red {

@@ -1,5 +1,4 @@
 # TODO
-# Ingredients: Back buttons, delete buttons (actually inactivates!)
 # Ingredient Drafts
 # Products
 # Product Drafts
