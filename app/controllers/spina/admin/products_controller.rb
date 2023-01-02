@@ -1,5 +1,5 @@
 module Spina
-  class Admin::ProductsController < ApplicationController
+  class Admin::ProductsController < AdminController
     before_action :set_account
     before_action :set_locale
     before_action :set_index_breadcrumb, only: :index
