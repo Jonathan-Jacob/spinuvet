@@ -7,7 +7,7 @@
   <div class="pt-6 pb-4 px-8 flex flex-wrap gap-3 justify-between items-center">
     <h2 class="block leading-5 font-medium text-gray-700"><%= t('spina.ingredients.old_ingredients') %></h2>
     <div>
-      <%= form_with url: spina.admin_ingredients_path, id: "search-ingredient", class: "relative", data: {controller: "clear"} method: :get do |f| %>
+      <%= form_with url: spina.admin_ingredients_path, id: "search-ingredient", class: "relative", data: {controller: "clear"}, method: :get do |f| %>
         <%= f.text_field :query, class: "form-input #{params[:query].present? ? 'pr-16' : 'pr-8'}", data: {clear_target: "input"}, value: params[:query] %>
         <%= f.hidden_field :sort, value: params[:sort] %>
         <%= button_tag type: :submit, class: 'absolute inset-y-0 right-0 p-6 z-10 cursor-pointer', data: {action: "clear#clear"} do %>
