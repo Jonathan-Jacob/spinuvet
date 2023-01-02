@@ -5,11 +5,11 @@ export default class extends Controller {
     return ["frame", "submit", "input"];
   }
 
-  addParams(event) {
-    event.preventDefault();
-    if (this.frameTarget.src) {
-      this.inputTarget.value = this.frameTarget.src;
-    }
-    this.submitTarget.submit();
-  }
+  // addParams(event) {
+  //   event.preventDefault();
+  //   if (this.frameTarget.src) {
+  //     this.inputTarget.value = this.frameTarget.src;
+  //   }
+  //   this.submitTarget.submit();
+  // }
 }
