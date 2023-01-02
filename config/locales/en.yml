@@ -359,6 +359,7 @@ en:
       edit_product: Edit product
       name: Name
       no_products: No products present
+      old_products: Existing products
       product: Product
       products: Products
       save: Save product
