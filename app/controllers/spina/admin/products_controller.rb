@@ -1,4 +1,4 @@
-module Spina
+module Spina::Admin
   class Admin::ProductsController < AdminController
     before_action :set_account
     before_action :set_locale
