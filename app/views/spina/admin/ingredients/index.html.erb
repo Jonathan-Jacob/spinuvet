@@ -15,7 +15,7 @@
         <div class="relative w-fit" data-controller="reveal" data-reveal-away-value>
           <%= form_with url: spina.admin_ingredients_path, method: :get, data: {action: "search#addParams", search_target: "submit"} do |f| %>
             <%= f.text_field :query %>
-            <%= f.hidden_field :sort, data: {search_target: "input"} %>
+            <%= f.hidden_field :sort, value: params[:sort], data: {search_target: "input"} %>
             <%= f.submit "Search" %>
           <% end %>
           <button type="button" class="btn btn-default px-3 w-full" data-action="reveal#toggle">
