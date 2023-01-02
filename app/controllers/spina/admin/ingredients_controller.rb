@@ -1,5 +1,6 @@
 module Spina::Admin
   class IngredientsController < AdminController
+    before_action :set_account
     before_action :set_locale
     before_action :set_index_breadcrumb, only: :index
     before_action :set_new_breadcrumb, only: :new
