@@ -12,7 +12,7 @@ module Spina
         if @active
           ""
         else
-          "opacity-50"
+          "opacity-70"
         end
       end
 
