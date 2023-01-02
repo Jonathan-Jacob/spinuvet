@@ -359,6 +359,22 @@ de:
       users: Benutzer
       users_description: Benutzer und Administratoren verwalten
     preview_website: Vorschau der Webseite
+    products:
+      back: Zurück
+      couldnt_be_saved: Produkt konnte nicht gespeichert werden
+      description: Beschreibung
+      edit_product: Produkt bearbeiten
+      name: Name
+      no_products: Keine Produkte vorhanden
+      product: Produkt
+      products: Produkte
+      save: Produkt speichern
+      saved: Produkt gespeichert
+      sort: Sortieren
+      sort_19: Von alt bis neu sortieren
+      sort_91: Von neu bis alt sortieren
+      sort_az: Von A bis Z sortieren
+      sort_za: Von Z bis A sortieren
     resources:
       edit: Kollektion editieren
       label_description: Label für diese Seiten Kollektion

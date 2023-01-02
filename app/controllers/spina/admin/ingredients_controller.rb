@@ -1,6 +1,5 @@
 module Spina::Admin
   class IngredientsController < AdminController
-    before_action :set_account
     before_action :set_locale
     before_action :set_index_breadcrumb, only: :index
     before_action :set_new_breadcrumb, only: :new
@@ -62,7 +61,7 @@ module Spina::Admin
     end
 
     def destroy
-      @ingredient = Spina::Ingredient.where(deleted: false).find(params[:id])
+      @ingredient = Spina::Ingredient.where(deleted: false).find(ingredient_params[:id])
       @ingredient.deleted = true
       if @ingredient.save
         flash[:info] = t('spina.ingredients.deleted')

@@ -352,6 +352,22 @@ en:
       users: Users
       users_description: Manage users and administrators
     preview_website: Preview website
+    products:
+      back: Back
+      couldnt_be_saved: Product couldn't be saved
+      description: Description
+      edit_product: Edit product
+      name: Name
+      no_products: No products present
+      product: Product
+      products: Products
+      save: Save product
+      saved: Product saved
+      sort: Sort
+      sort_19: Sort from old to new
+      sort_91: Sort from new to old
+      sort_az: Sort from A to Z
+      sort_za: Sort from Z to A
     resources:
       edit: Edit resource
       label_description: User-facing label for this page collection.
