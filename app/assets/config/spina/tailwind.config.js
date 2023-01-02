@@ -14,9 +14,9 @@ module.exports = {
     extend: {
       colors: {
         spina: {
-          light: '#58990f',
+          light: '#92de21',
           DEFAULT: '#78b41b',
-          dark: '#306e01'
+          dark: '#58990f'
         }
       }
     }
