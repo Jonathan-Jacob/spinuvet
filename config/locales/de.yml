@@ -181,7 +181,7 @@ de:
     ingredients:
       back: Zurück
       couldnt_be_deleted: Inhaltsstoff konnte nicht gelöscht werden
-      couldnt_be_saved: Ingredient konnte nicht gespeichert werden
+      couldnt_be_saved: Inhaltsstoff konnte nicht gespeichert werden
       delete: Inhaltsstoff löschen
       delete_confirmation: Bist du sicher, dass du den Inhaltsstoff <strong>%{subject}</strong> löschen möchtest?
       deleted: Inhaltsstoff gelöscht

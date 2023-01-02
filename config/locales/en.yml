@@ -176,8 +176,8 @@ en:
       back: Back
       couldnt_be_deleted: Ingredient couldn't be deleted
       couldnt_be_saved: Ingredient couldn't be saved
-      delete: Delete ingredient
       delete_confirmation: Are you sure you want to delete the ingredient <strong>%{subject}</strong>?
+      delete: Delete ingredient
       deleted: Ingredient deleted
       description: Description
       edit_ingredient: Edit ingredient

@@ -18,7 +18,7 @@
             <%=t 'spina.navigations.add_sub_item' %>
           <% end %>
 
-          <%= button_to spina.admin_navigation_navigation_item_path(@navigation, navigation_item), method: :delete, class: "bg-transparent w-full text-left cursor-pointer font-medium px-3 py-1 text-xs leading-5 text-red-400 hover:bg-gray-800 hover:text-red-400 focus:outline-none flex items-center", form: {data: {action: "reveal#hide", controller: "confirm", confirm_message: t('spina.navigations.delete_item_confirmation_html')}} do %>
+          <%= button_to spina.admin_navigation_navigation_item_path(@navigation, navigation_item), method: :delete, class: "bg-transparent w-full text-left cursor-pointer font-medium px-3 py-1 text-xs leading-5 text-red-400 hover:bg-gray-800 hover:text-red-400 focus:outline-none flex items-center", form: {data: {action: "reveal#hide", controller: "confirm", delete_button: t('spina.delete'), cancel_button: t('spina.cancel'), confirm_message: t('spina.navigations.delete_item_confirmation_html')}} do %>
             <%= heroicon('trash', class: 'w-4 h-4 mr-2') %>
             <%=t 'spina.navigations.delete_item' %>
           <% end %>

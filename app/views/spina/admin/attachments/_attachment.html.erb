@@ -34,7 +34,7 @@
     </div>
     <div class="text-gray-500 text-xs w-32 text-right whitespace-nowrap"><%=l attachment.created_at, format: :short %></div>
     <div class="">
-      <%= button_to spina.admin_attachment_path(attachment), method: :delete, class: "block py-3 px-4 ml-2 text-gray-500 hover:text-gray-900", form: {data: {controller: "confirm", confirm_message: t('spina.attachments.delete_confirmation_html')}} do %>
+      <%= button_to spina.admin_attachment_path(attachment), method: :delete, class: "block py-3 px-4 ml-2 text-gray-500 hover:text-gray-900", form: {data: {controller: "confirm", delete_button: t('spina.delete'), cancel_button: t('spina.cancel'), confirm_message: t('spina.attachments.delete_confirmation_html')}} do %>
         <%= heroicon('trash', class: "w-5 h-5") %>
       <% end %>
     </div>
