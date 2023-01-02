@@ -16,7 +16,7 @@ module Spina
         if active?
           "opacity-100"
         else
-          "opacity-50"
+          "opacity-70"
         end
       end
 
