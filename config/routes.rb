@@ -88,7 +88,9 @@ Spina::Engine.routes.draw do
 
     resources :ingredients
 
-    resources :products, only: [:index, :show, :edit, :update]
+    resources :products, only: [:index, :show, :edit, :update] do
+      resources :product_ingredients, only: [:index, :create, :destroy]
+    end
   end
 
   # Sitemap
