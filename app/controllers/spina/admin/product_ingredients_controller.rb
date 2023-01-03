@@ -7,7 +7,7 @@ module Spina::Admin
     before_action :set_ingredients
 
     def index
-      Spina::ProductIngredient.create(spina_product: @product, spina_ingredient: Spina::Ingredient.first)
+      Spina::ProductIngredient.create(spina_product_id: @product.id, spina_ingredient_id: Spina::Ingredient.first.id)
       raise
     end
 
