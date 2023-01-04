@@ -7,6 +7,8 @@ module Spina::Admin
     before_action :set_ingredients
 
     def index
+      @ingredients_az = @ingredients.sort_by{|i| i.ingredient_name}
+      @ingredients_az_with_rank = @ingredients_az.each_with_index.map{|v, i| {ingredient: v, rank_az: i + 1}}
       @selected_ingredients = @product.ingredients
       @unselected_ingredients = @ingredients.where.not(id:(@selected_ingredients.map(&:id)))
     end
