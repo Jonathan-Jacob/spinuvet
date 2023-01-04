@@ -1,13 +1,13 @@
 <turbo-frame id="product-ingredients">
-  <div class="w-100 max-w-lg">
+  <div class="w-100 max-w-xl">
     <h2 class="pt-6 pb-4 block leading-5 font-medium text-gray-700"><%= t('spina.ingredients.ingredients') %></h2>
     <div class="flex flex-wrap space-x-4">
-      <div class="pb-4 unselected w-full md:w-1/2">
+      <div class="pb-4 unselected w-full sm:w-1/2">
         <% @unselected_ingredients.each do |ingredient| %>
           <div><%= ingredient.ingredient_name(@locale) %></div>
         <% end %>
       </div>
-      <div class="pb-4 selected w-full md:w-1/2">
+      <div class="pb-4 selected w-full sm:w-1/2">
         <% @selected_ingredients.each do |ingredient| %>
           <div><%= ingredient.ingredient_name(@locale) %></div>
         <% end %>
