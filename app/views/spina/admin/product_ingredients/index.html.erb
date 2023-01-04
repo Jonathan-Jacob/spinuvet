@@ -3,13 +3,13 @@
     <h2 class="pt-6 pb-4 block leading-5 font-medium text-gray-700"><%= t('spina.ingredients.ingredients') %></h2>
     <div class="flex flex-wrap">
       <div class="pb-4 unselected w-full sm:w-1/2">
-        <% @ingredients_az_with_rank.each do |ingredient| %>
-          <div class="sm:mr-2" id="rank-az-<%= ingredient[:rank_az] %>"><%= ingredient.ingredient_name(@locale) %></div>
+        <% @ingredients_az_with_rank.each do |ingredient_ranked| %>
+          <div class="sm:mr-2" id="rank-az-<%= ingredient_ranked[:rank_az] %>"><%= ingredient_ranked[:ingredient].ingredient_name(@locale) %></div>
         <% end %>
       </div>
       <div class="pb-4 selected w-full sm:w-1/2">
-        <% @selected_ingredients_with_rank.each do |ingredient| %>
-          <div class="sm:ml-2" id="rank-p-<%= ingredient[:rank_p] %>"><%= ingredient.ingredient_name(@locale) %></div>
+        <% @selected_ingredients_with_rank.each do |ingredient_ranked| %>
+          <div class="sm:ml-2" id="rank-p-<%= ingredient_ranked[:rank_p] %>"><%= ingredient_ranked[:ingredient].ingredient_name(@locale) %></div>
         <% end %>
       </div>
     </div>
