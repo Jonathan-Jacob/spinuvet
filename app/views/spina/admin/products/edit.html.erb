@@ -1,38 +1,39 @@
-<%= render Spina::UserInterface::HeaderComponent.new do |header| %>
-  <% header.actions do %>
-    <div class="flex gap-3 flex-wrap">
-      <%= link_to t('spina.products.back'), spina.admin_products_path, class: "btn btn-gray" %>
-      <%= button_tag type: :submit, form: @product.object_id, class: 'btn btn-primary self-start z-10', data: {controller: "button", action: "button#loading", loading_message: t('spina.ui.saving')} do %>
-        <%= heroicon('check', style: :mini, class: 'w-5 h-5 -ml-1 mr-1') %>
-        <%=t 'spina.products.save' %>
-      <% end %>
-    </div>
-  <% end %>
-<% end %>
-<div class="px-8">
-  <%= form_with model: @product, url: spina.admin_product_path(@product), id: @product.object_id do |f| %>
-    <% locales = ([@locale] + Spina.locales.reject{|l| l.to_s.downcase == @locale.to_s.downcase}) %>
-    <% locales.each do |locale| %>
-      <h2 class="pt-6 pb-4 block leading-5 font-medium text-gray-700"><%= "#{t("spina.languages.#{locale}")}#{": #{@product.json_attributes["#{locale}_content"]["name"]}" if @product.json_attributes["#{locale}_content"].present?}" %></h2>
-      <%= f.hidden_field "#{locale}_name".to_sym, value: @product.json_attributes["#{locale}_content"].present? ? @product.json_attributes["#{locale}_content"]["name"] : "" %>
-      <div class="my-6" data-controller="unique-id" data-unique-id="<%= f.object.object_id %>">
-        <label class="block text-sm leading-5 font-medium text-gray-700"><%= t('spina.products.description') %></label>
-        <div class="mt-1 relative">
-          <% if @product.json_attributes["#{locale}_content"].present? %>
-            <%= f.hidden_field "#{locale}_description".to_sym, value: @product.json_attributes["#{locale}_content"]["description"], id: "#{f.object.object_id}_input" %>
-          <% else %>
-            <%= f.hidden_field "#{locale}_description".to_sym, id: "#{f.object.object_id}_input" %>
-          <% end %>
-          <div class="relative form-textarea p-4 pt-0 shadow-sm max-w-5xl" data-controller="trix" id="<%= "insert_#{f.object.object_id}_trix-toolbar" %>" data-action="media-picker:done->trix#insertAttachment">
-            <%= render Spina::Forms::TrixToolbarComponent.new("#{f.object.object_id}_trix-toolbar") %>
-
-            <trix-editor class="min-h-4 prose prose-sm focus:outline-none max-w-3xl xl:border-r border-dashed border-gray-200 pr-3" toolbar="<%= f.object.object_id %>_trix-toolbar" input="<%= f.object.object_id %>_input" data-trix-target="editor" data-action="trix-file-accept->trix#preventDefault"></trix-editor>
-          </div>
-        </div>
+<div data-controller="drag">
+  <%= render Spina::UserInterface::HeaderComponent.new do |header| %>
+    <% header.actions do %>
+      <div class="flex gap-3 flex-wrap">
+        <%= link_to t('spina.products.back'), spina.admin_products_path, class: "btn btn-gray" %>
+        <%= button_tag type: :submit, form: @product.object_id, class: 'btn btn-primary self-start z-10', data: {controller: "button", action: "button#loading", loading_message: t('spina.ui.saving')} do %>
+          <%= heroicon('check', style: :mini, class: 'w-5 h-5 -ml-1 mr-1') %>
+          <%=t 'spina.products.save' %>
+        <% end %>
       </div>
-      <% unless locales.last == locale %>
-        <hr>
-      <% end %>
     <% end %>
   <% end %>
+  <div class="px-8">
+    <%= form_with model: @product, url: spina.admin_product_path(@product), id: @product.object_id do |f| %>
+      <% locales = ([@locale] + Spina.locales.reject{|l| l.to_s.downcase == @locale.to_s.downcase}) %>
+      <% locales.each do |locale| %>
+        <h2 class="pt-6 pb-4 block leading-5 font-medium text-gray-700"><%= "#{t("spina.languages.#{locale}")}#{": #{@product.json_attributes["#{locale}_content"]["name"]}" if @product.json_attributes["#{locale}_content"].present?}" %></h2>
+        <%= f.hidden_field "#{locale}_name".to_sym, value: @product.json_attributes["#{locale}_content"].present? ? @product.json_attributes["#{locale}_content"]["name"] : "" %>
+        <div class="my-6" data-controller="unique-id" data-unique-id="<%= f.object.object_id %>">
+          <label class="block text-sm leading-5 font-medium text-gray-700"><%= t('spina.products.description') %></label>
+          <div class="mt-1 relative">
+            <% if @product.json_attributes["#{locale}_content"].present? %>
+              <%= f.hidden_field "#{locale}_description".to_sym, value: @product.json_attributes["#{locale}_content"]["description"], id: "#{f.object.object_id}_input" %>
+            <% else %>
+              <%= f.hidden_field "#{locale}_description".to_sym, id: "#{f.object.object_id}_input" %>
+            <% end %>
+            <div class="relative form-textarea p-4 pt-0 shadow-sm max-w-5xl" data-controller="trix" id="<%= "insert_#{f.object.object_id}_trix-toolbar" %>" data-action="media-picker:done->trix#insertAttachment">
+              <%= render Spina::Forms::TrixToolbarComponent.new("#{f.object.object_id}_trix-toolbar") %>
+
+              <trix-editor class="min-h-4 prose prose-sm focus:outline-none max-w-3xl xl:border-r border-dashed border-gray-200 pr-3" toolbar="<%= f.object.object_id %>_trix-toolbar" input="<%= f.object.object_id %>_input" data-trix-target="editor" data-action="trix-file-accept->trix#preventDefault"></trix-editor>
+            </div>
+          </div>
+        </div>
+        <hr>
+      <% end %>
+      <turbo-frame id="product-ingredients" src=<%= spina.admin_product_ingredients_path %>></turbo-frame>
+    <% end %>
+  </div>
 </div>
