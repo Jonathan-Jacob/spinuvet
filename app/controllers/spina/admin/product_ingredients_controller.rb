@@ -7,9 +7,8 @@ module Spina::Admin
     before_action :set_ingredients
 
     def index
-      # @selected_ingredients = @ingredients.where()
-      # Spina::ProductIngredient.create(product: @product, ingredient: Spina::Ingredient.first)
-      raise
+      @selected_ingredients = @product.ingredients
+      @unselected_ingredients = @ingredients.where.not(id:(@selected_ingredients.map(&:id)))
     end
 
     private

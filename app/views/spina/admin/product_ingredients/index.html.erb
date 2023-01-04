@@ -1,3 +1,14 @@
-<turbo-frame id="product-ingredients">
-  <div class="text-2xl">HALLO</div>
+<turbo-frame id="product-ingredients" data-controller="drag">
+  <div class="flex gap-2">
+    <div class="unselected w-1/2">
+      <% @unselected_ingredients.each do |ingredient| %>
+        <div><%= ingredient.ingredient_name %></div>
+      <% end %>
+    </div>
+    <div class="selected w-1/2">
+      <% @selected_ingredients.each do |ingredient| %>
+        <div><%= ingredient.ingredient_name %></div>
+      <% end %>
+    </div>
+  </div>
 </turbo-frame>
