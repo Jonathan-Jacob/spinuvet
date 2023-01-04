@@ -1,7 +1,7 @@
 module Spina
   class Ingredient < ApplicationRecord
-    has_many :spina_product_ingredients
-    has_many :spina_products, through: :spina_product_ingredients
+    has_many :product_ingredients
+    has_many :products, through: :spina_product_ingredients
 
     def ingredient_name(locale)
       return self.json_attributes["#{locale}_content"]["name"] if self.json_attributes["#{locale}_content"].present? && self.json_attributes["#{locale}_content"]["name"].present?

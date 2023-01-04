@@ -7,7 +7,8 @@ module Spina::Admin
     before_action :set_ingredients
 
     def index
-      Spina::ProductIngredient.create(product: @product, ingredient: Spina::Ingredient.first)
+      # @selected_ingredients = @ingredients.where()
+      # Spina::ProductIngredient.create(product: @product, ingredient: Spina::Ingredient.first)
       raise
     end
 
