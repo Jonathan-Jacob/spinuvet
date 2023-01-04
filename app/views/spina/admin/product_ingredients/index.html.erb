@@ -4,12 +4,12 @@
     <div class="flex flex-wrap">
       <div class="pb-4 unselected w-full sm:w-1/2">
         <% @ingredients_az_with_rank.each do |ingredient| %>
-          <div class="sm:mr-2" id="rank-az-<%= ingredient.rank_az %>"><%= ingredient.ingredient_name(@locale) %></div>
+          <div class="sm:mr-2" id="rank-az-<%= ingredient[:rank_az] %>"><%= ingredient.ingredient_name(@locale) %></div>
         <% end %>
       </div>
       <div class="pb-4 selected w-full sm:w-1/2">
         <% @selected_ingredients_with_rank.each do |ingredient| %>
-          <div class="sm:ml-2" id="rank-p-<%= ingredient.rank_p %>"><%= ingredient.ingredient_name(@locale) %></div>
+          <div class="sm:ml-2" id="rank-p-<%= ingredient[:rank_p] %>"><%= ingredient.ingredient_name(@locale) %></div>
         <% end %>
       </div>
     </div>
