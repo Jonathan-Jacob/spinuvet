@@ -4,16 +4,27 @@
     <div class="flex flex-wrap">
       <div class="pb-4 unselected w-full sm:w-1/2">
         <% @ingredients_az_with_rank.each do |ingredient_ranked| %>
-          <% if @product.ingredients.include?(ingredient_ranked[:ingredient]) %>
-            <div class="sm:mr-2 text-red-600" id="rank-az-<%= ingredient_ranked[:rank_az] %>"><%= ingredient_ranked[:ingredient].ingredient_name(@locale) %></div>
-          <% else %>
-            <div class="sm:mr-2" id="rank-az-<%= ingredient_ranked[:rank_az] %>"><%= ingredient_ranked[:ingredient].ingredient_name(@locale) %></div>
-          <% end %>
+          <div class="flex justify-between items-center">
+            <div class="sm:mr-2 <%= "text-red-600" if @product.ingredients.include?(ingredient_ranked[:ingredient]) %>" data-ingredient-id="<%= ingredient_ranked[:ingredient].id %>" data-rank-az="<%= ingredient_ranked[:rank_az] %>"><%= ingredient_ranked[:ingredient].ingredient_name(@locale) %></div>
+            <div class="flex items-center gap-2 <%= "hidden" if @product.ingredients.include?(ingredient_ranked[:ingredient]) %>">
+              <%= link_to spina.admin_ingredient_path(ingredient_ranked[:ingredient]), target: "_blank" do %>
+                <%= heroicon('document-magnifying-glass', style: :mini, class: 'w-5 h-5') %>
+              <% end %>
+              <%= button_tag(type: 'button') do %>
+                <%= heroicon('plus', style: :mini, class: 'w-5 h-5') %>
+              <% end %>
+            </div>
+          </div>
         <% end %>
       </div>
       <div class="pb-4 selected w-full sm:w-1/2">
         <% @selected_ingredients_with_rank.each do |ingredient_ranked| %>
-          <div class="sm:ml-2" id="rank-p-<%= ingredient_ranked[:rank_p] %>"><%= ingredient_ranked[:ingredient].ingredient_name(@locale) %></div>
+          <div class="flex justify-between items-center">
+            <div class="sm:ml-2" data-ingredient-id="<%= ingredient_ranked[:ingredient].id %>" data-rank-p="<%= ingredient_ranked[:rank_p] %>"><%= ingredient_ranked[:ingredient].ingredient_name(@locale) %></div>
+            <%= button_tag(type: 'button') do %>
+              <%= heroicon('x-mark', style: :mini, class: 'w-5 h-5') %>
+            <% end %>
+          <% end %>
         <% end %>
       </div>
     </div>
