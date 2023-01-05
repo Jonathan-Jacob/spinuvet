@@ -3,7 +3,7 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
 
   connect() {
-    console.log('drag-controller connected');
+    console.log('pi controller connected');
   }
 
 }
