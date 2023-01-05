@@ -6,4 +6,8 @@ export default class extends Controller {
     console.log('pi controller connected');
   }
 
+  add(e) {
+    console.log(e.target);
+  }
+
 }

@@ -1,24 +1,25 @@
 <turbo-frame id="product-ingredients">
-  <div class="w-full max-w-xl relative z-10" data-controller="product-ingredients">
+  <div class="w-full max-w-xl relative z-10">
+
     <h2 class="pt-6 pb-4 block leading-5 font-medium text-gray-700"><%= t('spina.ingredients.ingredients') %></h2>
     <div class="flex flex-wrap">
       <div class="mt-6 pb-4 unselected w-full sm:w-1/2">
         <h3 class="text-sm sm:mr-2"><%= t('spina.ingredients.available') %></h3>
         <% @ingredients_az_with_rank.each do |ingredient_ranked| %>
           <div class="flex justify-between items-center sm:mr-2 p-2 pl-4 my-2 bg-white rounded border border-gray-300 shadow-sm">
-            <div class="<%= "text-gray-400" if @product.ingredients.include?(ingredient_ranked[:ingredient]) %>" data-ingredient-id="<%= ingredient_ranked[:ingredient].id %> overflow-hidden" data-rank-az="<%= ingredient_ranked[:rank_az] %>"><%= ingredient_ranked[:ingredient].ingredient_name(@locale) %></div>
+            <div class="<%= "text-gray-400" if @product.ingredients.include?(ingredient_ranked[:ingredient]) %> overflow-hidden" data-rank-az="<%= ingredient_ranked[:rank_az] %>"><%= ingredient_ranked[:ingredient].ingredient_name(@locale) %></div>
             <div class="flex items-center gap-1 <%= "hidden" if @product.ingredients.include?(ingredient_ranked[:ingredient]) %>">
               <%= link_to spina.admin_ingredient_path(ingredient_ranked[:ingredient]), target: "_blank" do %>
                 <%= heroicon('document-magnifying-glass', style: :mini, class: 'w-5 h-5') %>
               <% end %>
-              <%= button_tag(type: 'button') do %>
+              <%= button_tag(type: 'button', data: {action: 'product-ingredients#add', ingredient_id: ingredient_ranked[:ingredient].id}) do %>
                 <%= heroicon('plus', style: :mini, class: 'w-5 h-5') %>
               <% end %>
             </div>
           </div>
         <% end %>
       </div>
-      <div class="mt-6 pb-4 selected w-full sm:w-1/2">
+      <div class="mt-6 pb-4 selected w-full sm:w-1/2" data-product-ingredients-target="selectedContainer">
         <h3 class="text-sm sm:ml-2"><%= t('spina.ingredients.selected') %></h3>
         <% @selected_ingredients_with_rank.each do |ingredient_ranked| %>
           <div class="flex justify-between items-center sm:ml-2 p-2 my-2 bg-white rounded border border-gray-300 shadow-sn">

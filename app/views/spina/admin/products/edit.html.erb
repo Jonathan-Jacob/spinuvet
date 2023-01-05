@@ -32,6 +32,8 @@
       </div>
       <hr>
     <% end %>
-    <turbo-frame id="product-ingredients" src=<%= spina.admin_product_product_ingredients_path(@product) %>></turbo-frame>
+    <div data-controller="product-ingredients">
+      <turbo-frame id="product-ingredients" src=<%= spina.admin_product_product_ingredients_path(@product) %>></turbo-frame>
+    </div>
   <% end %>
 </div>
