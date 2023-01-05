@@ -2,7 +2,7 @@
   <div class="w-full max-w-xl">
     <h2 class="pt-6 pb-4 block leading-5 font-medium text-gray-700"><%= t('spina.ingredients.ingredients') %></h2>
     <div class="flex flex-wrap">
-      <div class="pb-4 unselected w-full sm:w-1/2">
+      <div class="mt-6 pb-4 unselected w-full sm:w-1/2">
         <h3 class="text-sm"><%= t('spina.ingredients.available') %></h3>
         <% @ingredients_az_with_rank.each do |ingredient_ranked| %>
           <div class="flex justify-between items-center sm:mr-2 p-2 my-2 bg-white rounded border border-gray-300 shadow-sm">
@@ -18,7 +18,7 @@
           </div>
         <% end %>
       </div>
-      <div class="pb-4 selected w-full sm:w-1/2">
+      <div class="mt-6 pb-4 selected w-full sm:w-1/2">
         <h3 class="text-sm"><%= t('spina.ingredients.selected') %></h3>
         <% @selected_ingredients_with_rank.each do |ingredient_ranked| %>
           <div class="flex justify-between items-center sm:ml-2 p-2 my-2 bg-white rounded border border-gray-300 shadow-sn">
