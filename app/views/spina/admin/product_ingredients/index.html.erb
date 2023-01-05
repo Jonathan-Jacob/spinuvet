@@ -3,16 +3,6 @@
     <h2 class="pt-6 pb-4 block leading-5 font-medium text-gray-700"><%= t('spina.ingredients.ingredients') %></h2>
     <div class="flex flex-wrap">
 
-      <div class="pb-4 selected w-full sm:w-1/2">
-        <% @selected_ingredients_with_rank.each do |ingredient_ranked| %>
-          <div class="flex justify-between items-center sm:ml-2">
-            <div data-ingredient-id="<%= ingredient_ranked[:ingredient].id %>" data-rank-p="<%= ingredient_ranked[:rank_p] %>"><%= ingredient_ranked[:ingredient].ingredient_name(@locale) %></div>
-            <%="<%= button_tag(type: 'button') do %>
-              <%= heroicon('x-mark', style: :mini, class: 'w-5 h-5') %>
-            <% end %>"%>
-          <% end %>
-        <% end %>
-      </div>
     </div>
   </div>
 </turbo-frame>
