@@ -173,6 +173,7 @@ en:
       upload: Upload images
       upload_image: Upload image
     ingredients:
+      available: Available
       back: Back
       couldnt_be_deleted: Ingredient couldn't be deleted
       couldnt_be_saved: Ingredient couldn't be saved
@@ -189,6 +190,7 @@ en:
       old_ingredients: Existing ingredients
       save: Save ingredient
       saved: Ingredient saved
+      selected: Selected
       sort: Sort
       sort_19: Sort from old to new
       sort_91: Sort from new to old

@@ -179,6 +179,7 @@ de:
       upload: Bilder hochladen
       upload_image: Bild hochladen
     ingredients:
+      available: Verfügbar
       back: Zurück
       couldnt_be_deleted: Inhaltsstoff konnte nicht gelöscht werden
       couldnt_be_saved: Inhaltsstoff konnte nicht gespeichert werden
@@ -195,6 +196,7 @@ de:
       old_ingredients: Bestehende Inhaltsstoffe
       save: Inhaltsstoff speichern
       saved: Inhaltsstoff gespeichert
+      selected: Ausgewählt
       sort: Sortieren
       sort_19: Von alt bis neu sortieren
       sort_91: Von neu bis alt sortieren
