@@ -4,7 +4,7 @@
     <div class="flex flex-wrap">
       <div class="pb-4 unselected w-full sm:w-1/2">
         <% @ingredients_az_with_rank.each do |ingredient_ranked| %>
-          <div class="flex justify-between items-center sm:mr-2 p-2 my--2 bg-white rounded">
+          <div class="flex justify-between items-center sm:mr-2 p-2 my-2 bg-white rounded">
             <div class="<%= "text-gray-500" if @product.ingredients.include?(ingredient_ranked[:ingredient]) %>" data-ingredient-id="<%= ingredient_ranked[:ingredient].id %>" data-rank-az="<%= ingredient_ranked[:rank_az] %>"><%= ingredient_ranked[:ingredient].ingredient_name(@locale) %></div>
             <div class="flex items-center gap-2 <%= "hidden" if @product.ingredients.include?(ingredient_ranked[:ingredient]) %>">
               <%= link_to spina.admin_ingredient_path(ingredient_ranked[:ingredient]), target: "_blank" do %>
