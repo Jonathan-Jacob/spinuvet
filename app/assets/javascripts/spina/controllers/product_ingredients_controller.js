@@ -7,7 +7,7 @@ export default class extends Controller {
   }
 
   add(e) {
-    console.log(e.target);
+    console.log(e.currentTarget);
   }
 
 }
