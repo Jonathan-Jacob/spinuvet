@@ -11,9 +11,9 @@
         <% @selected_ingredients_with_rank.each do |ingredient_ranked| %>
           <div class="flex justify-between items-center sm:ml-2">
             <div data-ingredient-id="<%= ingredient_ranked[:ingredient].id %>" data-rank-p="<%= ingredient_ranked[:rank_p] %>"><%= ingredient_ranked[:ingredient].ingredient_name(@locale) %></div>
-            <%="<%= button_tag(type: 'button') do %>
+            <%= button_tag(type: 'button') do %>
               <%= heroicon('x-mark', style: :mini, class: 'w-5 h-5') %>
-            <% end %>"%>
+            <% end %>
           <% end %>
         <% end %>
       </div>
