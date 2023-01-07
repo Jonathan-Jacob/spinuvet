@@ -23,7 +23,7 @@
         <% @selected_ingredients.each do |ingredient| %>
           <div class="flex justify-between items-center sm:ml-2 p-2 my-2 bg-white rounded border border-gray-300 shadow-sn">
             <div class="flex items-center gap-2 overflow-hidden">
-              <%= button_tag(type: 'button', data: {action: 'product-ingredients#move'}, class: 'hover:cursor-grab') do %>
+              <%= button_tag(type: 'button', data: {action: 'product-ingredients#move'}, class: 'cursor-grab') do %>
                 <%= heroicon('chevron-up-down', style: :mini, class: 'w-5 h-5') %>
               <% end %>
               <div data-ingredient-id="<%= ingredient.id %>"><%= ingredient.ingredient_name(@locale) %></div>
