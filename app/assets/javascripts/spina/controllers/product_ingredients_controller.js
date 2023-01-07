@@ -33,7 +33,7 @@ export default class extends Controller {
     this.selectedContainerTarget.appendChild(tempNewNode.firstChild);
     const tempOldNode = document.createElement('div');
     tempOldNode.innerHTML = `<div class="flex justify-between items-center sm:mr-2 p-2 pl-4 my-2 bg-white rounded border border-gray-300 shadow-sm">
-      <div class="text-gray-400 overflow-hidden">${event.currentTarget.dataset.ingredientId}</div>
+      <div class="text-gray-400 overflow-hidden">${event.currentTarget.dataset.ingredientName}</div>
       <div class="flex items-center gap-1 hidden">
         <a target="_blank" href="/admin/ingredients/${event.currentTarget.dataset.ingredientId}">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="w-5 h-5">
