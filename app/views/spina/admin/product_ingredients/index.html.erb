@@ -2,7 +2,7 @@
   <div class="w-full max-w-xl relative z-10 text-gray-700">
     <h2 class="pt-6 pb-4 block leading-5 font-medium"><%= t('spina.ingredients.ingredients') %></h2>
     <div class="flex flex-wrap">
-      <div class="mt-6 pb-4 unselected w-full sm:w-1/2">
+      <div class="mt-6 pb-4 unselected w-full sm:w-1/2" data-product-ingredients-target="allIngredientsContainer">
         <h3 class="text-sm sm:mr-2"><%= t('spina.ingredients.available') %></h3>
         <% @ingredients_az.each do |ingredient| %>
           <div class="flex justify-between items-center sm:mr-2 p-2 pl-4 my-2 bg-white rounded border border-gray-300 shadow-sm">
@@ -22,8 +22,8 @@
         <h3 class="text-sm sm:ml-2"><%= t('spina.ingredients.selected') %></h3>
         <% @selected_ingredients.each do |ingredient| %>
           <div class="flex justify-between items-center sm:ml-2 p-2 my-2 bg-white rounded border border-gray-300 shadow-sn">
-            <div class="flex items-center gap-2 overflow-hidden cursor-grab">
-              <%= button_tag(type: 'button', data: {action: 'product-ingredients#move'}) do %>
+            <div class="flex items-center gap-2 overflow-hidden">
+              <%= button_tag(type: 'button', data: {action: 'product-ingredients#move'}, class: 'cursor-grab') do %>
                 <%= heroicon('chevron-up-down', style: :mini, class: 'w-5 h-5') %>
               <% end %>
               <div data-ingredient-id="<%= ingredient.id %>"><%= ingredient.ingredient_name(@locale) %></div>
@@ -32,7 +32,7 @@
               <%= link_to spina.admin_ingredient_path(ingredient), target: "_blank" do %>
                   <%= heroicon('document-magnifying-glass', style: :mini, class: 'w-5 h-5') %>
                 <% end %>
-              <%= button_tag(type: 'button') do %>
+              <%= button_tag(type: 'button', data: {action: 'product-ingredients#add', ingredient_id: ingredient.id, ingredient_name: ingredient.ingredient_name(@locale)}) do %>
                 <%= heroicon('x-mark', style: :mini, class: 'w-5 h-5') %>
               <% end %>
             </div>
