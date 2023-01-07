@@ -29,7 +29,7 @@ export default class extends Controller {
           </svg>
         </button>
       </div>
-    </div>`
+    </div>`;
     this.selectedContainerTarget.appendChild(tempNewNode.firstChild);
     const tempOldNode = document.createElement('div');
     tempOldNode.innerHTML = `<div class="flex justify-between items-center sm:mr-2 p-2 pl-4 my-2 bg-white rounded border border-gray-300 shadow-sm">
@@ -48,6 +48,7 @@ export default class extends Controller {
         </button>
       </div>
     </div>`;
+    console.log(tempOldNode);
     event.currentTarget.parentNode.parentNode.innerHTML = "";
     event.currentTarget.parentNode.parentNode.appendChild(tempOldNode.firstChild);
   }
