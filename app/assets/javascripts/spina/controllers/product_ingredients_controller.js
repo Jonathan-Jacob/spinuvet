@@ -48,7 +48,8 @@ export default class extends Controller {
         </button>
       </div>
     </div>`;
-    event.currentTarget.parentNode.parentNode.innerHTML = tempOldNode.firstChild;
+    event.currentTarget.parentNode.parentNode.innerHTML = "";
+    event.currentTarget.parentNode.parentNode.appendChild(tempOldNode.firstChild);
   }
 
 }
