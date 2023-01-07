@@ -48,12 +48,31 @@ export default class extends Controller {
         </button>
       </div>
     </div>`;
-    event.currentTarget.parentNode.parentNode.parentNode.replaceChild(tempOldNode.firstChild, event.currentTarget.parentNode.parentNode);
+    const ingredientNode = event.currentTarget.parentNode.parentNode;
+    ingredientNode.parentNode.replaceChild(tempOldNode.firstChild, ingredientNode);
   }
 
   remove(event) {
     event.currentTarget.parentNode.parentNode.remove();
-
+    const tempNode = document.createElement('div');
+    tempNode.innerHTML = `<div class="flex justify-between items-center sm:mr-2 p-2 pl-4 my-2 bg-white rounded border border-gray-300 shadow-sm">
+      <div class=" overflow-hidden">${event.currentTarget.dataset.ingredientName}</div>
+      <div class="flex items-center gap-1 ">
+        <a target="_blank" href="/admin/ingredients/${event.currentTarget.dataset.ingredientId}">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="w-5 h-5">
+            <path d="M8 10a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0z"></path>
+            <path fill-rule="evenodd" d="M4.5 2A1.5 1.5 0 003 3.5v13A1.5 1.5 0 004.5 18h11a1.5 1.5 0 001.5-1.5V7.621a1.5 1.5 0 00-.44-1.06l-4.12-4.122A1.5 1.5 0 0011.378 2H4.5zm5 5a3 3 0 101.524 5.585l1.196 1.195a.75.75 0 101.06-1.06l-1.195-1.196A3 3 0 009.5 7z" clip-rule="evenodd"></path>
+          </svg>
+          </a>
+        <button name="button" type="button" data-action="product-ingredients#add" data-ingredient-id="${event.currentTarget.dataset.ingredientId}" data-ingredient-name="${event.currentTarget.dataset.ingredientName}">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="w-5 h-5">
+            <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z"></path>
+          </svg>
+        </button>
+      </div>
+    </div>`
+    const ingredientNode = this.allIngredientsContainerTarget.querySelector(`[data-ingredient-id=${event.currentTarget.dataset.ingredientId}]`).parentNode.parentNode;
+    ingredientNode.parentNode.replaceChild(tempNode.firstChild, ingredientNode);
   }
 
 }
