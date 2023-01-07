@@ -8,7 +8,7 @@ module Spina::Admin
 
     def index
       @ingredients_az = @ingredients.sort_by{|i| i.ingredient_name(@locale)}
-      @selected_ingredients = @product.product_ingredients.order(:rank)
+      @selected_ingredients = @product.product_ingredients.order(:rank).map(&:ingredient)
     end
 
     private
