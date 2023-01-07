@@ -24,7 +24,7 @@
           <div class="flex justify-between items-center sm:ml-2 p-2 my-2 bg-white rounded border border-gray-300 shadow-sn">
             <div class="flex items-center gap-2 overflow-hidden">
               <%= button_tag(type: 'button') do %>
-                <%= heroicon('chevron-up-down', style: :mini, class: 'w-5 h-5') %>
+                <%= heroicon('chevron-up-down', style: :mini, class: 'w-5 h-5 cursor-grab') %>
               <% end %>
               <div data-ingredient-id="<%= ingredient_ranked[:ingredient].id %>" data-rank-p="<%= ingredient_ranked[:rank_p] %>"><%= ingredient_ranked[:ingredient].ingredient_name(@locale) %></div>
             </div>
