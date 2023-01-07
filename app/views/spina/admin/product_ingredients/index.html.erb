@@ -32,7 +32,7 @@
               <%= link_to spina.admin_ingredient_path(ingredient), target: "_blank" do %>
                   <%= heroicon('document-magnifying-glass', style: :mini, class: 'w-5 h-5') %>
                 <% end %>
-              <%= button_tag(type: 'button', data: {action: 'product-ingredients#add', ingredient_id: ingredient.id, ingredient_name: ingredient.ingredient_name(@locale)}) do %>
+              <%= button_tag(type: 'button', data: {action: 'product-ingredients#remove', ingredient_id: ingredient.id, ingredient_name: ingredient.ingredient_name(@locale)}) do %>
                 <%= heroicon('x-mark', style: :mini, class: 'w-5 h-5') %>
               <% end %>
             </div>
