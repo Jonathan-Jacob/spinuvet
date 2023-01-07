@@ -71,7 +71,7 @@ export default class extends Controller {
         </button>
       </div>
     </div>`
-    const ingredientNode = this.allIngredientsContainerTarget.querySelector(`[data-ingredient-id=${event.currentTarget.dataset.ingredientId}]`).parentNode.parentNode;
+    const ingredientNode = this.allIngredientsContainerTarget.querySelector(`[data-ingredient-id='${event.currentTarget.dataset.ingredientId}']`).parentNode.parentNode;
     ingredientNode.parentNode.replaceChild(tempNode.firstChild, ingredientNode);
   }
 
