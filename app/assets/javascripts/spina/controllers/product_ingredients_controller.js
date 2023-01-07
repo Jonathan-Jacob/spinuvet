@@ -11,7 +11,7 @@ export default class extends Controller {
 
   add(e) {
     console.log(e.currentTarget);
-    selectedContainerTarget.appendChild(e.currentTarget);
+    this.selectedContainerTarget.appendChild(e.currentTarget);
   }
 
 }
