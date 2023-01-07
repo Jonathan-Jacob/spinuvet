@@ -49,8 +49,9 @@ export default class extends Controller {
       </div>
     </div>`;
     console.log(tempOldNode);
-    event.currentTarget.parentNode.parentNode.innerHTML = "";
-    event.currentTarget.parentNode.parentNode.appendChild(tempOldNode.firstChild);
+    const ingredientNode = event.currentTarget.parentNode.parentNode;
+    ingredientNode.innerHTML = "";
+    ingredientNode.appendChild(tempOldNode.firstChild);
   }
 
 }
