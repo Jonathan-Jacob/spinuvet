@@ -75,13 +75,13 @@ export default class extends Controller {
 
   toggleHeaderButtons(event) {
     if (event.currentTarget.classList.contains('trix-active')) {
-      event.parentNode.children.forEach(button => {
+      event.currentTarget.parentNode.children.forEach(button => {
         if (button !== event.currentTarget) {
           button.disabled = true;
         }
       })
     } else {
-      event.parentNode.children.forEach(button => {
+      event.currentTarget.parentNode.children.forEach(button => {
         if (button !== event.currentTarget) {
           button.disabled = false;
         }
