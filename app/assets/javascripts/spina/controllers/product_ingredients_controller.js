@@ -67,10 +67,10 @@ export default class extends Controller {
         </button>
       </div>
     </div>`;
-    tempNewNode.addEventListener('dragstart', () => {
+    tempNewNode.firstChild.addEventListener('dragstart', () => {
       tempNewNode.classList.add('opacity-50', 'dragging');
     });
-    tempNewNode.addEventListener('dragend', () => {
+    tempNewNode.firstChild.addEventListener('dragend', () => {
       tempNewNode.classList.remove('opacity-50', 'dragging');
     });
     this.selectedContainerTarget.appendChild(tempNewNode.firstChild);
