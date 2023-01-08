@@ -23,7 +23,6 @@ export default class extends Controller {
       })
 
       this.selectedContainerTarget.addEventListener('dragover', event => {
-        console.log('here');
         event.preventDefault();
         const afterElement = getDragAfterElement(this.selectedContainerTarget, event.clientY);
         const draggable = document.querySelector('.dragging');
@@ -35,7 +34,7 @@ export default class extends Controller {
       })
 
       const getDragAfterElement = (container, y) => {
-        const draggableElements = Array.from(container.querySelectorAll('.draggable:not(.dragging)'));
+        const draggableElements = Array.from(container.querySelectorAll('[draggable="true"]:not(.dragging)'));
         return draggableElements.reduce((closest, child) => {
           const box = child.getBoundingClientRect();
           const offset = y - box.top - box.height / 2;
