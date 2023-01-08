@@ -18,7 +18,7 @@ export default class extends Controller {
         this.imageFieldsTarget.classList.add("hidden")
       }
     }.bind(this));
-
+    this.pizzaTarget.firstChild.classList.add('animate-spin');
     setTimeout(() => this.pizzaTarget.remove(), 1000);
   }
 
