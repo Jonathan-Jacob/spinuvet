@@ -19,6 +19,7 @@ export default class extends Controller {
       })
       this.selectedContainerTarget.addEventListener('dragover', event => {
         event.preventDefault();
+        event.dataTransfer.dropEffect = "move";
         const afterElement = getDragAfterElement(this.selectedContainerTarget, event.clientY);
         const draggable = document.querySelector('.dragging');
         if (afterElement == null) {
