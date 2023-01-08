@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
   static get targets() {
-    return [ "editor", "imageFields", "altField" ]
+    return [ "editor", "imageFields", "altField", "pizza" ]
   }
 
   connect() {
@@ -17,7 +17,9 @@ export default class extends Controller {
       } else {
         this.imageFieldsTarget.classList.add("hidden")
       }
-    }.bind(this))
+    }.bind(this));
+
+    this.pizzaTarget.remove();
   }
 
   insertEmbeddable(html) {
