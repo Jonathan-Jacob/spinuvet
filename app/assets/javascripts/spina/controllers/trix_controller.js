@@ -19,7 +19,8 @@ export default class extends Controller {
       }
     }.bind(this));
     if (!document.documentElement.hasAttribute('data-turbolinks-preview')) {
-      this.loadTarget.remove();
+      this.loadTarget.classList.add('opacity-0', 'pointer-events-none')
+      setTimeout(() => this.loadTarget.remove(), 500);
     }
   }
 
