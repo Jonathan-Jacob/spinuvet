@@ -35,7 +35,7 @@
         <hr>
       <% end %>
       <turbo-frame id="product-ingredients" src=<%= spina.admin_product_product_ingredients_path(@product) %>></turbo-frame>
-      <%= f.hidden_field :product_ingredient_string, data-product-ingredients-target="form" %>
+      <%= f.hidden_field :product_ingredient_string, data: { product_ingredients_target: "form" } %>
     <% end %>
   </div>
 </div>
