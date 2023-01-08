@@ -75,18 +75,22 @@ export default class extends Controller {
 
   toggleHeaderButtons(event) {
     event.preventDefault();
+    console.log(event.currentTarget);
     if (event.currentTarget.classList.contains('trix-active')) {
-      event.currentTarget.classList.remove('trix-active');
       Array.from(event.currentTarget.parentNode.children).forEach(button => {
-        button.disabled = false;
-      });
-    } else if (event.currentTarget.disabled != true) {
-      event.currentTarget.classList.add('trix-active');
-      Array.from(event.currentTarget.parentNode.children).forEach(button => {
-        if (button != event.currentTarget) {
+        if (button !== event.currentTarget) {
           button.disabled = true;
         }
-      });
+      })
+    } else if (event.currentTarget.disabled != true) {
+      console.log(event.currentTarget);
+      Array.from(event.currentTarget.parentNode.children).forEach(button => {
+        if (button !== event.currentTarget) {
+          button.disabled = false;
+        }
+      })
+    } else {
+      console.log('disabled');
     }
   }
 
