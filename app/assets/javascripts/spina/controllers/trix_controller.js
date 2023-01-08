@@ -80,7 +80,7 @@ export default class extends Controller {
           button.disabled = true;
         }
       })
-    } else {
+    } else if (!event.currentTarget.disabled) {
       Array.from(event.currentTarget.parentNode.children).forEach(button => {
         if (button !== event.currentTarget) {
           button.disabled = false;
