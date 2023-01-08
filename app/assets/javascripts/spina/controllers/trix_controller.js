@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
   static get targets() {
-    return [ "editor", "imageFields", "altField", "pizza" ]
+    return [ "editor", "imageFields", "altField", "load" ]
   }
 
   connect() {
@@ -18,8 +18,8 @@ export default class extends Controller {
         this.imageFieldsTarget.classList.add("hidden")
       }
     }.bind(this));
-    this.pizzaTarget.querySelector('img').classList.add('animate-spin');
-    setTimeout(() => this.pizzaTarget.remove(), 1000);
+    this.loadTarget.querySelector('img').classList.add('animate-spin');
+    setTimeout(() => this.loadTarget.remove(), 1000);
   }
 
   insertEmbeddable(html) {

@@ -5,8 +5,8 @@
     <%= f.hidden_field :content, id: "#{f.object.object_id}_input" %>
 
     <div class="relative form-textarea p-4 pt-0 shadow-sm max-w-5xl" data-controller="trix" id="<%= "insert_#{f.object.object_id}_trix-toolbar" %>" data-action="media-picker:done->trix#insertAttachment">
-      <div class="absolute inset-0 bg-white flex justify-center items-center rounded-md z-20" data-trix-target="pizza">
-        <%= image_tag("spina/vegan-pizza.svg", class: "h-10 w-10") %>
+      <div class="absolute inset-0 bg-white flex justify-center items-center rounded-md z-20" data-trix-target="load">
+        <%= image_tag("spina/load.svg", class: "h-10 w-10") %>
       </div>
       <%= render Spina::Forms::TrixToolbarComponent.new("#{f.object.object_id}_trix-toolbar") %>
 
