@@ -81,11 +81,14 @@ export default class extends Controller {
         }
       })
     } else if (!event.currentTarget.disabled) {
+      console.log('not disabled');
       Array.from(event.currentTarget.parentNode.children).forEach(button => {
         if (button !== event.currentTarget) {
           button.disabled = false;
         }
       })
+    } else {
+      console.log('disabled');
     }
   }
 
