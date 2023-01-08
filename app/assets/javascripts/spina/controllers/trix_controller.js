@@ -19,8 +19,7 @@ export default class extends Controller {
       }
     }.bind(this));
     if (!document.documentElement.hasAttribute('data-turbolinks-preview')) {
-      this.loadTarget.querySelector('img').classList.add('animate-spin');
-      setTimeout(() => this.loadTarget.remove(), 1000);
+      this.loadTarget.remove();
     }
   }
 
