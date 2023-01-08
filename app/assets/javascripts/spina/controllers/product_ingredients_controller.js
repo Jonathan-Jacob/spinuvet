@@ -50,7 +50,7 @@ export default class extends Controller {
 
   add(event) {
     const tempNewNode = document.createElement('div');
-    tempNewNode.innerHTML = `<div class="flex justify-between items-center sm:ml-2 p-2 my-2 bg-white rounded border border-gray-300 shadow-sn">
+    tempNewNode.innerHTML = `<div class="flex justify-between items-center sm:ml-2 p-2 my-2 bg-white rounded border border-gray-300 shadow-sm" draggable="true">
       <div class="flex items-center gap-2 overflow-hidden">
         <button name="button" type="button" class="cursor-grab">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="w-5 h-5">
