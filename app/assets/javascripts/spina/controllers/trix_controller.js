@@ -19,7 +19,7 @@ export default class extends Controller {
       }
     }.bind(this));
 
-    setTimeout(this.pizzaTarget.remove(), 1000);
+    setTimeout(this.pizzaTarget.remove(), 2000);
   }
 
   insertEmbeddable(html) {
