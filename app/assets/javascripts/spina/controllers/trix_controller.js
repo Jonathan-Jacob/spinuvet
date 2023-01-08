@@ -19,7 +19,7 @@ export default class extends Controller {
       }
     }.bind(this));
     this.loadTarget.querySelector('img').classList.add('animate-spin');
-    setTimeout(() => this.loadTarget.remove(), 1000);
+    // setTimeout(() => this.loadTarget.remove(), 1000);
   }
 
   insertEmbeddable(html) {
