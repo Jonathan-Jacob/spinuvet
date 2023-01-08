@@ -18,8 +18,10 @@ export default class extends Controller {
         this.imageFieldsTarget.classList.add("hidden")
       }
     }.bind(this));
-    this.loadTarget.querySelector('img').classList.add('animate-spin');
-    // setTimeout(() => this.loadTarget.remove(), 1000);
+    if (!document.documentElement.hasAttribute('data-turbolinks-preview')) {
+      this.loadTarget.querySelector('img').classList.add('animate-spin');
+      setTimeout(() => this.loadTarget.remove(), 1000);
+    }
   }
 
   insertEmbeddable(html) {
