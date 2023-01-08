@@ -25,7 +25,7 @@
           <% end %>
           <div class="relative form-textarea p-4 pt-0 shadow-sm max-w-5xl" data-controller="trix" id="<%= "insert_#{f.object.object_id}_trix-toolbar" %>" data-action="media-picker:done->trix#insertAttachment">
             <div class="absolute inset-0 bg-white trix-spinner flex justify-center items-center" data-trix-target="pizza">
-              <%= image_tag("icons/vegan-pizza.svg", class: "h-10 w-10 animate-spin") %>
+              <%= image_tag("vegan-pizza.svg", class: "h-10 w-10 animate-spin") %>
             </div>
             <%= render Spina::Forms::TrixToolbarComponent.new("#{f.object.object_id}_trix-toolbar") %>
 
