@@ -12,13 +12,13 @@ export default class extends Controller {
 
       draggables.forEach(draggable => {
         draggable.addEventListener('dragstart', () => {
-          draggable.classList.add('cursor-grabbing', 'opacity-50');
+          draggable.classList.add('cursor-grabbing', 'opacity-50', 'dragging');
           draggable.classList.remove('cursor-grab');
         })
 
         draggable.addEventListener('dragend', () => {
           draggable.classList.add('cursor-grab');
-          draggable.classList.remove('cursor-grabbing', 'opacity-50');
+          draggable.classList.remove('cursor-grabbing', 'opacity-50', 'dragging');
         })
       })
 
