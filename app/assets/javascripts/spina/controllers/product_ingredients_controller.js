@@ -27,9 +27,9 @@ export default class extends Controller {
         const afterElement = getDragAfterElement(container, event.clientY);
         const draggable = document.querySelector('.dragging');
         if (afterElement == null) {
-          container.appendChild(draggable);
+          this.selectedContainerTarget.appendChild(draggable);
         } else {
-          container.insertBefore(draggable, afterElement);
+          this.selectedContainerTarget.insertBefore(draggable, afterElement);
         }
       })
 
