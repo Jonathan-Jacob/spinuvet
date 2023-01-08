@@ -7,7 +7,7 @@ export default class extends Controller {
 
   connect() {
     const turboFrame = document.getElementById('product-ingredients');
-    turboFrame.addEventListener('turbo:load', () => {
+    turboFrame.addEventListener('load', () => {
       const draggables = document.querySelectorAll('.draggable');
 
       draggables.forEach(draggable => {
