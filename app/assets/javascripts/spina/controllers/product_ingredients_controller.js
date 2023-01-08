@@ -5,6 +5,46 @@ export default class extends Controller {
     return ["allIngredientsContainer", "selectedContainer"];
   }
 
+  connect() {
+    const draggables = document.querySelectorAll('.draggable');
+
+    draggables.forEach(draggable => {
+      draggable.addEventListener('dragstart', () => {
+        draggable.classList.add('cursor-grabbing', 'opacity-50');
+        draggable.classList.remove('cursor-grab');
+      })
+
+      draggable.addEventListener('dragend', () => {
+        draggable.classList.add('cursor-grab');
+        draggable.classList.remove('cursor-grabbing', 'opacity-50');
+      })
+    })
+
+    this.selectedContainerTarget.addEventListener('dragover', event => {
+      event.preventDefault();
+      const afterElement = getDragAfterElement(container, event.clientY);
+      const draggable = document.querySelector('.dragging');
+      if (afterElement == null) {
+        container.appendChild(draggable);
+      } else {
+        container.insertBefore(draggable, afterElement);
+      }
+    })
+
+    const getDragAfterElement = (container, y) => {
+      const draggableElements = Array.from(container.querySelectorAll('.draggable:not(.dragging)'));
+      return draggableElements.reduce((closest, child) => {
+        const box = child.getBoundingClientRect();
+        const offset = y - box.top - box.height / 2;
+        if (offset < 0 && offset > closest.offset) {
+          return { offset: offset, element: child };
+        } else {
+          return closest;
+        }
+      }, { offset: Number.NEGATIVE_INFINITY }).element;
+    }
+  }
+
   add(event) {
     const tempNewNode = document.createElement('div');
     tempNewNode.innerHTML = `<div class="flex justify-between items-center sm:ml-2 p-2 my-2 bg-white rounded border border-gray-300 shadow-sn">
