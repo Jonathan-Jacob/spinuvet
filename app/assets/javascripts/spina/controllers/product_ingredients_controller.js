@@ -9,19 +9,14 @@ export default class extends Controller {
     const turboFrame = document.getElementById('product-ingredients');
     turboFrame.addEventListener('turbo:frame-load', () => {
       const draggables = document.querySelectorAll('[draggable="true"]');
-
       draggables.forEach(draggable => {
         draggable.addEventListener('dragstart', () => {
-          draggable.classList.add('cursor-grabbing', 'opacity-50', 'dragging');
-          draggable.classList.remove('cursor-grab');
-        })
-
+          draggable.classList.add('opacity-50', 'dragging');
+        });
         draggable.addEventListener('dragend', () => {
-          draggable.classList.add('cursor-grab');
-          draggable.classList.remove('cursor-grabbing', 'opacity-50', 'dragging');
-        })
+          draggable.classList.remove('opacity-50', 'dragging');
+        });
       })
-
       this.selectedContainerTarget.addEventListener('dragover', event => {
         event.preventDefault();
         const afterElement = getDragAfterElement(this.selectedContainerTarget, event.clientY);
@@ -32,7 +27,6 @@ export default class extends Controller {
           this.selectedContainerTarget.insertBefore(draggable, afterElement);
         }
       })
-
       const getDragAfterElement = (container, y) => {
         const draggableElements = Array.from(container.querySelectorAll('[draggable="true"]:not(.dragging)'));
         return draggableElements.reduce((closest, child) => {
@@ -73,6 +67,12 @@ export default class extends Controller {
         </button>
       </div>
     </div>`;
+    tempNewNode.addEventListener('dragstart', () => {
+      tempNewNode.classList.add('opacity-50', 'dragging');
+    });
+    tempNewNode.addEventListener('dragend', () => {
+      tempNewNode.classList.remove('opacity-50', 'dragging');
+    });
     this.selectedContainerTarget.appendChild(tempNewNode.firstChild);
     const tempOldNode = document.createElement('div');
     tempOldNode.innerHTML = `<div class="flex justify-between items-center sm:mr-2 p-2 pl-4 my-2 bg-white rounded border border-gray-300 shadow-sm">
