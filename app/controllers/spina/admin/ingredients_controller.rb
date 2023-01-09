@@ -34,8 +34,9 @@ module Spina::Admin
       Spina.locales.each do |locale|
         json_attributes.merge!("#{locale}_content" => {name: ingredient_params["#{locale}_name"], description: ingredient_params["#{locale}_description"]})
       end
-      @ingredient = Spina::Ingredient.new(json_attributes: json_attributes)
+      @ingredient = Spina::Ingredient.new(json_attributes: json_attributes, version_id: 1, version_counter: 1)
       if @ingredient.save
+        Spina::IngredientDraft.create(json_attributes: @ingredient.json_attributes, version_id: 1, ingredient_id: @ingredient.id)
         redirect_to admin_ingredients_path(locale: @locale), flash: {success: t("spina.layout.saved")}
       else
         flash.now[:error] = t("spina.layout.couldnt_be_saved")
@@ -47,11 +48,20 @@ module Spina::Admin
     end
 
     def update
-      json_attributes = {}
-      Spina.locales.each do |locale|
-        json_attributes.merge!("#{locale}_content" => {name: ingredient_params["#{locale}_name"], description: ingredient_params["#{locale}_description"]})
+      if ingredient_params[:active_ingredient_draft].present?
+        ingredient_draft = Spina::IngredientDraft.find(ingredient_params[:active_ingredient_draft])
+        @ingredient.json_attributes = ingredient_draft.json_attributes.dup
+        @ingredient.version_id = ingredient_draft.version_id
+      else
+        json_attributes = {}
+        Spina.locales.each do |locale|
+          json_attributes.merge!("#{locale}_content" => {name: ingredient_params["#{locale}_name"], description: ingredient_params["#{locale}_description"]})
+        end
+        @ingredient.json_attributes = json_attributes
+        @ingredient.version_counter += 1
+        @ingredient.version_id = @ingredient.version_counter
       end
-      @ingredient.json_attributes = json_attributes
+
       if @ingredient.save
         redirect_to admin_ingredients_path(locale: @locale), flash: {success: t("spina.ingredient.saved")}
       else
@@ -83,10 +93,12 @@ module Spina::Admin
     end
 
     def set_new_breadcrumb
+      add_breadcrumb t("spina.ingredients.ingredients"), spina.admin_ingredients_path, class: 'text-gray-400'
       add_breadcrumb t("spina.ingredients.new_ingredient")
     end
 
     def set_edit_breadcrumb
+      add_breadcrumb t("spina.ingredients.ingredients"), spina.admin_ingredients_path, class: 'text-gray-400'
       add_breadcrumb t("spina.ingredients.edit_ingredient")
     end
 
