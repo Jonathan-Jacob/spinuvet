@@ -63,7 +63,8 @@ module Spina::Admin
 
     def destroy
       @ingredient = Spina::Ingredient.where(deleted: false).find(ingredient_params[:id])
-      @ingredient.update(deleted: true)
+      @ingredient.deleted = true
+      raise
       if @ingredient.save
         flash[:info] = t('spina.ingredients.deleted')
         redirect_to spina.admin_ingredients_url
