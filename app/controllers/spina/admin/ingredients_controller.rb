@@ -2,7 +2,7 @@ module Spina::Admin
   class IngredientsController < AdminController
     before_action :set_account
     before_action :set_locale
-    before_action :set_ingredient, only: [:edit, :update, :destroy]
+    before_action :set_ingredient, only: [:edit, :edit_draft, :update, :destroy]
     before_action :set_index_breadcrumb, only: :index
     before_action :set_new_breadcrumb, only: :new
     before_action :set_edit_breadcrumb, only: :edit
@@ -45,6 +45,10 @@ module Spina::Admin
     end
 
     def edit
+    end
+
+    def edit_draft
+      render layout: false
     end
 
     def update
