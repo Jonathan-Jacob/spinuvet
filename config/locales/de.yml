@@ -194,7 +194,9 @@ de:
       name: Name
       new_ingredient: Neuer Inhaltsstoff
       no_ingredients: Keine Inhaltsstoffe vorhanden
+      no_old_version_available: Keine alte Version verfügbar
       old_ingredients: Bestehende Inhaltsstoffe
+      old_version: Andere Version auswählen
       save: Inhaltsstoff speichern
       saved: Inhaltsstoff gespeichert
       selected: Ausgewählt

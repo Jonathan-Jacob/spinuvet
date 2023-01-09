@@ -1,5 +1,5 @@
 <%= render(Spina::UserInterface::ModalComponent.new) do |component| %>
-  <%= form_with model: @page, url: spina.admin_page_path(@page, locale: params[:locale]), data: {turbo_frame: "_top", controller: "toggle-page-drafts"} do |f| %>
+  <%= form_with model: @page, url: spina.admin_page_path(@page, locale: params[:locale]), data: {turbo_frame: "_top"} do |f| %>
     <div class="px-4 pt-5 sm:p-6 sm:pb-4">
       <div class="sm:flex sm:items-start">
         <div class="mt-3 text-center sm:mt-0 sm:text-left">

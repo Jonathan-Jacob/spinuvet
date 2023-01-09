@@ -188,7 +188,9 @@ en:
       name: Name
       new_ingredient: New ingredient
       no_ingredients: No ingredients present
+      no_old_version_available: No old version available
       old_ingredients: Existing ingredients
+      old_version: Pick other version
       save: Save ingredient
       saved: Ingredient saved
       selected: Selected
