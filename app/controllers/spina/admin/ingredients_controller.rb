@@ -21,7 +21,6 @@ module Spina::Admin
     end
 
     def show
-      raise
       redirect_to spina.edit_admin_ingredient_path(params[:id])
     end
 
@@ -44,6 +43,7 @@ module Spina::Admin
     end
 
     def edit
+      raise
       @ingredient = Spina::Ingredient.where(deleted: false).find(params[:id])
     end
 
