@@ -31,7 +31,8 @@
     </div>
   <% end %>
 <% end %>
-<div class="px-8">
+<p class="px-4 md:px-8 md:-mt-14"><small><%= "#{t('spina.ingredients.version')} #{@ingredient.version_id}" %></small></p>
+<div class="p-4 md:p-8">
   <%= form_with model: @ingredient, url: spina.admin_ingredient_path(@ingredient), id: @ingredient.object_id do |f| %>
     <% locales = ([@locale] + Spina.locales.reject{|l| l.to_s.downcase == @locale.to_s.downcase}) %>
     <% locales.each do |locale| %>
