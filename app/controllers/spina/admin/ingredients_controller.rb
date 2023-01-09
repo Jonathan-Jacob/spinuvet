@@ -99,7 +99,7 @@ module Spina::Admin
 
     def set_edit_breadcrumb
       add_breadcrumb t("spina.ingredients.ingredients"), spina.admin_ingredients_path, class: 'text-gray-400'
-      add_breadcrumb @ingredient.ingredient_name
+      add_breadcrumb @ingredient.ingredient_name(@locale)
     end
 
     def set_account
