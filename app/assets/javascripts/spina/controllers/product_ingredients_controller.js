@@ -120,7 +120,6 @@ export default class extends Controller {
   }
 
   fillForm(event) {
-    event.preventDefault();
     this.formTarget.value = "";
     const ingredients = this.selectedContainerTarget.querySelectorAll('.ingredient');
     ingredients.forEach(ingredient => {
