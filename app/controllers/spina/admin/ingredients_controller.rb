@@ -29,7 +29,6 @@ module Spina::Admin
     end
 
     def create
-      raise
       json_attributes = {}
       Spina.locales.each do |locale|
         json_attributes.merge!("#{locale}_content" => {name: ingredient_params["#{locale}_name"], description: ingredient_params["#{locale}_description"]})
@@ -44,11 +43,11 @@ module Spina::Admin
     end
 
     def edit
+      raise if params[:_method] == "delete"
       @ingredient = Spina::Ingredient.where(deleted: false).find(params[:id])
     end
 
     def update
-      raise
       json_attributes = {}
       Spina.locales.each do |locale|
         json_attributes.merge!("#{locale}_content" => {name: ingredient_params["#{locale}_name"], description: ingredient_params["#{locale}_description"]})
@@ -66,7 +65,6 @@ module Spina::Admin
     def destroy
       @ingredient = Spina::Ingredient.where(deleted: false).find(ingredient_params[:id])
       @ingredient.deleted = true
-      raise
       if @ingredient.save
         flash[:info] = t('spina.ingredients.deleted')
         redirect_to spina.admin_ingredients_url
