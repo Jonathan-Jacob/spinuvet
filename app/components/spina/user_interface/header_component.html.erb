@@ -17,7 +17,7 @@
     <%= navigation %>
   </div>
 
-  <% if controller_name.in?(%w(images media_folders attachments)) || (controller_name == "pages" && action_name != "index") || (controller_name.in?(%w(ingredients products))) && !(action_name.in?(%w(index new))) %>
+  <% if controller_name.in?(%w(images media_folders attachments)) || (controller_name.in?(%w(pages ingredients products)) && action_name != "index") %>
     <div class="flex md:justify-end">
       <div class="flex space-x-3 p-4 py-6 z-10 w-full h-fit md:w-auto items-start md:pr-8 justify-end flex-wrap gap-y-2 shrink-button-bar <%= "page-bar" if controller_name == "pages" %>">
         <%= actions %>
