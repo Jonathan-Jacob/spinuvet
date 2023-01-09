@@ -43,7 +43,6 @@ module Spina::Admin
     end
 
     def edit
-      raise
       @ingredient = Spina::Ingredient.where(deleted: false).find(params[:id])
     end
 
