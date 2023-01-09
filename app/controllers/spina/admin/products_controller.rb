@@ -28,13 +28,23 @@ module Spina::Admin
     end
 
     def update
-      raise
       json_attributes = {}
       Spina.locales.each do |locale|
         json_attributes.merge!("#{locale}_content" => {name: product_params["#{locale}_name"], description: product_params["#{locale}_description"]})
       end
       @product = Spina::Product.where(deleted: false).find(params[:id])
       @product.json_attributes = json_attributes
+      ingredient_ids = product_params[:product_ingredient_string].split(",").map(&:to_i)
+      @product.product_ingredients.each do |product_ingredient|
+        unless ingredient_ids.include?(product_ingredient.ingredient_id)
+          product_ingredient.delete
+        end
+      end
+
+      ingredient_ids.each_with_index do |ingredient_id, index|
+        raise
+      end
+
       if @product.save
         redirect_to admin_products_path(locale: @locale), flash: {success: t("spina.product.saved")}
       else
