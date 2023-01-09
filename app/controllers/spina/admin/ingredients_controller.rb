@@ -29,6 +29,7 @@ module Spina::Admin
     end
 
     def create
+      raise
       json_attributes = {}
       Spina.locales.each do |locale|
         json_attributes.merge!("#{locale}_content" => {name: ingredient_params["#{locale}_name"], description: ingredient_params["#{locale}_description"]})
