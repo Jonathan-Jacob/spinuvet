@@ -65,11 +65,11 @@ module Spina::Admin
         @ingredient.version_counter += 1
         @ingredient.version_id = @ingredient.version_counter
       end
-
       if @ingredient.save
-        redirect_to admin_ingredients_path(locale: @locale), flash: {success: t("spina.ingredient.saved")}
+        Spina::IngredientDraft.create(ingredient: @ingredient, json_attributes: json_attributes, version_id: @ingredient.version_id)
+        redirect_to admin_ingredients_path(locale: @locale), flash: {success: t("spina.ingredients.saved")}
       else
-        flash.now[:error] = t("spina.ingredient.couldnt_be_saved")
+        flash.now[:error] = t("spina.ingredients.couldnt_be_saved")
         render partial: "error", status: :unprocessable_entity
       end
     end
