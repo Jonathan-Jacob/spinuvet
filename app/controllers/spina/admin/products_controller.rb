@@ -42,7 +42,7 @@ module Spina::Admin
       end
 
       ingredient_ids.each_with_index do |ingredient_id, index|
-        product_ingredient = @product.product_ingredients.find_by(ingredient_id: ingredient_id).present?
+        product_ingredient = @product.product_ingredients.find_by(ingredient_id: ingredient_id)
         if product_ingredient.present?
           product_ingredient.update(rank: index + 1)
         else
