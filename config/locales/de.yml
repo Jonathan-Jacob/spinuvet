@@ -182,6 +182,7 @@ de:
     ingredients:
       available: Verfügbar
       back: Zurück
+      change_version: Version ändern
       couldnt_be_deleted: Inhaltsstoff konnte nicht gelöscht werden
       couldnt_be_saved: Inhaltsstoff konnte nicht gespeichert werden
       delete: Inhaltsstoff löschen
@@ -197,6 +198,8 @@ de:
       no_old_version_available: Keine alte Version verfügbar
       old_ingredients: Bestehende Inhaltsstoffe
       old_version: Andere Version auswählen
+      pick_version: Version auswählen
+      pick_version_long: Wähle eine bestehende Version dieses Inhaltsstoffs aus, die du aktivieren möchtest.
       save: Inhaltsstoff speichern
       saved: Inhaltsstoff gespeichert
       selected: Ausgewählt

@@ -86,7 +86,11 @@ Spina::Engine.routes.draw do
 
     resources :embeds, only: [:new, :create]
 
-    resources :ingredients
+    resources :ingredients do
+      member do
+        get :edit_draft
+      end
+    end
 
     resources :products, only: [:index, :show, :edit, :update] do
       resources :product_ingredients, only: [:index, :create, :destroy]

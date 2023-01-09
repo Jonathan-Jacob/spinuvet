@@ -176,6 +176,7 @@ en:
     ingredients:
       available: Available
       back: Back
+      change_version: Change version
       couldnt_be_deleted: Ingredient couldn't be deleted
       couldnt_be_saved: Ingredient couldn't be saved
       delete_confirmation: Are you sure you want to delete the ingredient <strong>%{subject}</strong>?
@@ -191,6 +192,8 @@ en:
       no_old_version_available: No old version available
       old_ingredients: Existing ingredients
       old_version: Pick other version
+      pick_version: Pick version
+      pick_version_long: Choose an existing version of this site you want to activate.
       save: Save ingredient
       saved: Ingredient saved
       selected: Selected
