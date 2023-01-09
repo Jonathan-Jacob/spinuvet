@@ -66,7 +66,7 @@ module Spina::Admin
         @ingredient.version_id = @ingredient.version_counter
       end
       if @ingredient.save
-        Spina::IngredientDraft.create(ingredient: @ingredient, json_attributes: @ingredient.json_attributes.dup, version_id: @ingredient.version_id)
+        Spina::IngredientDraft.create(ingredient: @ingredient, json_attributes: @ingredient.json_attributes.dup, version_id: @ingredient.version_id) unless ingredient_params[:active_ingredient_draft].present?
         redirect_to admin_ingredient_path(ingredient: @ingredient, locale: @locale), flash: {success: t("spina.ingredients.saved")}
       else
         flash.now[:error] = t("spina.ingredients.couldnt_be_saved")
