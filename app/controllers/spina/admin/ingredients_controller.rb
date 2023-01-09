@@ -2,10 +2,10 @@ module Spina::Admin
   class IngredientsController < AdminController
     before_action :set_account
     before_action :set_locale
+    before_action :set_ingredient, only: [:edit, :update, :destroy]
     before_action :set_index_breadcrumb, only: :index
     before_action :set_new_breadcrumb, only: :new
     before_action :set_edit_breadcrumb, only: :edit
-    before_action :set_ingredient, only: [:edit, :update, :destroy]
 
     def index
       @ingredients = Spina::Ingredient.where(deleted: false).order(updated_at: :desc)
@@ -99,7 +99,7 @@ module Spina::Admin
 
     def set_edit_breadcrumb
       add_breadcrumb t("spina.ingredients.ingredients"), spina.admin_ingredients_path, class: 'text-gray-400'
-      add_breadcrumb t("spina.ingredients.edit_ingredient")
+      add_breadcrumb @ingredient.ingredient_name
     end
 
     def set_account
