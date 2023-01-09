@@ -21,7 +21,7 @@
       <div class="mt-6 pb-4 w-full sm:w-1/2" data-product-ingredients-target="selectedContainer">
         <h3 class="text-sm sm:ml-2"><%= t('spina.ingredients.selected') %></h3>
         <% @selected_ingredients.each do |ingredient| %>
-          <div class="flex justify-between items-center sm:ml-2 p-2 my-2 bg-white rounded border border-gray-300 shadow-sm ingredient" data-ingredient-id="<%= ingredient.id %>" draggable="true">
+          <div class="flex justify-between items-center sm:ml-2 p-2 my-2 bg-white rounded border border-gray-300 shadow-sm ingredient <%= "text-red-500" if ingredient.deleted %>" data-ingredient-id="<%= ingredient.id %>" draggable="true">
             <div class="flex items-center gap-2 overflow-hidden">
               <%= button_tag(type: 'button', class: 'cursor-grab') do %>
                 <%= heroicon('chevron-up-down', style: :mini, class: 'w-5 h-5') %>
@@ -29,9 +29,11 @@
               <div><%= ingredient.ingredient_name(@locale) %></div>
             </div>
             <div class="flex items-center gap-1">
-              <%= link_to spina.admin_ingredient_path(ingredient), target: "_blank" do %>
+              <% unless ingredient.deleted %>
+                <%= link_to spina.admin_ingredient_path(ingredient), target: "_blank" do %>
                   <%= heroicon('document-magnifying-glass', style: :mini, class: 'w-5 h-5') %>
                 <% end %>
+              <% end %>
               <%= button_tag(type: 'button', data: {action: 'product-ingredients#remove', ingredient_id: ingredient.id, ingredient_name: ingredient.ingredient_name(@locale)}) do %>
                 <%= heroicon('x-mark', style: :mini, class: 'w-5 h-5') %>
               <% end %>

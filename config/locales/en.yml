@@ -137,6 +137,7 @@ en:
     close: Close
     delete: Delete
     delete_confirmation: Are you sure you want to delete <strong>%{subject}</strong>?
+    deleted: Deleted
     edit: Edit
     edit_website: Edit your website
     embeds:

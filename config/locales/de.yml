@@ -143,6 +143,7 @@ de:
     close: Schließen
     delete: Löschen
     delete_confirmation: Bist du sicher, dass du <strong>%{subject}</strong> löschen möchtest?
+    deleted: Gelöscht
     edit: Bearbeiten
     edit_website: Deine Website bearbeiten
     embeds:
