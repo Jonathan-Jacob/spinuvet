@@ -8,7 +8,7 @@
     </div>
   <% end %>
 <% end %>
-<div class="px-4 md:px-8 md:-mt-14">
+<div class="px-4 md:px-8 -mt-14">
   <%= form_with model: @ingredient, url: spina.admin_ingredients_path, id: @ingredient.object_id do |f| %>
     <% locales = ([@locale] + Spina.locales.reject{|l| l.to_s.downcase == @locale.to_s.downcase}) %>
     <% locales.each do |locale| %>
