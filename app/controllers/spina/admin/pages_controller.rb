@@ -140,7 +140,6 @@ module Spina
       end
 
       def destroy
-        raise
         @page.deleted = true
         if @page.save
           @page.navigation_items.destroy_all
