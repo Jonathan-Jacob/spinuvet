@@ -43,7 +43,7 @@ module Spina::Admin
     end
 
     def edit
-      raise if params[:_method] == "delete"
+      raise
       @ingredient = Spina::Ingredient.where(deleted: false).find(params[:id])
     end
 
