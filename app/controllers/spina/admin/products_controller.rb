@@ -103,7 +103,7 @@ module Spina::Admin
     end
 
     def set_edit_breadcrumb
-      add_breadcrumb t("spina.products.products"), class: 'text-gray-400'
+      add_breadcrumb t("spina.products.products"), spina.admin_products_path, class: 'text-gray-400'
       add_breadcrumb @product.product_name(@locale)
     end
 
