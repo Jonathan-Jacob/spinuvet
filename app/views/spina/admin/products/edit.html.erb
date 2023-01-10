@@ -30,7 +30,7 @@
     </div>
   <% end %>
 <% end %>
-<p class="px-4 md:px-8 md:-mt-14"><small><%= "#{t('spina.ingredients.version')} #{@ingredient.version_id}" %></small></p>
+<p class="px-4 md:px-8 md:-mt-14"><small><%= "#{t('spina.ingredients.version')} #{@product.version_id}" %></small></p>
 <div class="p-4 md:p-8" data-controller="product-ingredients">
   <%= form_with model: @product, url: spina.admin_product_path(@product), id: @product.object_id, data: {action: "product-ingredients#fillForm"} do |f| %>
     <% locales = ([@locale] + Spina.locales.reject{|l| l.to_s.downcase == @locale.to_s.downcase}) %>
