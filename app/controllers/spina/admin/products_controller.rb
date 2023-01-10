@@ -25,7 +25,7 @@ module Spina::Admin
 
     def edit
       @product = Spina::Product.where(deleted: false).find(params[:id])
-      if Spina::ProductDraft.where(product: @product).empty?
+      if Spina::ProductDraft.where(product_id: @product.id).empty?
         product_ids = @product.product_ingredients.order(:rank).map(&:ingredient.id)
         Spina::ProductDraft.create(json_attributes: @product.json_attributes.dup, version_id: 1, product_id: @product.id, ingredients: ingredient_ids)
       end
