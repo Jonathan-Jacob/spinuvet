@@ -27,8 +27,7 @@ module Spina::Admin
     def edit
       @product = Spina::Product.where(deleted: false).find(params[:id])
       if Spina::ProductDraft.where(product_id: @product.id).empty?
-        ingredient_ids = @product.product_ingredients.order(:rank).map(&:ingredient_id)
-        Spina::ProductDraft.create(json_attributes: @product.json_attributes.dup, version_id: 1, product_id: @product.id, ingredients: ingredient_ids)
+        Spina::ProductDraft.create(json_attributes: @product.json_attributes.dup, version_id: 1, product_id: @product.id, ingredients: @product.product_ingredients.order(:rank).map(&:ingredient_id))
       end
     end
 
@@ -84,7 +83,7 @@ module Spina::Admin
       end
 
       if @product.save
-        Spina::ProductDraft.create(product_id: @product.id, json_attributes: @product.json_attributes.dup, version_id: @product.version_id) unless product_params[:active_product_draft].present?
+        Spina::ProductDraft.create(product_id: @product.id, json_attributes: @product.json_attributes.dup, version_id: @product.version_id, ingredients: @product.product_ingredients.order(:rank).map(&:ingredient_id)) unless product_params[:active_product_draft].present?
         redirect_to admin_product_path(product: @product, locale: @locale), flash: {success: t("spina.product.saved")}
       else
         flash.now[:error] = t("spina.product.couldnt_be_saved")

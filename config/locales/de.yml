@@ -370,6 +370,7 @@ de:
     preview_website: Vorschau der Webseite
     products:
       back: Zurück
+      change_version: Version ändern
       couldnt_be_saved: Produkt konnte nicht gespeichert werden
       delete: Produkt löschen
       delete_confirmation: Bist du sicher, dass du das Produkt <strong>%{subject}</strong> löschen möchtest?
