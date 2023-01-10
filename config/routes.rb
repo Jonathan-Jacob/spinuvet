@@ -94,6 +94,9 @@ Spina::Engine.routes.draw do
 
     resources :products, only: [:index, :show, :edit, :update] do
       resources :product_ingredients, only: [:index, :create, :destroy]
+      member do
+        get :edit_draft
+      end
     end
   end
 
