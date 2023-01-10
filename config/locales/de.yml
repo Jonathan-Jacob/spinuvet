@@ -374,8 +374,12 @@ de:
       description: Beschreibung
       edit_product: Produkt bearbeiten
       name: Name
+      no_old_version_available: Keine alte Version verfügbar
       no_products: Keine Produkte vorhanden
       old_products: Bestehende Produkte
+      old_version: Andere Version auswählen
+      pick_version: Version auswählen
+      pick_version_long: Wähle eine bestehende Version dieses Produkts aus, die du aktivieren möchtest.
       product: Produkt
       products: Produkte
       save: Produkt speichern

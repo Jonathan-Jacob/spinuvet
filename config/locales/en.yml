@@ -193,7 +193,7 @@ en:
       old_ingredients: Existing ingredients
       old_version: Pick other version
       pick_version: Pick version
-      pick_version_long: Choose an existing version of this site you want to activate.
+      pick_version_long: Choose an existing version of this ingredient you want to activate.
       save: Save ingredient
       saved: Ingredient saved
       selected: Selected
@@ -367,8 +367,12 @@ en:
       description: Description
       edit_product: Edit product
       name: Name
+      no_old_version_available: No old version available
       no_products: No products present
       old_products: Existing products
+      old_version: Pick other version
+      pick_version: Pick version
+      pick_version_long: Choose an existing version of this product you want to activate.
       product: Product
       products: Products
       save: Save product
