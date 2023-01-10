@@ -80,6 +80,7 @@ module Spina::Admin
       end
 
       if @product.save
+        raise
          Spina::ProductDraft.create(product_id: @product.id, json_attributes: @product.json_attributes.dup, version_id: @product.version_id) unless product_params[:active_product_draft].present?
         redirect_to admin_products_path(locale: @locale), flash: {success: t("spina.product.saved")}
       else
