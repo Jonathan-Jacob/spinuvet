@@ -2,6 +2,7 @@ module Spina::Admin
   class ProductsController < AdminController
     before_action :set_account
     before_action :set_locale
+    before_action :set_product, only: [:edit, :edit_draft, :update]
     before_action :set_index_breadcrumb, only: :index
     before_action :set_edit_breadcrumb, only: :edit
 
@@ -31,6 +32,10 @@ module Spina::Admin
       end
     end
 
+    def edit_draft
+      render layout: false
+    end
+
     def update
       if product_params[:active_product_draft].present?
         product_draft = Spina::ProductDraft.find(product_params[:active_product_draft])
@@ -56,7 +61,6 @@ module Spina::Admin
         Spina.locales.each do |locale|
           json_attributes.merge!("#{locale}_content" => {name: product_params["#{locale}_name"], description: product_params["#{locale}_description"]})
         end
-        @product = Spina::Product.where(deleted: false).find(params[:id])
         @product.json_attributes = json_attributes
         ingredient_ids = product_params[:product_ingredient_string].split(",").map(&:to_i)
         @product.product_ingredients.each do |product_ingredient|
@@ -101,11 +105,16 @@ module Spina::Admin
     end
 
     def set_edit_breadcrumb
-      add_breadcrumb t("spina.products.edit_product")
+      add_breadcrumb t("spina.products.products")
+      add_breadcrumb @product.product_name(@locale)
     end
 
     def set_account
       @account = current_spina_account
+    end
+
+    def set_product
+      @product = Spina::Product.where(deleted: false).find(params[:id])
     end
 
     def set_locale
