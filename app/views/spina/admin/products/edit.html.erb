@@ -11,9 +11,6 @@
         <div hidden data-reveal data-transition class="origin-top-left lg:origin-top-right absolute lg:right-0 mt-2 w-56 rounded-md shadow-lg border border-gray-200">
           <div class="rounded-md bg-white shadow-xs">
             <div class="py-1">
-
-              <%= button_to t('spina.products.delete'), spina.admin_product_path(@product), method: :delete, class: "block w-full text-left px-4 py-2 text-sm leading-5 font-medium text-red-500 cursor-pointer bg-white hover:bg-red-100 hover:bg-opacity-50 hover:text-red-500 focus:outline-none focus:bg-gray-100 focus:text-gray-900", form: {data: {controller: "confirm", delete_button: t('spina.delete'), cancel_button: t('spina.cancel'), confirm_message: t('spina.products.delete_confirmation', subject: @product.product_name(@locale))}} %>
-
               <% if Spina::ProductDraft.where(product_id: @product.id).length > 1 %>
                 <%= link_to t('spina.products.old_version') + "...", spina.edit_draft_admin_product_path(@product), class: "block px-4 py-2 text-sm font-medium leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900", data: {turbo_frame: "modal", action: "reveal#hide"} %>
               <% else %>
