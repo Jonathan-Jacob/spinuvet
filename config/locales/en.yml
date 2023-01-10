@@ -385,6 +385,7 @@ en:
       sort_91: Sort from new to old
       sort_az: Sort from A to Z
       sort_za: Sort from Z to A
+      version: Version
     resources:
       edit: Edit resource
       label_description: User-facing label for this page collection.
