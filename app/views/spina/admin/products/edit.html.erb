@@ -23,9 +23,6 @@
           </div>
         </div>
       </div>
-
-
-      <%= link_to t('spina.products.back'), spina.admin_products_path, class: "btn btn-gray" %>
       <%= button_tag type: :submit, form: @product.object_id, class: 'btn btn-primary self-start z-10', data: {controller: "button", action: "button#loading", loading_message: t('spina.ui.saving')} do %>
         <%= heroicon('check', style: :mini, class: 'w-5 h-5 -ml-1 mr-1') %>
         <%=t 'spina.products.save' %>
@@ -33,7 +30,8 @@
     </div>
   <% end %>
 <% end %>
-<div class="px-8" data-controller="product-ingredients">
+<p class="px-4 md:px-8 md:-mt-14"><small><%= "#{t('spina.ingredients.version')} #{@ingredient.version_id}" %></small></p>
+<div class="p-4 md:p-8" data-controller="product-ingredients">
   <%= form_with model: @product, url: spina.admin_product_path(@product), id: @product.object_id, data: {action: "product-ingredients#fillForm"} do |f| %>
     <% locales = ([@locale] + Spina.locales.reject{|l| l.to_s.downcase == @locale.to_s.downcase}) %>
     <% locales.each do |locale| %>

@@ -76,7 +76,7 @@ module Spina::Admin
 
         @product.json_attributes = json_attributes
         @product.version_counter += 1
-        @product.version_id = @ingredient.version_counter
+        @product.version_id = @product.version_counter
       end
 
       if @product.save
