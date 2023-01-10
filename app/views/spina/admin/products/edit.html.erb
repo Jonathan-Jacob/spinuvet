@@ -1,6 +1,30 @@
 <%= render Spina::UserInterface::HeaderComponent.new do |header| %>
   <% header.actions do %>
     <div class="flex gap-3 flex-wrap">
+      <div class="relative w-auto" data-controller="reveal" data-reveal-away-value>
+        <button type="button" class="btn btn-default px-3 w-full" data-action="reveal#toggle">
+          <svg class="w-5 h-5 text-gray-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
+          </svg>
+        </button>
+
+        <div hidden data-reveal data-transition class="origin-top-left lg:origin-top-right absolute lg:right-0 mt-2 w-56 rounded-md shadow-lg border border-gray-200">
+          <div class="rounded-md bg-white shadow-xs">
+            <div class="py-1">
+
+              <%= button_to t('spina.products.delete'), spina.admin_product_path(@product), method: :delete, class: "block w-full text-left px-4 py-2 text-sm leading-5 font-medium text-red-500 cursor-pointer bg-white hover:bg-red-100 hover:bg-opacity-50 hover:text-red-500 focus:outline-none focus:bg-gray-100 focus:text-gray-900", form: {data: {controller: "confirm", delete_button: t('spina.delete'), cancel_button: t('spina.cancel'), confirm_message: t('spina.products.delete_confirmation', subject: @product.product_name(@locale))}} %>
+
+              <% unless Spina::ProductDraft.where(product_id: @product.id).empty? %>
+                <%= link_to t('spina.products.old_version') + "...", spina.edit_draft_admin_product_path(@product), class: "block px-4 py-2 text-sm font-medium leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900", data: {turbo_frame: "modal", action: "reveal#hide"} %>
+              <% else %>
+                <span class="block px-4 py-2 text-sm leading-5 text-gray-400"><%= t('spina.pages.no_old_version_available') %></span>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
       <%= link_to t('spina.products.back'), spina.admin_products_path, class: "btn btn-gray" %>
       <%= button_tag type: :submit, form: @product.object_id, class: 'btn btn-primary self-start z-10', data: {controller: "button", action: "button#loading", loading_message: t('spina.ui.saving')} do %>
         <%= heroicon('check', style: :mini, class: 'w-5 h-5 -ml-1 mr-1') %>

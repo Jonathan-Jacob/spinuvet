@@ -25,32 +25,62 @@ module Spina::Admin
 
     def edit
       @product = Spina::Product.where(deleted: false).find(params[:id])
+      if Spina::ProductDraft.where(product: @product).empty?
+        product_ids = @product.product_ingredients.order(:rank).map(&:ingredient.id)
+        Spina::ProductDraft.create(json_attributes: @product.json_attributes.dup, version_id: 1, product_id: @product.id, ingredients: ingredient_ids)
+      end
     end
 
     def update
-      json_attributes = {}
-      Spina.locales.each do |locale|
-        json_attributes.merge!("#{locale}_content" => {name: product_params["#{locale}_name"], description: product_params["#{locale}_description"]})
-      end
-      @product = Spina::Product.where(deleted: false).find(params[:id])
-      @product.json_attributes = json_attributes
-      ingredient_ids = product_params[:product_ingredient_string].split(",").map(&:to_i)
-      @product.product_ingredients.each do |product_ingredient|
-        unless ingredient_ids.include?(product_ingredient.ingredient_id)
-          product_ingredient.delete
+      if product_params[:active_product_draft].present?
+        product_draft = Spina::ProductDraft.find(product_params[:active_product_draft])
+        @product.json_attributes = product_draft.json_attributes.dup
+        @product.version_id = product_draft.version_id
+        ingredient_ids = product_draft.ingredients
+        @product.product_ingredients.each do |product_ingredient|
+          unless ingredient_ids.include?(product_ingredient.ingredient_id)
+            product_ingredient.delete
+          end
         end
-      end
 
-      ingredient_ids.each_with_index do |ingredient_id, index|
-        product_ingredient = @product.product_ingredients.find_by(ingredient_id: ingredient_id)
-        if product_ingredient.present?
-          product_ingredient.update(rank: index + 1)
-        else
-          Spina::ProductIngredient.create(ingredient_id: ingredient_id, product: @product, rank: index + 1)
+        ingredient_ids.each_with_index do |ingredient_id, index|
+          product_ingredient = @product.product_ingredients.find_by(ingredient_id: ingredient_id)
+          if product_ingredient.present?
+            product_ingredient.update(rank: index + 1)
+          else
+            Spina::ProductIngredient.create(ingredient_id: ingredient_id, product: @product, rank: index + 1)
+          end
         end
+      else
+        json_attributes = {}
+        Spina.locales.each do |locale|
+          json_attributes.merge!("#{locale}_content" => {name: product_params["#{locale}_name"], description: product_params["#{locale}_description"]})
+        end
+        @product = Spina::Product.where(deleted: false).find(params[:id])
+        @product.json_attributes = json_attributes
+        ingredient_ids = product_params[:product_ingredient_string].split(",").map(&:to_i)
+        @product.product_ingredients.each do |product_ingredient|
+          unless ingredient_ids.include?(product_ingredient.ingredient_id)
+            product_ingredient.delete
+          end
+        end
+
+        ingredient_ids.each_with_index do |ingredient_id, index|
+          product_ingredient = @product.product_ingredients.find_by(ingredient_id: ingredient_id)
+          if product_ingredient.present?
+            product_ingredient.update(rank: index + 1)
+          else
+            Spina::ProductIngredient.create(ingredient_id: ingredient_id, product: @product, rank: index + 1)
+          end
+        end
+
+        @product.json_attributes = json_attributes
+        @product.version_counter += 1
+        @product.version_id = @ingredient.version_counter
       end
 
       if @product.save
+         Spina::ProductDraft.create(product: @product, json_attributes: @product.json_attributes.dup, version_id: @product.version_id) unless product_params[:active_product_draft].present?
         redirect_to admin_products_path(locale: @locale), flash: {success: t("spina.product.saved")}
       else
         flash.now[:error] = t("spina.product.couldnt_be_saved")
