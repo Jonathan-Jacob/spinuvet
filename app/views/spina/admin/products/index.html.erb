@@ -11,7 +11,7 @@
     </div>
     <div>
       <%= form_with url: spina.admin_products_path, id: "search-product", class: "relative", data: {controller: "clear"}, method: :get do |f| %>
-        <%= f.text_field :query, class: "form-input #{params[:query].present? ? 'pr-16' : 'pr-8'} w-64", data: {clear_target: "input"}, value: params[:query] %>
+        <%= f.text_field :query, class: "form-input #{params[:query].present? ? 'pr-16' : 'pr-8'} w-full", data: {clear_target: "input"}, value: params[:query] %>
         <%= f.hidden_field :sort, value: params[:sort] %>
         <% if params[:query].present? %>
           <%= button_tag type: :submit, class: 'absolute inset-y-0 right-6 p-2 z-10 cursor-pointer hover:scale-120', data: {action: "clear#clear"} do %>
