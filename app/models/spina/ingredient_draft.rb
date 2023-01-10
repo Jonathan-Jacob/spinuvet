@@ -11,7 +11,7 @@ module Spina
         return self.json_attributes["#{spina_locale}_content"]["name"] if self.json_attributes["#{spina_locale}_content"].present? && self.json_attributes["#{spina_locale}_content"]["name"].present?
       end
 
-      "#{I18n.t('spina.ingredients.ingredient')} #{self.id}"
+      "#{I18n.t('spina.ingredients.ingredient')} #{self.ingredient_id}"
     end
   end
 end
