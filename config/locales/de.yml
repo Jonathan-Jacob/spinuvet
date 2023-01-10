@@ -371,6 +371,9 @@ de:
     products:
       back: Zurück
       couldnt_be_saved: Produkt konnte nicht gespeichert werden
+      delete: Produkt löschen
+      delete_confirmation: Bist du sicher, dass du das Produkt <strong>%{subject}</strong> löschen möchtest?
+      deleted: Produkt gelöscht
       description: Beschreibung
       edit_product: Produkt bearbeiten
       name: Name

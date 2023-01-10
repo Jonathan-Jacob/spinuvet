@@ -364,6 +364,9 @@ en:
     products:
       back: Back
       couldnt_be_saved: Product couldn't be saved
+      delete_confirmation: Are you sure you want to delete the product <strong>%{subject}</strong>?
+      delete: Delete product
+      deleted: Product deleted
       description: Description
       edit_product: Edit product
       name: Name
