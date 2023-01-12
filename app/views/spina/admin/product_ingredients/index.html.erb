@@ -6,7 +6,7 @@
         <%= f.text_field :query, class: "form-input #{params[:query].present? ? 'pr-16' : 'pr-8'} w-full", data: {clear_target: "input"}, value: params[:query] %>
         <%= f.hidden_field :product_ingredient_string , data: {product_ingredients_target: "productIngredientForm"}%>
         <% if params[:query].present? %>
-          <%= button_tag type: :submit, class: 'absolute inset-y-0 right-6 p-2 z-10 cursor-pointer hover:scale-120', data: {action: "clear#clear", action: "product-ingredients#fillProductIngredientForm"} do %>
+          <%= button_tag type: :submit, class: 'absolute inset-y-0 right-6 p-2 z-10 cursor-pointer hover:scale-120', data: {action: "clear#clear product-ingredients#fillProductIngredientForm"} do %>
             <%= heroicon('x-mark', style: :mini, class: 'w-5 h-5') %>
           <% end %>
         <% end %>
