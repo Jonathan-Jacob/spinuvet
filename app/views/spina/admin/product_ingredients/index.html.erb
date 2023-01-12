@@ -20,15 +20,17 @@
         <h3 class="text-sm sm:mr-2"><%= t('spina.ingredients.available') %></h3>
         <% @ingredients_az.each do |ingredient| %>
           <div class="flex justify-between items-center sm:mr-2 p-2 pl-4 my-2 bg-white rounded border border-gray-300 shadow-sm">
-            <div class="<%= "text-gray-400" if @product.ingredients.include?(ingredient) %> overflow-hidden"><%= ingredient.ingredient_name(@locale) %></div>
-            <div class="flex items-center gap-1 <%= "hidden" if @product.ingredients.include?(ingredient) %>">
-              <%= link_to spina.admin_ingredient_path(ingredient), target: "_blank" do %>
-                <%= heroicon('document-magnifying-glass', style: :mini, class: 'w-5 h-5') %>
-              <% end %>
-              <%= button_tag(type: 'button', data: {action: 'product-ingredients#add', ingredient_id: ingredient.id, ingredient_name: ingredient.ingredient_name(@locale)}) do %>
-                <%= heroicon('plus', style: :mini, class: 'w-5 h-5') %>
-              <% end %>
-            </div>
+            <div class="<%= "text-gray-400" if @selected_ingredients.include?(ingredient) %> overflow-hidden"><%= ingredient.ingredient_name(@locale) %></div>
+            <% unless @selected_ingredients.include?(ingredient) %>
+              <div class="flex items-center gap-1">
+                <%= link_to spina.admin_ingredient_path(ingredient), target: "_blank" do %>
+                  <%= heroicon('document-magnifying-glass', style: :mini, class: 'w-5 h-5') %>
+                <% end %>
+                <%= button_tag(type: 'button', data: {action: 'product-ingredients#add', ingredient_id: ingredient.id, ingredient_name: ingredient.ingredient_name(@locale)}) do %>
+                  <%= heroicon('plus', style: :mini, class: 'w-5 h-5') %>
+                <% end %>
+              </div>
+            <% end %>
           </div>
         <% end %>
       </div>

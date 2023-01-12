@@ -8,7 +8,7 @@ module Spina::Admin
     def index
       @ingredients_az = params[:query].present? ? @ingredients.sort_by{|i| i.ingredient_name(@locale)}.select{|i| i.ingredient_name(@locale).downcase.match(params[:query].downcase)} : @ingredients.sort_by{|i| i.ingredient_name(@locale)}
       @order = params[:order].split(",").to_a if params[:order].present?
-      @selected_ingredients = @order.present? ? @product.ingredients.sort_by{|i| @order.index(i.id)} : @product.product_ingredients.order(:rank).map(&:ingredient)
+      @selected_ingredients = @order.present? ? @ingredients.select{|i| @order.include?(i.id)}sort_by{|i| @order.index(i.id)} : @product.product_ingredients.order(:rank).map(&:ingredient)
     end
 
     private
