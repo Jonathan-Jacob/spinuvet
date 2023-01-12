@@ -29,7 +29,7 @@
 <% end %>
 <p class="px-4 md:px-8 md:-mt-14"><small><%= "#{t('spina.ingredients.version')} #{@product.version_id}" %></small></p>
 <div class="p-4 md:p-8" data-controller="product-ingredients">
-  <%= form_with model: @product, url: spina.admin_product_path(@product), id: @product.object_id, data: {action: "product-ingredients#fillForm"} do |f| %>
+  <%= form_with model: @product, url: spina.admin_product_path(@product), id: @product.object_id, data: {action: "product-ingredients#fillProductForm"} do |f| %>
     <% locales = ([@locale] + Spina.locales.reject{|l| l.to_s.downcase == @locale.to_s.downcase}) %>
     <% locales.each do |locale| %>
       <h2 class="<%= "pt-6" unless locales.first == locale %> pb-4 block leading-5 font-medium text-gray-700"><%= "#{t("spina.languages.#{locale}")}#{": #{@product.json_attributes["#{locale}_content"]["name"]}" if @product.json_attributes["#{locale}_content"].present?}" %></h2>
@@ -53,6 +53,6 @@
       <hr>
     <% end %>
     <turbo-frame id="product-ingredients" src=<%= spina.admin_product_product_ingredients_path(@product) %>></turbo-frame>
-    <%= f.hidden_field :product_ingredient_string, data: { product_ingredients_target: "form" } %>
+    <%= f.hidden_field :product_ingredient_string, data: { product_ingredients_target: "productForm" } %>
   <% end %>
 </div>

@@ -1,14 +1,14 @@
 module Spina::Admin
   class ProductIngredientsController < AdminController
-    #todo: @product definieren, alle ingredients anzeigen, die nicht in @product.ingredients sind, diese auswählen -> create PI -> spiegelbildlich: destroy PI
     before_action :set_account
     before_action :set_locale
     before_action :set_product
     before_action :set_ingredients
 
     def index
-      @ingredients_az = @ingredients.sort_by{|i| i.ingredient_name(@locale)}
-      @selected_ingredients = @product.product_ingredients.order(:rank).map(&:ingredient)
+      @ingredients_az = params[:query].present? ? @ingredients.sort_by{|i| i.ingredient_name(@locale)}.select{|i| i.ingredient_name(@locale).downcase.match(params[:query].downcase)} : @ingredients.sort_by{|i| i.ingredient_name(@locale)}
+      @order = params[:order].split(",").to_a if params[:order].present?
+      @selected_ingredients = @order.present? ? @product.ingredients.sort_by{|i| @order.index(i.id)} : @product.product_ingredients.order(:rank).map(&:ingredient)
     end
 
     private

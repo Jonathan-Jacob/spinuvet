@@ -8,7 +8,7 @@ module Spina::Admin
     before_action :set_edit_breadcrumb, only: :edit
 
     def index
-      @ingredients = Spina::Ingredient.where(deleted: false).order(updated_at: :desc)
+      @ingredients = params[:query].present? ? Spina::Ingredient.where(deleted: false).order(updated_at: :desc).select{|i| i.ingredient_name(@locale).downcase.match(params[:query].downcase)} : Spina::Ingredient.where(deleted: false).order(updated_at: :desc)
       if params[:sort].present?
         if params[:sort].to_s == "sort_az"
           @ingredients = @ingredients.sort_by{|i| i.ingredient_name(@locale).downcase}
@@ -18,7 +18,6 @@ module Spina::Admin
           @ingredients = @ingredients.sort_by{|i| i.updated_at}
         end
       end
-      @ingredients = @ingredients.select{|i| i.json_attributes["#{@locale}_content"]["name"].downcase.match(params[:query].downcase) if i.json_attributes["#{@locale}_content"].present? && i.json_attributes["#{@locale}_content"]["name"].present?} if params[:query].present?
     end
 
     def show

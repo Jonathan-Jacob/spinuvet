@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
   static get targets() {
-    return ["allIngredientsContainer", "selectedContainer", "form"];
+    return ["allIngredientsContainer", "selectedContainer", "productForm", "productIngredientForm"];
   }
 
   connect() {
@@ -119,14 +119,25 @@ export default class extends Controller {
     ingredientNode.parentNode.replaceChild(tempNode.firstChild, ingredientNode);
   }
 
-  fillForm(event) {
-    this.formTarget.value = "";
+  fillProductForm(event) {
+    this.productFormTarget.value = "";
     const ingredients = this.selectedContainerTarget.querySelectorAll('.ingredient');
     ingredients.forEach(ingredient => {
-      if (!this.formTarget.value == "") {
-        this.formTarget.value += ",";
+      if (!this.productFormTarget.value == "") {
+        this.productFormTarget.value += ",";
       }
-      this.formTarget.value += ingredient.dataset.ingredientId;
+      this.productFormTarget.value += ingredient.dataset.ingredientId;
+    });
+  }
+
+  fillProductIngredientForm(event) {
+    this.productIngredientFormTarget.value = "";
+    const ingredients = this.selectedContainerTarget.querySelectorAll('.ingredient');
+    ingredients.forEach(ingredient => {
+      if (!this.productIngredientFormTarget.value == "") {
+        this.productIngredientFormTarget.value += ",";
+      }
+      this.productIngredientFormTarget.value += ingredient.dataset.ingredientId;
     });
   }
 }
