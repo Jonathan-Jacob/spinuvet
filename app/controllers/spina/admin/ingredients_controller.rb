@@ -58,7 +58,7 @@ module Spina::Admin
       else
         json_attributes = {}
         Spina.locales.each do |locale|
-          json_attributes.merge!("#{locale}_content" => {name: ingredient_params["#{locale}_name"], description: ingredient_params["#{locale}_description"]})
+          json_attributes.merge!("#{locale}_content" => {name: ingredient_params["#{locale}_name"], description: ingredient_params["#{locale}_description"], signed_blob_id: ingredient_params["#{locale}_signed_blob_id"], filename: ingredient_params["#{locale}_filename"], image_id: ingredient_params["#{locale}_image_id"]})
         end
         @ingredient.json_attributes = json_attributes
         @ingredient.version_counter += 1
