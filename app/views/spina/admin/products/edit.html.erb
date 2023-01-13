@@ -36,7 +36,7 @@
       <%= f.hidden_field "#{locale}_name".to_sym, value: @product.json_attributes["#{locale}_content"].present? ? @product.json_attributes["#{locale}_content"]["name"] : "" %>
       <div class="mt-6">
         <label class="block text-sm leading-5 font-medium text-gray-700"><%= t('spina.products.subtitle') %></label>
-        <div class="mt-1">
+        <div class="my-1 h-8">
           <%= f.text_area "#{locale}_subtitle".to_sym, class: "form-input mt-1 w-full", value: @product.json_attributes["#{locale}_content"].present? ? @product.json_attributes["#{locale}_content"]["subtitle"] : "" %>
         </div>
       </div>
