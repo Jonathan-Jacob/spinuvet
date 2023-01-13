@@ -184,6 +184,7 @@ en:
       deleted: Ingredient deleted
       description: Description
       edit_ingredient: Edit ingredient
+      image: Ingredient image
       ingredient: Ingredient
       ingredients: Ingredients
       name: Name
