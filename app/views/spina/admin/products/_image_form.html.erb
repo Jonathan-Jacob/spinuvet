@@ -22,8 +22,8 @@
     </div>
 
     <div class="border absolute inset-0 w-36 h-36 bg-gray-100 rounded-lg shadow-md overflow-hidden" data-media-picker-target="thumbnail">
-      <% if f.object.json_attributes["#{locale}_content"]["signed_blob_id"].present? && Spina::Image.find_by(id: f.object["#{locale}_content"]["image_id"]).present? %>
-        <%= image_tag thumbnail_url(Spina::Image.find(f.object["#{locale}_content"]["image_id"])), class: 'object-contain h-36 w-full', data: {controller: "image-fade-in"} %>
+      <% if f.object.json_attributes["#{locale}_content"].present? && f.object.json_attributes["#{locale}_content"]["signed_blob_id"].present? && Spina::Image.find_by(id: f.object.json_attributes["#{locale}_content"]["image_id"]).present? %>
+        <%= image_tag thumbnail_url(Spina::Image.find(f.object.json_attributes["#{locale}_content"]["image_id"])), class: 'object-contain h-36 w-full', data: {controller: "image-fade-in"} %>
       <% end %>
     </div>
   <% end %>
