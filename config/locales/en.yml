@@ -370,6 +370,7 @@ en:
       deleted: Product deleted
       description: Description
       edit_product: Edit product
+      image: Product image
       name: Name
       no_old_version_available: No old version available
       no_products: No products present
