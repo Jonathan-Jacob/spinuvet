@@ -52,7 +52,7 @@
             <div class="flex gap-2">
               <% Spina.locales.each do |locale| %>
                 <% if ingredient.json_attributes["#{locale}_content"].present? %>
-                  <% if ingredient.json_attributes["#{locale}_content"]["name"].present? && ingredient.json_attributes["#{locale}_content"]["description"].present? && ingredient.json_attributes["#{locale}_content"]["signed_blob_id"].present? && && ingredient.json_attributes["#{locale}_content"]["filename"].present? && ingredient.json_attributes["#{locale}_content"]["image_id"].present? %>
+                  <% if ingredient.json_attributes["#{locale}_content"]["name"].present? && ingredient.json_attributes["#{locale}_content"]["description"].present? && ingredient.json_attributes["#{locale}_content"]["signed_blob_id"].present? && ingredient.json_attributes["#{locale}_content"]["filename"].present? && ingredient.json_attributes["#{locale}_content"]["image_id"].present? %>
                     <div class="px-2 py-1 text-xs rounded-md bg-spina text-white"><%= "#{locale.upcase}" %></div>
                   <% elsif ingredient.json_attributes["#{locale}_content"]["name"].present? || ingredient.json_attributes["#{locale}_content"]["description"].present? %>
                     <div class="px-2 py-1 text-xs rounded-md bg-amber-400"><%= "#{locale.upcase}" %></div>
