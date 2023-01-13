@@ -209,6 +209,7 @@ de:
       sort_91: Von neu bis alt sortieren
       sort_az: Von A bis Z sortieren
       sort_za: Von Z bis A sortieren
+      subtitle: Untertitel
       version: Version
     languages:
       bg: Bulgarisch
@@ -395,6 +396,7 @@ de:
       sort_91: Von neu bis alt sortieren
       sort_az: Von A bis Z sortieren
       sort_za: Von Z bis A sortieren
+      subtitle: Untertitel
       version: Version
     resources:
       edit: Kollektion editieren

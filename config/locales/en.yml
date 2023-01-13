@@ -203,6 +203,7 @@ en:
       sort_91: Sort from new to old
       sort_az: Sort from A to Z
       sort_za: Sort from Z to A
+      subtitle: Subtitle
       version: Version
     languages:
       bg: Bulgarian
@@ -388,6 +389,7 @@ en:
       sort_91: Sort from new to old
       sort_az: Sort from A to Z
       sort_za: Sort from Z to A
+      subtitle: Subtitle
       version: Version
     resources:
       edit: Edit resource

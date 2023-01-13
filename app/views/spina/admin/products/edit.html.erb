@@ -34,6 +34,12 @@
     <% locales.each do |locale| %>
       <h2 class="<%= "pt-6" unless locales.first == locale %> pb-4 block leading-5 font-medium text-gray-700"><%= "#{t("spina.languages.#{locale}")}#{": #{@product.json_attributes["#{locale}_content"]["name"]}" if @product.json_attributes["#{locale}_content"].present?}" %></h2>
       <%= f.hidden_field "#{locale}_name".to_sym, value: @product.json_attributes["#{locale}_content"].present? ? @product.json_attributes["#{locale}_content"]["name"] : "" %>
+      <div>
+        <label class="block text-sm leading-5 font-medium text-gray-700"><%= t('spina.products.subtitle') %></label>
+        <div class="mt-1">
+          <%= f.text_area "#{locale}_subtitle".to_sym, class: "form-input mt-1 w-full", value: @product.json_attributes["#{locale}_content"].present? ? @product.json_attributes["#{locale}_content"]["subtitle"] : "" %>
+        </div>
+      </div>
       <div class="my-6" data-controller="unique-id" data-unique-id="<%= f.object.object_id %>">
         <label class="block text-sm leading-5 font-medium text-gray-700"><%= t('spina.products.description') %></label>
         <div class="mt-1 relative">
