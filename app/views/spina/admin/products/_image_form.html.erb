@@ -3,9 +3,9 @@
     <%= t('spina.products.image') %>
   </label>
 
-  <%= f.hidden_field "#{locale}_signed_blob_id".to_sym, data: {media_picker_target: "signedBlobId"} %>
-  <%= f.hidden_field "#{locale}_filename".to_sym, data: {media_picker_target: "filename"} %>
-  <%= f.hidden_field "#{locale}_image_id".to_sym, data: {media_picker_target: "imageId"} %>
+  <%= f.hidden_field "#{locale}_signed_blob_id".to_sym, data: {media_picker_target: "signedBlobId"}, value: f.object.json_attributes["#{locale}_content"]["signed_blob_id"] if f.object.json_attributes["#{locale}_content"].present? && f.object.json_attributes["#{locale}_content"]["signed_blob_id"].present? %>
+  <%= f.hidden_field "#{locale}_filename".to_sym, data: {media_picker_target: "filename"}, value: f.object.json_attributes["#{locale}_content"]["filename"] if f.object.json_attributes["#{locale}_content"].present? && f.object.json_attributes["#{locale}_content"]["filename"].present? %>
+  <%= f.hidden_field "#{locale}_image_id".to_sym, data: {media_picker_target: "imageId"}, value: f.object.json_attributes["#{locale}_content"]["image_id"] if f.object.json_attributes["#{locale}_content"].present? && f.object.json_attributes["#{locale}_content"]["image_id"].present? %>
 
   <button class="absolute mt-3 ml-2 z-10 cursor-pointer flex items-center h-9 px-2 rounded-md bg-gray-700 bg-opacity-50 border-gray-300 active:shadow-inner text-gray-200 hover:text-white text-sm font-medium leading-none shadow-sm" data-action="media-picker#removeImage" data-media-picker-target="clearButton" type="button">
     <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
