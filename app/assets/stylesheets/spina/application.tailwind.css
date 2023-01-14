@@ -107,7 +107,7 @@
   .form-select:focus, .form-select:focus-visible {
     @apply border-spina-light;
     @apply ring-spina-light;
-    @apply ring-2;
+    @apply ring-1;
   }
 
   .form-textarea {
@@ -122,13 +122,13 @@
   .form-textarea:focus-within {
     @apply border-spina-light;
     @apply ring-spina-light;
-    @apply ring-2;
+    @apply ring-12;
   }
 
   .form-input:focus, .form-input:focus-visible {
     @apply border-spina-light;
     @apply ring-spina-light;
-    @apply ring-2;
+    @apply ring-1;
   }
 
   media (min-width: 768px) .stay-right {
