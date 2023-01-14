@@ -108,7 +108,7 @@
     @apply border-spina-light;
     @apply ring-spina-light;
     @apply ring-1;
-    @apply ring-offset-1;
+    @apply ring-offset-0;
   }
 
   .form-textarea {
@@ -124,14 +124,14 @@
     @apply border-spina-light;
     @apply ring-spina-light;
     @apply ring-1;
-    @apply ring-offset-1;
+    @apply ring-offset-0;
   }
 
   .form-input:focus, .form-input:focus-visible {
     @apply border-spina-light;
     @apply ring-spina-light;
     @apply ring-1;
-    @apply ring-offset-1;
+    @apply ring-offset-0;
   }
 
   media (min-width: 768px) .stay-right {
