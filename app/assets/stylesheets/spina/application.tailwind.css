@@ -104,7 +104,7 @@
     @apply pr-12;
   }
 
-  .form-select:focus {
+  .form-select:focus, .form-select:focus-visible {
     @apply border-spina-light;
     @apply ring-spina-light;
   }
@@ -118,7 +118,12 @@
     @apply rounded-md;
   }
 
-  .form-input:focus {
+  .form-textarea:focus-within {
+    @apply border-spina-light;
+    @apply ring-spina-light;
+  }
+
+  .form-input:focus, .form-input:focus-visible {
     @apply border-spina-light;
     @apply ring-spina-light;
   }
