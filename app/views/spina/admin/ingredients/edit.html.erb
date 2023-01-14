@@ -45,7 +45,7 @@
       </div>
       <div class="mt-6">
         <label class="block text-sm leading-5 font-medium text-gray-700"><%= t('spina.ingredients.subtitle') %></label>
-        <div class="mh-1 -mb-2">
+        <div class="mt-1 -mb-2">
           <%= f.text_area "#{locale}_subtitle".to_sym, class: "form-input mt-1 w-full max-w-5xl", value: @ingredient.json_attributes["#{locale}_content"].present? ? @ingredient.json_attributes["#{locale}_content"]["subtitle"] : "" %>
         </div>
       </div>
