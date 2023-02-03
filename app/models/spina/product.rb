@@ -1,7 +1,8 @@
 module Spina
   class Product < ApplicationRecord
-    has_many :product_ingredients
+    has_many :product_ingredients, dependent: :destroy
     has_many :ingredients, through: :product_ingredients
+    has_many :product_drafts, dependent: :destroy
 
     def product_name(locale)
       return self.json_attributes["#{locale}_content"]["name"] if self.json_attributes["#{locale}_content"].present? && self.json_attributes["#{locale}_content"]["name"].present?
