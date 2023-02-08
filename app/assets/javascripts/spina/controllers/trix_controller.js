@@ -12,12 +12,12 @@ export default class extends Controller {
 
     const toggleHeadingButtons = () => {
       console.log("yo");
-      // let isHeadingActive = false;
-      // Array.from(this.headingButtonsTarget.children).forEach(button => {
-      //   if (button.classList.contains('trix-active')) {
-      //     isHeadingActive = true;
-      //   }
-      // })
+      let isHeadingActive = false;
+      Array.from(this.headingButtonsTarget.children).forEach(button => {
+        if (button.classList.contains('trix-active')) {
+          isHeadingActive = true;
+        }
+      })
       // if (isHeadingActive) {
       //   Array.from(this.headingButtonsTarget.children).forEach(button => {
       //     if (button.classList.contains('trix-active')) {
