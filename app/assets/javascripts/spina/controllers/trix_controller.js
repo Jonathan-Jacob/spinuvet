@@ -2,12 +2,25 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
   static get targets() {
-    return [ "editor", "imageFields", "altField", "load" ]
+    return [ "editor", "imageFields", "altField", "load", "headingButtons" ]
   }
 
   connect() {
     this.element[this.identifier] = this;
-    console.log(this);
+
+    // Options for the observer (which mutations to observe)
+    const config = { attributes: true, childList: true, subtree: true };
+
+    // Callback function to execute when mutations are observed
+    const callback = (mutationList, observer) => {
+      console.log("mutate");
+    };
+
+    // Create an observer instance linked to the callback function
+    const observer = new MutationObserver(callback);
+
+    // Start observing the target node for configured mutations
+    observer.observe(this.element, config);
 
     this.editorTarget.addEventListener("trix-selection-change", function(event) {
       if (this.mutableImageAttachment) {
@@ -78,8 +91,30 @@ export default class extends Controller {
     return range.createContextualFragment(html)
   }
 
-  toggleHeaderButtons(event) {
-    if (event.currentTarget.classList.contains('trix-active')) {
+  toggleHeaderButtons() {
+    let isHeadingActive = false;
+    headingButtonsTarget.children.forEach(headingButton => {
+      if (headingButton.classList.contains('trix-active')) {
+        isHeadingActive = true;
+      }
+    })
+    if (isHeadingActive) {
+      headingButtonsTarget.children.forEach(headingButton => {
+        if (headingButton.classList.contains('trix-active')) {
+          button.disabled = false;
+          button.classList.remove('pointer-events-none');
+        } else {
+          button.disabled = true;
+          button.classList.add('pointer-events-none');
+        }
+      })
+    } else {
+      headingButtonsTarget.children.forEach(headingButton => {
+        button.disabled = false;
+        button.classList.remove('pointer-events-none');
+      })
+    }
+    if (headingButton.classList.contains('trix-active')) {
       Array.from(event.currentTarget.parentNode.children).forEach(button => {
         if (button !== event.currentTarget) {
           button.disabled = true;
