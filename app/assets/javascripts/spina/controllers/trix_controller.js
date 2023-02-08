@@ -51,7 +51,7 @@ export default class extends Controller {
 
     // Callback function to execute when mutations are observed
     const callback = (mutationList, observer) => {
-      toggleHeaderButtons();
+      toggleHeadingButtons();
     };
 
     // Create an observer instance linked to the callback function
