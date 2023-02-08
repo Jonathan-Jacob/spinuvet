@@ -12,13 +12,13 @@ export default class extends Controller {
 
     const toggleHeadingButtons = () => {
       let isHeadingActive = false;
-      headingButtonsTarget.children.forEach(headingButton => {
+      this.headingButtonsTarget.children.forEach(headingButton => {
         if (headingButton.classList.contains('trix-active')) {
           isHeadingActive = true;
         }
       })
       if (isHeadingActive) {
-        headingButtonsTarget.children.forEach(headingButton => {
+        this.headingButtonsTarget.children.forEach(headingButton => {
           if (headingButton.classList.contains('trix-active')) {
             button.disabled = false;
             button.classList.remove('pointer-events-none');
@@ -28,7 +28,7 @@ export default class extends Controller {
           }
         })
       } else {
-        headingButtonsTarget.children.forEach(headingButton => {
+        this.headingButtonsTarget.children.forEach(headingButton => {
           button.disabled = false;
           button.classList.remove('pointer-events-none');
         })
