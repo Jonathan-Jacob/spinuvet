@@ -18,22 +18,22 @@ export default class extends Controller {
           isHeadingActive = true;
         }
       })
-      // if (isHeadingActive) {
-      //   Array.from(this.headingButtonsTarget.children).forEach(button => {
-      //     if (button.classList.contains('trix-active')) {
-      //       button.disabled = false;
-      //       button.classList.remove('pointer-events-none');
-      //     } else {
-      //       button.disabled = true;
-      //       button.classList.add('pointer-events-none');
-      //     }
-      //   })
+      if (isHeadingActive) {
+        Array.from(this.headingButtonsTarget.children).forEach(button => {
+          if (button.classList.contains('trix-active')) {
+            button.disabled = false;
+            button.classList.remove('pointer-events-none');
+          } else {
+            button.disabled = true;
+            button.classList.add('pointer-events-none');
+          }
+        })
       // } else {
       //   Array.from(this.headingButtonsTarget.children).forEach(button => {
       //     button.disabled = false;
       //     button.classList.remove('pointer-events-none');
       //   })
-      // }
+      }
     }
 
     const observer = new MutationObserver(toggleHeadingButtons);
