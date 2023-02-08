@@ -11,6 +11,7 @@ export default class extends Controller {
     const config = { attributes: true, childList: true, subtree: true };
 
     const toggleHeadingButtons = () => {
+      console.log("yo");
       let isHeadingActive = false;
       Array.from(this.headingButtonsTarget.children).forEach(button => {
         if (button.classList.contains('trix-active')) {
