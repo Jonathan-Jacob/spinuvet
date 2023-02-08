@@ -1,5 +1,31 @@
 import { Controller } from "@hotwired/stimulus"
 
+const toggleHeadingButtons = () => {
+  console.log("yo");
+  let isHeadingActive = false;
+  Array.from(this.headingButtonsTarget.children).forEach(button => {
+    if (button.classList.contains('trix-active')) {
+      isHeadingActive = true;
+    }
+  })
+  if (isHeadingActive) {
+    Array.from(this.headingButtonsTarget.children).forEach(button => {
+      if (button.classList.contains('trix-active')) {
+        button.disabled = false;
+        button.classList.remove('pointer-events-none');
+      } else {
+        button.disabled = true;
+        button.classList.add('pointer-events-none');
+      }
+    })
+  } else {
+    Array.from(this.headingButtonsTarget.children).forEach(button => {
+      button.disabled = false;
+      button.classList.remove('pointer-events-none');
+    })
+  }
+}
+
 export default class extends Controller {
   static get targets() {
     return [ "editor", "imageFields", "altField", "load", "headingButtons" ]
@@ -7,38 +33,9 @@ export default class extends Controller {
 
   connect() {
     this.element[this.identifier] = this;
-
     const config = { attributes: true, childList: true, subtree: true };
-
-    const toggleHeadingButtons = () => {
-      console.log("yo");
-      let isHeadingActive = false;
-      Array.from(this.headingButtonsTarget.children).forEach(button => {
-        if (button.classList.contains('trix-active')) {
-          isHeadingActive = true;
-        }
-      })
-      if (isHeadingActive) {
-        Array.from(this.headingButtonsTarget.children).forEach(button => {
-          if (button.classList.contains('trix-active')) {
-            button.disabled = false;
-            button.classList.remove('pointer-events-none');
-          } else {
-            button.disabled = true;
-            button.classList.add('pointer-events-none');
-          }
-        })
-      // } else {
-      //   Array.from(this.headingButtonsTarget.children).forEach(button => {
-      //     button.disabled = false;
-      //     button.classList.remove('pointer-events-none');
-      //   })
-      }
-    }
-
     const observer = new MutationObserver(toggleHeadingButtons);
-
-    observer.observe(this.element, config);
+    observer.observe(this.editorTarget, config);
 
     this.editorTarget.addEventListener("trix-selection-change", function(event) {
       if (this.mutableImageAttachment) {
@@ -54,6 +51,10 @@ export default class extends Controller {
       this.loadTarget.classList.add('opacity-0', 'pointer-events-none')
       setTimeout(() => this.loadTarget.remove(), 500);
     }
+  }
+
+  toggleHeadingButtons() {
+    toggleHeadingButtons();
   }
 
   insertEmbeddable(html) {
