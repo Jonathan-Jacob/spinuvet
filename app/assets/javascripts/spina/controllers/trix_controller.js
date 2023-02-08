@@ -12,28 +12,28 @@ export default class extends Controller {
 
     const toggleHeadingButtons = () => {
       console.log("yo");
-      let isHeadingActive = false;
-      Array.from(this.headingButtonsTarget.children).forEach(button => {
-        if (button.classList.contains('trix-active')) {
-          isHeadingActive = true;
-        }
-      })
-      if (isHeadingActive) {
-        Array.from(this.headingButtonsTarget.children).forEach(button => {
-          if (button.classList.contains('trix-active')) {
-            button.disabled = false;
-            button.classList.remove('pointer-events-none');
-          } else {
-            button.disabled = true;
-            button.classList.add('pointer-events-none');
-          }
-        })
-      } else {
-        Array.from(this.headingButtonsTarget.children).forEach(button => {
-          button.disabled = false;
-          button.classList.remove('pointer-events-none');
-        })
-      }
+      // let isHeadingActive = false;
+      // Array.from(this.headingButtonsTarget.children).forEach(button => {
+      //   if (button.classList.contains('trix-active')) {
+      //     isHeadingActive = true;
+      //   }
+      // })
+      // if (isHeadingActive) {
+      //   Array.from(this.headingButtonsTarget.children).forEach(button => {
+      //     if (button.classList.contains('trix-active')) {
+      //       button.disabled = false;
+      //       button.classList.remove('pointer-events-none');
+      //     } else {
+      //       button.disabled = true;
+      //       button.classList.add('pointer-events-none');
+      //     }
+      //   })
+      // } else {
+      //   Array.from(this.headingButtonsTarget.children).forEach(button => {
+      //     button.disabled = false;
+      //     button.classList.remove('pointer-events-none');
+      //   })
+      // }
     }
 
     const observer = new MutationObserver(toggleHeadingButtons);
