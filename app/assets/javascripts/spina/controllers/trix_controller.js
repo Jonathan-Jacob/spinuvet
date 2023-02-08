@@ -2,11 +2,45 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
   static get targets() {
-    return [ "editor", "imageFields", "altField", "load", "headingButtons" ]
+    return [ "editor", "imageFields", "altField", "load", "headingButtons", "headingButton1" ]
   }
 
   connect() {
     this.element[this.identifier] = this;
+    const config = { attributes: true, childList: true, subtree: true };
+
+    const toggleHeadingButtons = () => {
+      console.log("yo");
+      let isHeadingActive = false;
+      Array.from(this.headingButtonsTarget.children).forEach(button => {
+        if (button.classList.contains('trix-active')) {
+          isHeadingActive = true;
+        }
+      })
+      if (isHeadingActive) {
+        Array.from(this.headingButtonsTarget.children).forEach(button => {
+          if (!button.classList.contains('heading-button-1')) {
+            if (button.classList.contains('trix-active')) {
+              button.disabled = false;
+              button.classList.remove('pointer-events-none');
+            } else {
+              button.disabled = true;
+              button.classList.add('pointer-events-none');
+            }
+          }
+        })
+      } else {
+        Array.from(this.headingButtonsTarget.children).forEach(button => {
+          if (!button.classList.contains('heading-button-1')) {
+            button.disabled = false;
+            button.classList.remove('pointer-events-none');
+          }
+        })
+      }
+    }
+
+    const observer = new MutationObserver(toggleHeadingButtons);
+    observer.observe(this.headingButton1Target, config);
 
     this.editorTarget.addEventListener("trix-selection-change", function(event) {
       if (this.mutableImageAttachment) {
@@ -34,18 +68,22 @@ export default class extends Controller {
     })
     if (isHeadingActive) {
       Array.from(this.headingButtonsTarget.children).forEach(button => {
-        if (button.classList.contains('trix-active')) {
-          button.disabled = false;
-          button.classList.remove('pointer-events-none');
-        } else {
-          button.disabled = true;
-          button.classList.add('pointer-events-none');
+        if (!button.classList.contains('heading-button-1')) {
+          if (button.classList.contains('trix-active')) {
+            button.disabled = false;
+            button.classList.remove('pointer-events-none');
+          } else {
+            button.disabled = true;
+            button.classList.add('pointer-events-none');
+          }
         }
       })
     } else {
       Array.from(this.headingButtonsTarget.children).forEach(button => {
-        button.disabled = false;
-        button.classList.remove('pointer-events-none');
+        if (!button.classList.contains('heading-button-1')) {
+          button.disabled = false;
+          button.classList.remove('pointer-events-none');
+        }
       })
     }
   }
