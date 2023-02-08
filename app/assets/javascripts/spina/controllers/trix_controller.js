@@ -5,6 +5,44 @@ export default class extends Controller {
     return [ "editor", "imageFields", "altField", "load", "headingButtons" ]
   }
 
+  toggleHeadingButtons() {
+    let isHeadingActive = false;
+    headingButtonsTarget.children.forEach(headingButton => {
+      if (headingButton.classList.contains('trix-active')) {
+        isHeadingActive = true;
+      }
+    })
+    if (isHeadingActive) {
+      headingButtonsTarget.children.forEach(headingButton => {
+        if (headingButton.classList.contains('trix-active')) {
+          button.disabled = false;
+          button.classList.remove('pointer-events-none');
+        } else {
+          button.disabled = true;
+          button.classList.add('pointer-events-none');
+        }
+      })
+    } else {
+      headingButtonsTarget.children.forEach(headingButton => {
+        button.disabled = false;
+        button.classList.remove('pointer-events-none');
+      })
+    }
+    if (headingButton.classList.contains('trix-active')) {
+      Array.from(event.currentTarget.parentNode.children).forEach(button => {
+        if (button !== event.currentTarget) {
+          button.disabled = true;
+          button.classList.add('pointer-events-none');
+        }
+      });
+    } else {
+      Array.from(event.currentTarget.parentNode.children).forEach(button => {
+        button.disabled = false;
+        button.classList.remove('pointer-events-none');
+      })
+    }
+  }
+
   connect() {
     this.element[this.identifier] = this;
 
@@ -89,48 +127,6 @@ export default class extends Controller {
     let range = document.createRange()
     range.selectNodeContents(document.body)
     return range.createContextualFragment(html)
-  }
-
-  toggleHeaderButtons() {
-    let isHeadingActive = false;
-    headingButtonsTarget.children.forEach(headingButton => {
-      if (headingButton.classList.contains('trix-active')) {
-        isHeadingActive = true;
-      }
-    })
-    if (isHeadingActive) {
-      headingButtonsTarget.children.forEach(headingButton => {
-        if (headingButton.classList.contains('trix-active')) {
-          button.disabled = false;
-          button.classList.remove('pointer-events-none');
-        } else {
-          button.disabled = true;
-          button.classList.add('pointer-events-none');
-        }
-      })
-    } else {
-      headingButtonsTarget.children.forEach(headingButton => {
-        button.disabled = false;
-        button.classList.remove('pointer-events-none');
-      })
-    }
-    if (headingButton.classList.contains('trix-active')) {
-      Array.from(event.currentTarget.parentNode.children).forEach(button => {
-        if (button !== event.currentTarget) {
-          button.disabled = true;
-          button.classList.add('pointer-events-none');
-        }
-      });
-    } else {
-      Array.from(event.currentTarget.parentNode.children).forEach(button => {
-        button.disabled = false;
-        button.classList.remove('pointer-events-none');
-      })
-    }
-  }
-
-  sayHi() {
-    console.log('hi');
   }
 
   get currentAltText() {
