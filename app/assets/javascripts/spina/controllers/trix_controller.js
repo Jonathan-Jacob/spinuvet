@@ -6,7 +6,8 @@ export default class extends Controller {
   }
 
   connect() {
-    this.element[this.identifier] = this
+    this.element[this.identifier] = this;
+    console.log(this);
 
     this.editorTarget.addEventListener("trix-selection-change", function(event) {
       if (this.mutableImageAttachment) {
@@ -91,6 +92,10 @@ export default class extends Controller {
         button.classList.remove('pointer-events-none');
       })
     }
+  }
+
+  sayHi() {
+    console.log('hi');
   }
 
   get currentAltText() {
