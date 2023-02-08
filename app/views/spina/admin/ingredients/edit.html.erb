@@ -61,7 +61,7 @@
             <div class="absolute inset-0 bg-white flex justify-center items-center rounded-md z-20 transition-opacity" data-trix-target="load"></div>
             <%= render Spina::Forms::TrixToolbarComponent.new("#{f.object.object_id}_trix-toolbar") %>
 
-            <trix-editor class="min-h-6 prose prose-sm focus:outline-none max-w-3xl xl:border-r border-dashed border-gray-200 pr-3" toolbar="<%= f.object.object_id %>_trix-toolbar" input="<%= f.object.object_id %>_input" data-trix-target="editor" data-action="trix-file-accept->trix#preventDefault"></trix-editor>
+            <trix-editor class="min-h-6 prose prose-sm focus:outline-none max-w-3xl xl:border-r border-dashed border-gray-200 pr-3" toolbar="<%= f.object.object_id %>_trix-toolbar" input="<%= f.object.object_id %>_input" data-trix-target="editor" data-action="trix-file-accept->trix#preventDefault click->trix#toggleHeadingButtons keyup->trix#toggleHeadingButtons focusin->trix#toggleHeadingButtons"></trix-editor>
           </div>
         </div>
       </div>
